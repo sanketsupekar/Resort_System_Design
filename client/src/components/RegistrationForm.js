@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "../styles/components/RegistrationForm.css"; // Import your CSS file if needed
 
 function RegistrationForm() {
@@ -22,7 +22,18 @@ function RegistrationForm() {
     e.preventDefault();
     // Handle form submission here (e.g., send data to the server)
     console.log(formData);
+     setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phoneNumber: "",
+      password: "",
+      confirmPassword: "",
+      gender: "Male", // Default value
+    });
   };
+  
+
 
   return (
     <div className="registration_container">
@@ -142,7 +153,7 @@ function RegistrationForm() {
               />
             </div>
           </div>
-          <div className="button">
+          <div  className="button">
             <button> Register</button>
             
           </div>

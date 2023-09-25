@@ -19,6 +19,11 @@ function LoginForm() {
     e.preventDefault();
     // Handle form submission here (e.g., send data to the server)
     console.log(formData);
+    setFormData({
+      email: "",
+    
+      password: ""
+    })
   };
 
   return (
@@ -62,6 +67,7 @@ function LoginForm() {
           </div>
         </form>
       </div>
+
     </div>
   );
 }
