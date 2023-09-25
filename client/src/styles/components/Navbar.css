@@ -1,0 +1,58 @@
+/* Navbar.css */
+
+.navbar {
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+  }
+  
+  .navbar:hover {
+    background-color: var(--secondary-color);
+  }
+  
+  .navbar .logo {
+    font-family: 'Pacifico', cursive;
+    font-size: 28px;
+    color: white;
+    text-transform: uppercase;
+  }
+  
+  .navbar .nav-links {
+    list-style: none;
+    display: flex;
+  }
+  
+  .navbar  .nav-links li {
+    margin-right: 20px;
+  }
+  
+  .navbar  .nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar  .nav-links a:hover {
+    color: var(--accent-color);
+  }
+  
+  /* Stylish button for call-to-action */
+  .navbar  .button {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .navbar   .button:hover {
+    background-color: #ff5733; /* A shade of orange */
+  }
+  

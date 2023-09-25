@@ -1,0 +1,8 @@
+:root {
+  --primary-color: #333333;
+  --secondary-color: #6C757D;
+  --background-color: #F8F9FA;
+  --text-color: #FFFFFF; /* White text on dark background for a high-contrast, elegant look */
+  --link-color: #007BFF;
+  --accent-color: #FFC107;
+}
