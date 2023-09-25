@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
-import '../styles/components/RegistrationForm.css'; // Import your CSS file if needed
+import React, { useState } from "react";
+import "../styles/components/RegistrationForm.css"; // Import your CSS file if needed
 
 function RegistrationForm() {
   const [formData, setFormData] = useState({
-    fullName: '',
-    username: '',
-    email: '',
-    phoneNumber: '',
-    password: '',
-    confirmPassword: '',
-    gender: 'Male', // Default value
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    password: "",
+    confirmPassword: "",
+    gender: "Male", // Default value
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(e)
+   // console.log(e);
     setFormData({ ...formData, [name]: value });
   };
 
@@ -32,25 +32,25 @@ function RegistrationForm() {
           <div className="user-details">
             {/* Full Name */}
             <div className="input-box">
-              <span className="details">Full Name</span>
+              <span className="details">First Name</span>
               <input
                 type="text"
-                placeholder="Enter your name"
-                name="fullName"
-                value={formData.fullName}
+                placeholder="Enter Name"
+                name="firstName"
+                value={formData.firstName}
                 onChange={handleChange}
                 required
               />
             </div>
 
-            {/* Username */}
+            {/* lastName */}
             <div className="input-box">
-              <span className="details">Username</span>
+              <span className="details">Last Name</span>
               <input
                 type="text"
-                placeholder="Enter your username"
-                name="username"
-                value={formData.username}
+                placeholder="Enter Name"
+                name="lastName"
+                value={formData.lastName}
                 onChange={handleChange}
                 required
               />
@@ -61,7 +61,7 @@ function RegistrationForm() {
               <span className="details">Email</span>
               <input
                 type="text"
-                placeholder="Enter your email"
+                placeholder="Enter email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
@@ -74,7 +74,7 @@ function RegistrationForm() {
               <span className="details">Phone Number</span>
               <input
                 type="text"
-                placeholder="Enter your number"
+                placeholder="Enter phone number"
                 name="phoneNumber"
                 value={formData.phoneNumber}
                 onChange={handleChange}
@@ -82,6 +82,40 @@ function RegistrationForm() {
               />
             </div>
 
+            {/* Gender*/}
+            <div className="input-box">
+              <span className="details">Gender</span>
+              <select
+                id="gender"
+                name="gender"
+                value={formData.gender}
+                onChange={handleChange}
+                required
+                style={{ width: '100%', height: '40px' }}
+              >
+                <option value="">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            {/* Gender*/}
+            <div className="input-box" style={{ visibility: "hidden" }}>
+              <span className="details">Gender</span>
+              <select
+                id="gender"
+                name="gender"
+                value={formData.gender}
+                onChange={handleChange}
+                required
+
+              >
+                <option value="">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
             {/* Password */}
             <div className="input-box">
               <span className="details">Password</span>
@@ -106,47 +140,6 @@ function RegistrationForm() {
                 onChange={handleChange}
                 required
               />
-            </div>
-          </div>
-
-          <div className="gender-details">
-            <span className="gender-title">Gender</span>
-            <div className="category">
-              <label>
-                <input
-                  type="radio"
-                  name="gender"
-                  value="Male"
-                  checked={formData.gender === 'Male'}
-                  onChange={handleChange}
-                />
-                <span className="dot one"></span>
-                <span className="gender">Male</span>
-              </label>
-
-              <label>
-                <input
-                  type="radio"
-                  name="gender"
-                  value="Female"
-                  checked={formData.gender === 'Female'}
-                  onChange={handleChange}
-                />
-                <span className="dot two"></span>
-                <span className="gender">Female</span>
-              </label>
-
-              <label>
-                <input
-                  type="radio"
-                  name="gender"
-                  value="Prefer not to say"
-                  checked={formData.gender === 'Prefer not to say'}
-                  onChange={handleChange}
-                />
-                <span className="dot three"></span>
-                <span className="gender">Prefer not to say</span>
-              </label>
             </div>
           </div>
 
