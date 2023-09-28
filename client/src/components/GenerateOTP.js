@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import "../styles/components/LoginForm.css"; // Import your CSS file if needed
 
-function GenerateOTP() {
+function GenerateOTP(props) {
   const [formData, setFormData] = useState({
-    email: "",
-    
-   
-    
+    email: props.userEmail,
   });
 
   const handleChange = (e) => {
@@ -17,11 +14,11 @@ function GenerateOTP() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here (e.g., send data to the server)
-    console.log(formData);
-    setFormData({
-      email: "",
-    })
+    props.onClickGenerateOTP(e);
+    // console.log(formData);
+    // setFormData({
+    //   email: "",
+    // })
   };
 
   return (
@@ -37,6 +34,7 @@ function GenerateOTP() {
                 type="text"
                 placeholder="Enter email"
                 name="email"
+                disabled
                 value={formData.email}
                 onChange={handleChange}
                 required

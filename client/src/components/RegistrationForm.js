@@ -1,14 +1,14 @@
 import React, { useState,useEffect } from "react";
 import "../styles/components/RegistrationForm.css"; // Import your CSS file if needed
-
-function RegistrationForm() {
+import GenerateOTP from "../components/GenerateOTP";
+function RegistrationForm(props) {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phoneNumber: "",
-    password: "",
-    confirmPassword: "",
+    firstName: "Sanket",
+    lastName: "Supekar",
+    email: "sanketsupekar123@gmail.com",
+    phoneNumber: "9130420859",
+    password: "sanket",
+    confirmPassword: "sanket",
     gender: "Male", // Default value
   });
 
@@ -20,22 +20,24 @@ function RegistrationForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    props.getUserData(formData);
     // Handle form submission here (e.g., send data to the server)
-    console.log(formData);
-     setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phoneNumber: "",
-      password: "",
-      confirmPassword: "",
-      gender: "Male", // Default value
-    });
+   // console.log(formData);
+    //  setFormData({
+    //   firstName: "",
+    //   lastName: "",
+    //   email: "",
+    //   phoneNumber: "",
+    //   password: "",
+    //   confirmPassword: "",
+    //   gender: "Male", // Default value
+    // });
   };
   
 
 
   return (
+    <>
     <div className="registration_container">
       <div className="title">Registration</div>
       <div className="content">
@@ -160,6 +162,8 @@ function RegistrationForm() {
         </form>
       </div>
     </div>
+    </>
+
   );
 }
 
