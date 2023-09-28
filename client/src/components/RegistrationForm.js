@@ -1,6 +1,9 @@
 import React, { useState,useEffect } from "react";
 import "../styles/components/RegistrationForm.css"; // Import your CSS file if needed
 import GenerateOTP from "../components/GenerateOTP";
+import Navbar from "./NavBar";
+import { Link } from "react-router-dom";
+
 function RegistrationForm(props) {
   const [formData, setFormData] = useState({
     firstName: "Sanket",
@@ -14,24 +17,12 @@ function RegistrationForm(props) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-   // console.log(e);
     setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     props.getUserData(formData);
-    // Handle form submission here (e.g., send data to the server)
-   // console.log(formData);
-    //  setFormData({
-    //   firstName: "",
-    //   lastName: "",
-    //   email: "",
-    //   phoneNumber: "",
-    //   password: "",
-    //   confirmPassword: "",
-    //   gender: "Male", // Default value
-    // });
   };
   
 
@@ -159,6 +150,11 @@ function RegistrationForm(props) {
             <button> Register</button>
             
           </div>
+          <Link to="/signin" className="text-decoration-none">
+              <a className="nav-link active" aria-current="page">
+                Sign In
+              </a>
+            </Link>
         </form>
       </div>
     </div>

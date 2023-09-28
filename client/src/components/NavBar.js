@@ -9,11 +9,13 @@ function Navbar() {
       <div className="logo">Resort</div>
       <ul className="nav-links">
         <li><a href="/">Home</a></li>
-        <li><a href="/rooms">Rooms</a></li>
+        <li><a href="/signin">Sign In</a></li>
+        <li><a href="/signup">Sign Up</a></li>
+        {/* <li><a href="/rooms">Rooms</a></li>
         <li><a href="/dining">Dining</a></li>
         <li><a href="/amenities">Amenities</a></li>
         <li><a href="/about">About</a></li>
-        <li><a href="/contact">Contact</a></li>
+        <li><a href="/contact">Contact</a></li> */}
         {/* Add more navigation items here */}
       </ul>
     </nav>

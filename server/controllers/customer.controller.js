@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer');
 require('dotenv').config();
+const Customer = require('../model/customer.model');
 
 function getOtpformat(verificationOTP)
 {
@@ -49,4 +50,11 @@ async function sendOTPMail(customerEmail, emailSubject, verificationOTP)
       const mailSent =  transporter.sendMail(mailOptions);
       return mailSent;
 }
-module.exports = {sendOTPMail};
+async function registerCustomer(data)
+{
+  const customerData = Customer.insertMany([data]);
+  console.log(customerData);
+  return customerData;
+}
+
+module.exports = {sendOTPMail, registerCustomer};

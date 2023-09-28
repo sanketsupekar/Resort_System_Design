@@ -97,6 +97,24 @@
   /* transform: scale(0.99); */
   background: var(--secondary-color);
   }
+
+  /* styles.css */
+
+.text-decoration-none {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-link.active {
+  
+  /* Your styles for the active navigation link */
+  /* For example, you can set the text color and background color */
+  color: var(--primary-color
+  ); /* Blue color */
+  background-color: #f8f9fa; /* Light gray color */
+}
+
  @media(max-width: 584px){
  .container{
   max-width: 100%;

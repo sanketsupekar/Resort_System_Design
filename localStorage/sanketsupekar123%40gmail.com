@@ -1,1 +1,1 @@
-{"value":5620,"expirationTime":1695896495588}
+{"value":6847,"expirationTime":1695927226733}

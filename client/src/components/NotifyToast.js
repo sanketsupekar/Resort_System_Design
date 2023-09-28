@@ -16,6 +16,19 @@ export function taskSuccessful() {
   });
 }
 
+export function loginSuccessful() {
+  toast.success("Login Successfull", {
+    position: "bottom-right",
+    autoClose: 1000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+}
+
 export function emailSentSuccessful() {
   toast.success("Email Sent Successfully", {
     position: "bottom-right",
@@ -42,8 +55,21 @@ export function emailVerified() {
 }
 export function invalidOtp() {
   toast.error("Invalid OTP", {
-    position: "bottom-center",
-    autoClose: 5000,
+    position: "bottom-right",
+    autoClose: 1000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+}
+
+export function invalidUser() {
+  toast.error("Invalid Email / Password", {
+    position: "bottom-right",
+    autoClose: 1000,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,
