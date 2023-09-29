@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import "../styles/components/LoginForm.css"; // Import your CSS file if needed
-import Navbar from "./NavBar";
+import Navbar from "../components/NavBar";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-const {invalidUser, loginSuccessful} = require('../components/NotifyToast');
+import LoadingSpinner from "../components/LoadingSpinner";
+
+const { displaySuccess, displayError } = require("../components/NotifyToast");
+const { fetchAPI } = require("../components/UserFunctions");
+
 function SignIn() {
+  
   const API_loginUser = "/api/signin";
+  const [loadingVisible, setLoading] = useState(false);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
@@ -14,24 +20,22 @@ function SignIn() {
   });
 
   async function userValidation(data) {
-    const respones = await fetch(API_loginUser, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }).catch((e) => console.log("Error : ", e));
+    setLoading(true);
+    const respones = await fetchAPI(data, API_loginUser, "POST");
+    setLoading(false);
     const json = await respones.json();
-   // console.log(json);
-    if (json.valid) {
-     // loginSuccessful();
-      navigate('/');
-    //  console.log("Success");
-    } else {
-      invalidUser();
-      console.log("Fail");
+    if (respones.status == 400) {
+      displayError(json.message);
+      setFormData({
+        email: "",
+        password: "",
+      });
+    } else if (respones.status == 200) {
+      displaySuccess(json.message);
+      navigate("/");
     }
   }
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -39,18 +43,13 @@ function SignIn() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here (e.g., send data to the server)
-    //  console.log(formData);
     userValidation(formData);
-    setFormData({
-      email: "",
-      password: "",
-    });
   };
 
   return (
     <>
       <Navbar />
+      {loadingVisible ? <LoadingSpinner /> : <Fragment />}
       <div className="login_container">
         <div className="title">Login</div>
         <div className="content">

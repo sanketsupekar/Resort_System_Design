@@ -8,7 +8,7 @@ async function connectToDb(database = "SystemDatabase")
     const password = process.env.DATABASE_PASSWORD;
     
     const mongo_url = "mongodb+srv://"+username+":"+password+"@cluster0.gxvopsw.mongodb.net/"+database+"?retryWrites=true&w=majority";
-    //console.log(mongo_url);
+    console.log(mongo_url);
     try{
         await mongooes.connect(mongo_url);
         console.log("Connection Successful...");

@@ -50,11 +50,23 @@ async function sendOTPMail(customerEmail, emailSubject, verificationOTP)
       const mailSent =  transporter.sendMail(mailOptions);
       return mailSent;
 }
-async function registerCustomer(data)
+async function customerRegister(data)
 {
   const customerData = Customer.insertMany([data]);
   console.log(customerData);
   return customerData;
 }
+async function customerExist(userMail)
+{
+//  console.log(userMail);
+  const isExist =  await Customer.findOne({email : userMail});
+  return isExist;
+}
 
-module.exports = {sendOTPMail, registerCustomer};
+async function getCustomerData(userMail)
+{
+//  console.log(userMail);
+  const customerData =  await Customer.findOne({email : userMail});
+  return customerData;
+}
+module.exports = {sendOTPMail, customerRegister,customerExist,getCustomerData};

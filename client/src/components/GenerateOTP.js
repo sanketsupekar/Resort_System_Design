@@ -5,15 +5,16 @@ function GenerateOTP(props) {
   const [formData, setFormData] = useState({
     email: props.userEmail,
   });
-
+  const [disabledButton, setButtonState] = useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
-   // console.log(e);
+    // console.log(e);
     setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("Clicked");
     props.onClickGenerateOTP(e);
     // console.log(formData);
     // setFormData({
@@ -40,14 +41,10 @@ function GenerateOTP(props) {
                 required
               />
             </div>
+          </div>
 
-            
-
-            </div>
-
-            <div className="button">
-            <button> Get OTP</button>
-            
+          <div className="button">
+            <button disabled={disabledButton}>Get OTP</button>
           </div>
         </form>
       </div>

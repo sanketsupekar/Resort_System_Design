@@ -2,9 +2,9 @@ import React from "react";
 import { BrowserRouter, Routes, Route, Switch } from "react-router-dom";
 import HomePage from "./pages/HomePage"; // Import your home page component
 import './global.css';
-import SignIn from "./components/SignIn";
+import SignIn from "./pages/SignIn";
 import RegistrationForm from "./components/RegistrationForm";
-import SignUp from "./components/SignUp";
+import SignUp from "./pages/SignUp";
 function App() {
   return (
     <>

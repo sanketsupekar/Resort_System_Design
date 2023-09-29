@@ -13,6 +13,13 @@ function RegistrationForm(props) {
     password: "sanket",
     confirmPassword: "sanket",
     gender: "Male", // Default value
+    // firstName: "",
+    // lastName: "",
+    // email: "",
+    // phoneNumber: "",
+    // password: "",
+    // confirmPassword: "",
+    // gender: "Male", // Default value
   });
 
   const handleChange = (e) => {

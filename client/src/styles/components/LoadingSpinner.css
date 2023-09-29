@@ -1,23 +1,66 @@
-@keyframes spinner {
-    0% {
-      transform: rotate(0deg);
+body{
+  margin:0;
+  padding:0;
+}
+@keyframes barWidth {
+    0%   {width: 0%;}
+    25%  {width: 50%;}
+    50%  {width: 100%;}
+    75%  {width: 50%;}
+    100% {width: 0%;}
+}
+@keyframes barWidth2 {
+    0%   {width: 0%;}
+    50%  {width: 50%;}
+    100% {width: 100%;}
+}
+.loading-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0);
+  z-index: 1;
+}
+.horizontal-bar-wrap{
+  height: 4px;
+  width: 100%;
+  .bar{
+    position: relative;
+    width: 0%;
+    height: 100%;
+    margin: 0 auto;
+    animation: barWidth;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    &.bar1{
+      animation-delay: 0s;
+      background: var(--link-color);
+      top: 0;
+      z-index: 1;
     }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  .loading-spinner {
-    width: 50px;
-    height: 50px;
-    border: 10px solid #f3f3f3; /* Light grey */
-    border-top: 10px solid #383636; /* Blue */
-    border-radius: 50%;
-    animation: spinner 1.5s linear infinite;
-  }
+
   
-  .spinner-container {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    height: 350px;
+/* //     &.bar2{
+//       animation-delay: 2s;
+//       background: green;
+//       top: -4px;
+//       z-index: 2;
+//     }
+//     &.bar3{
+//       animation-delay: 4s;
+//       background: blue;
+//       top: -8px;
+//       z-index: 3;
+//     }
+//     &.bar4{
+     
+//       animation-delay: 6s;
+//       background: magenta;
+//       top: -12px;
+//       z-index: 4;
+//     } */
   }
+}

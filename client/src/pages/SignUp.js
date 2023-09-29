@@ -7,16 +7,13 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
-const {
-  taskSuccessful,
-  emailSentSuccessful,
-  emailVerified,
-  invalidOtp,
-} = require("../components/NotifyToast");
+const { displayError, displaySuccess } = require("../components/NotifyToast");
+const { fetchAPI } = require("../components/UserFunctions");
 
 function SignUp() {
   const API_generateOTP = "/api/generateOTP";
   const API_verificationOTP = "/api/verificationOTP";
+  const API_customerExist = "/api/userAlreadyExist";
   const naviagte = useNavigate();
   const [registrationVisible, setRegistrationVisible] = useState(true);
   const [generateOTPVisible, setGenerateOTPVisible] = useState(false);
@@ -32,65 +29,60 @@ function SignUp() {
     gender: "Male", // Default value
   });
 
-  async function verifyOTP(data) {
-    try {
-      setLoading(true);
-      const respones = await fetch(API_verificationOTP, {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }).catch((e) => console.log("Error : ", e));
-      const json = await respones.json();
-      setLoading(false);
-      if (respones.status == 200) {
-        emailVerified();
-        naviagte("/signin");
-      } else {
-        invalidOtp();
-      }
-      console.log(json);
-    } catch (e) {
-      console.log("Error : ", e);
+  async function customerExit(data) {
+    setLoading(true);
+    const respones = await fetchAPI(data, API_customerExist, "POST");
+    setLoading(false);
+    const json = await respones.json();
+    if (json.exist) {
+      displayError(json.message);
+    } else {
+      setRegistrationVisible(false);
+      setGenerateOTPVisible(true);
     }
   }
+
+  async function verifyOTP(data) {
+    setLoading(true);
+    const respones = await fetchAPI(data, API_verificationOTP, "POST");
+    setLoading(false);
+    const json = await respones.json();
+    if (respones.status == 200) {
+      displaySuccess(json.message);
+      naviagte("/signin");
+    } else {
+      displayError(json.message);
+    }
+  }
+
   async function uploadUserData(data) {
-    try {
-      setLoading(true);
-      const respones = await fetch(API_generateOTP, {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }).catch((e) => console.log("Error : ", e));
-      const json = await respones.json();
-      console.log(json);
-      setLoading(false);
-      emailSentSuccessful();
+    setLoading(true);
+    const respones = await fetchAPI(data, API_generateOTP, "POST");
+    setLoading(false);
+    const json = await respones.json();
+    if (respones.status == 200) {
+      displaySuccess(json.message);
+      setGenerateOTPVisible(false);
       setVerifyOTPVisible(true);
-    } catch (e) {
-      console.log("Error : ", e);
+    } else {
+      displayError(json.message);
     }
   }
 
   function getUserData(data) {
     setRegistrationData({ ...registrationData, ...data });
-    setRegistrationVisible(false);
-    setGenerateOTPVisible(true);
+    customerExit({ email: data.email });
   }
 
   function onClickGenerateOTP(e) {
     uploadUserData(registrationData);
-    setGenerateOTPVisible(false);
   }
 
   function onClickSubmitOTP(data) {
     const verifyData = {
       userEmail: registrationData.email,
       userOtp: data.otp,
-      userData : registrationData
+      userData: registrationData,
     };
     verifyOTP(verifyData);
   }
@@ -103,7 +95,6 @@ function SignUp() {
   return (
     <>
       <Navbar />
-
       {loadingVisible ? <LoadingSpinner /> : <Fragment />}
       {registrationVisible ? (
         <RegistrationForm getUserData={getUserData} />
