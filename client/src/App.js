@@ -8,6 +8,7 @@ import SignUp from "./pages/SignUp";
 import {useStateValue} from './Context/StateProvider';
 import { Navigate } from "react-router-dom";
 import { SignOut } from "./pages/SignOut";
+import Rooms from "./pages/Rooms";
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/signin" element = {<SignIn/>}></Route>
         <Route path="/signup" element = {<SignUp/>}></Route>
         <Route path="/signout" element = {<SignOut/>}></Route>
+        <Route path="/rooms" element = {<Rooms/>}></Route>
         <Route path="*" element = {<Navigate to='/'/>} ></Route>
         </Routes>
       </BrowserRouter>

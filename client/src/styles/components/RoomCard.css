@@ -1,0 +1,126 @@
+.room_card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: solid 5px red; */
+}
+
+.room_card .card_container {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  width: 70%;
+  /* border: 1px solid black; */
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.room_card img {
+  padding: 1.5rem;
+  width: 25rem;
+}
+
+.room_card .info_container {
+   width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+}
+.room_card .info_container .room_name h2 {
+  margin-top: 0;
+}
+.room_card .info_container .room_details {
+  width: 90%;
+  /* display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; */
+}
+
+.room_card .info_container .room_details .room_size_occu{
+   display: flex;
+   flex-direction: row;
+}
+.room_card .book_container {
+  padding: 1.5rem;
+  text-align: end;
+}
+
+.room_card .room_details .detail-1,
+.detail-2,
+.detail-3 {
+  margin-right: 3rem;
+  margin-bottom: 1rem;
+}
+.room_card .room_details h3,
+p {
+  margin: 0;
+}
+
+.room_card .room_details .detail-4 i {
+  font-size: 1.2rem;
+  margin: 0.3rem;
+  border: 1px solid rgba(192, 192, 192, 0.822);
+  color: var(--secondary-color);;
+}
+
+.room_card .book_container .price_info h5 {
+  color: var(--secondary-color);
+  margin: 0;
+}
+.room_card .book_container .price_info h2 {
+  /* color: var(--secondary-color); */
+  margin: 0;
+}
+.room_card .book_container .price_info_2 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.room_card .book_container .price_info_1 {
+  margin-top: 1rem;
+}
+
+/* CSS */
+.room_card .book_container .book_button {
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #1a1a1a;
+  /* border-radius: 15px; */
+  box-sizing: border-box;
+  color: #3b3b3b;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 3rem;
+  min-width: 0;
+  outline: none;
+  /* padding: 16px 24px; */
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+  will-change: transform;
+}
+
+.room_card .book_container .book_button:disabled {
+  pointer-events: none;
+}
+
+.room_card .book_container .book_button:hover {
+  color: #fff;
+  background-color: #1a1a1a;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.room_card .book_container .book_button:active {
+  box-shadow: none;
+  transform: translateY(0);
+}

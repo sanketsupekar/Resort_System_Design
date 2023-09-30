@@ -1,0 +1,107 @@
+export const rooms = [
+  {
+    _id: "60ff758ec8bf78af50a6ee0f",
+    amenities: [
+      "breakfast",
+      "king bed",
+      "24 hour room service",
+      "bath",
+      "shower",
+      "sitting area",
+      "cofee/tea",
+      "tv",
+      "swimming",
+      "cricket",
+    ],
+    url: "queen",
+    title: "Deluxe Bedroom",
+    titleHeader:
+      "Coconut County Resort's classic room is the perfect beginning to your Nashik adventure",
+    description:
+      "Indulge in this elegant deluxe bedroom, the most enviable address in Nashik, with stunning terraces facing the Murambi backwaters and damside access.",
+    header: "YOUR URBAN OASIS",
+    subHeader:
+      "Overlooking our resort’s waterways, relax into your own serene space at Coconut County Resort.",
+    view: "DamSide Resort",
+    size: "73sqm/785sqft",
+    adults: 2,
+    children: 2,
+    bedding: "1 Deluxe Bed",
+    paragraph:
+      "A deluxe bed, and spacious dressing area into the bathroom. Here, your oversized,  bath is the centre of attention, framed by glass and a classic rain shower. Recline on your furnished private terrace overlooking as sunlight filters through floor-to-ceiling balcony doors. To stay in complete comfort with family and friends, simply book two of our villa rooms, seamlessly interconnecting for even more space.",
+    mainImage: "delux_room.jpg",
+    subImage: "queen_sub.jpeg",
+    rooms: 1,
+    price: 2000,
+  },
+  {
+    _id: "60ff7609c8bf78af50a6ee11",
+    amenities: [
+      "breakfast",
+      "king bed",
+      "24 hour room service",
+      "bath",
+      "shower",
+      "sitting area",
+      "cofee/tea",
+      "tv",
+      "swimming",
+      "cricket",
+    ],
+    url: "suite",
+    title: "Standard Room",
+    titleHeader:
+      "Coconut County Resort's choice for those who want luxury and comfort",
+    description:
+      "Relax in the all-inclusive bath or step into our private pool. The bedroom offers more room and space for larger families and groups.",
+    header: "YOUR DAMSIDE PARADISE",
+    subHeader:
+      "Overlooking our resort’s waterways, relax into your own serene space at One&Only Nashik.",
+    view: "Damside Resort Resort",
+    size: "316sqm/3401sqft",
+    adults: 4,
+    children: 4,
+    bedding: "2 King Beds 1 Queen bed",
+    paragraph:
+      "With =3 beds and a lavish bedroom, we guarantee that our bedroom will meet all your holiday needs. Step out into Nashik's famous beach or take a swim at Coconut County Resort’s private pool. This room features all necessary amenities and a bath for those looking for a more romantic experience.",
+    mainImage: "standard_room.jpg",
+    subImage: "suite_sub.jpg",
+    rooms: 1,
+    price: 8000,
+  },
+  {
+    _id: "60ff75d7c8bf78af50a6ee10",
+    amenities: [
+      "breakfast",
+      "king bed",
+      "24 hour room service",
+      "bath",
+      "shower",
+      "sitting area",
+      "cofee/tea",
+      "tv",
+      "swimming",
+      "cricket",
+    ],
+    url: "king",
+    title: "King Bedroom",
+    titleHeader:
+      "Enjoy a spacious and relaxing environment during you stay at Coconut County Resort",
+    description:
+      "A comfortable room overlooking backwaters. The choice for families looking to enjoy everything Nashik has to offer.",
+    header: "THE CHOICE FOR FAMILIES",
+    subHeader:
+      "Overlooking our resort’s waterways, relax into your own serene space at One&Only Murambi.",
+    view: "Damside Resort / Resort Pool",
+    size: "201sqm/2163sqft",
+    adults: 2,
+    children: 2,
+    bedding: "2 King Beds",
+    paragraph:
+      "The King Bedroom is Coconut County Resort’s recommended choice for families looking to enjoy their time in Nashik. With two bedrooms, easy access to the Backwaters, and all inclusive tours offered from our resort, we ensure you will never experience a dull moment. Come and spend evening.",
+    mainImage: "king_room.jpg",
+    subImage: "king_sub.jpg",
+    rooms: 2,
+    price: 2000,
+  },
+];
