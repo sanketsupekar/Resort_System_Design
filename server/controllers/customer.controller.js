@@ -69,4 +69,20 @@ async function getCustomerData(userMail)
   const customerData =  await Customer.findOne({email : userMail});
   return customerData;
 }
-module.exports = {sendOTPMail, customerRegister,customerExist,getCustomerData};
+
+async function getAuthToken(user)
+{
+  const token = await user.generateAuthToken();
+  return token;
+}
+
+async function updateAuthToken(user, token)
+{
+    const updateData = await Customer.updateOne({_id : user._id },{
+      $set : {
+        tokens : user.tokens.concat({ token: token })
+      }
+    })
+    return updateData;
+}
+module.exports = {sendOTPMail, customerRegister,customerExist,getCustomerData, getAuthToken, updateAuthToken};

@@ -1,16 +1,18 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import "../styles/components/LoginForm.css"; // Import your CSS file if needed
 import Navbar from "../components/NavBar";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadingSpinner from "../components/LoadingSpinner";
+import {useStateValue} from '../Context/StateProvider';
+import {actionTypes} from '../Context/reducer';
 
 const { displaySuccess, displayError } = require("../components/NotifyToast");
-const { fetchAPI } = require("../components/UserFunctions");
+const { fetchAPI, isLoggedIn } = require("../components/UserFunctions");
 
 function SignIn() {
-  
+  const [{CustomerUser}, dispatchUser] = useStateValue();
   const API_loginUser = "/api/signin";
   const [loadingVisible, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -32,6 +34,10 @@ function SignIn() {
       });
     } else if (respones.status == 200) {
       displaySuccess(json.message);
+      dispatchUser({
+        type: actionTypes.SET_CUSTOMER,
+        customerToken: json.token,
+      });
       navigate("/");
     }
   }
@@ -45,7 +51,10 @@ function SignIn() {
     e.preventDefault();
     userValidation(formData);
   };
-
+useEffect(()=>{
+  if(isLoggedIn())
+  navigate('/');
+},[])
   return (
     <>
       <Navbar />

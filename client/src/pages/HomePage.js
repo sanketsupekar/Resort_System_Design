@@ -2,10 +2,14 @@ import React, { Fragment, useEffect, useState } from "react";
 import Navbar from "../components/NavBar"; // Import the Navbar component
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-const { taskSuccessful,emailSentSuccessful,emailVerified,invalidOtp } = require('../components/NotifyToast');
-
+import { Navigate,useNavigate } from "react-router-dom";
+const { fetchAPI, isLoggedIn } = require("../components/UserFunctions");
 function HomePage() {
-
+  const navigate = useNavigate();
+  useEffect(()=>{
+    //console.log(isLoggedIn);
+    if(!isLoggedIn())  navigate('/signin');
+  },[])
   return (
     <>
       <Navbar />
