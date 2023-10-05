@@ -9,11 +9,11 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 const { displayError, displaySuccess } = require("../components/NotifyToast");
 const { fetchAPI } = require("../components/UserFunctions");
-
+const {API_customerExist,API_verificationOTP, API_generateOTP} = require('../api/index');
 function SignUp() {
-  const API_generateOTP = "/api/generateOTP";
-  const API_verificationOTP = "/api/verificationOTP";
-  const API_customerExist = "/api/userAlreadyExist";
+  // const API_generateOTP = "/api/generateOTP";
+  // const API_verificationOTP = "/api/verificationOTP";
+  // const API_customerExist = "/api/userAlreadyExist";
   const naviagte = useNavigate();
   const [registrationVisible, setRegistrationVisible] = useState(true);
   const [generateOTPVisible, setGenerateOTPVisible] = useState(false);

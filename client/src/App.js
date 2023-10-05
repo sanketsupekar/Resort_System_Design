@@ -9,7 +9,8 @@ import {useStateValue} from './Context/StateProvider';
 import { Navigate } from "react-router-dom";
 import { SignOut } from "./pages/SignOut";
 import Rooms from "./pages/Rooms";
-
+import BookingProcess from "./pages/BookingProcess";
+import PageNotFound from './pages/PageNotFound'
 function App() {
 
   return (
@@ -21,6 +22,8 @@ function App() {
         <Route path="/signup" element = {<SignUp/>}></Route>
         <Route path="/signout" element = {<SignOut/>}></Route>
         <Route path="/rooms" element = {<Rooms/>}></Route>
+        <Route path="/rooms/bookingProcess" element = {<BookingProcess/>}></Route>
+        <Route path="/pageNotFound" element = {<PageNotFound/>}></Route>
         <Route path="*" element = {<Navigate to='/'/>} ></Route>
         </Routes>
       </BrowserRouter>

@@ -51,12 +51,12 @@ export default function RoomCard(props) {
                 <h2>Rs.{props.room.price}</h2>
               </div>
               <div className="price_info_2">
-                <h5>Total Price</h5>
-                <h2>Rs.{props.room.price}</h2>
+                <h5>Total {props.totalDays} Days Price</h5>
+                <h2>Rs.{props.room.price * props.totalDays}</h2>
               </div>
             </div>
             <div>
-              <button className="book_button">Book</button>
+              <button className="book_button" onClick={()=> {props.handleBookRoom(props.room)}}>Book</button>
             </div>
           </div>
         </div>

@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "../styles/components/bookWidget.css";
 
-function BookWidget() {
+function BookWidget(props) {
   const [formData, setFormData] = useState({
     startDate: new Date(),
     endDate: new Date(),
@@ -26,8 +26,7 @@ function BookWidget() {
   };
 
   function handleCheckAvailability() {
-    console.log("Click");
-    console.log(formData);
+    props.handleCheckAvailability(formData);
   }
   function totalDaysSelected() {
     const timeDifference = Math.abs(endDate.getTime() - startDate.getTime());

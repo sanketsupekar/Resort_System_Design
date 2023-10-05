@@ -10,10 +10,10 @@ import {actionTypes} from '../Context/reducer';
 
 const { displaySuccess, displayError } = require("../components/NotifyToast");
 const { fetchAPI, isLoggedIn } = require("../components/UserFunctions");
-
+const {API_loginUser} = require('../api/index');
 function SignIn() {
   const [{CustomerUser}, dispatchUser] = useStateValue();
-  const API_loginUser = "/api/signin";
+  // const API_loginUser = "/api/signin";
   const [loadingVisible, setLoading] = useState(false);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({

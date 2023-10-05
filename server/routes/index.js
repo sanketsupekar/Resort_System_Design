@@ -18,6 +18,8 @@ const {
   getOtp,
   randomOtpGenerate,
 } = require("../controllers/localStorage.controller");
+
+const {getAllRooms, getAvailableRooms} = require('../controllers/rooms.controller');
 // Import the module
 const tokenExpir = 86400000; //Expair in one day;
 router.use(cookieParser());
@@ -91,5 +93,25 @@ router.post("/verificationOTP", (req, res) => {
 router.get("/getUserData",Authenticate, (req, res) =>{
   console.log(req);
   res.send("Reached To Destination");
+})
+
+router.post('/getAllRooms', Authenticate, (req, res)=>{
+  getAllRooms().then((result)=>{
+    res.send(result);
+  }).catch((e)=>{
+    res.status(400).send(e);
+  })
+})
+
+router.post('/getAvailableRooms',Authenticate,(req,res)=>{
+  const availabilityConfig = req.body;
+  console.log(availabilityConfig);
+  getAvailableRooms(availabilityConfig).then((result)=>{
+    res.status(200).json(result);
+  }).catch((e)=>{
+    res.status(400).send(e);
+  })
+  //console.log(availabilityConfig);
+  //res.sendStatus(200);
 })
 module.exports = router;
