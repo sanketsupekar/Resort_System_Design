@@ -44,8 +44,9 @@ export default function BookingProcess() {
     
     navigate('/rooms/bookingProcess/payment',{state : {
       bookingId : state._id,
+      amount : state.amount,
     }});
-    // console.log(id);
+    // console.log(state);
   }
   useEffect(() => {
     if (state == null) {

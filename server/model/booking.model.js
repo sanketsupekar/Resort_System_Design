@@ -8,6 +8,9 @@ const BookingSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
+  paymentId:{
+    type: mongoose.Schema.Types.ObjectId,
+  },
   serviceType: {
     type: String,
     required: true,
@@ -39,6 +42,10 @@ const BookingSchema = new mongoose.Schema({
   dateOfBooking: {
     type: Date,
     required: true,
+  },
+  amount :{
+    type:Number,
+    required : true,
   },
   bookingStatus: {
     type: String,

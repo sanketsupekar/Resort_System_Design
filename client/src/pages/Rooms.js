@@ -23,7 +23,7 @@ export default function Rooms(props) {
   });
   const [booking, setBooking] = useState({
     customerId: null,
-    paymentId: null,
+    // paymentId: null,
     roomId: null,
     serviceType: "Room", // Type of service being booked (e.g., hotel, flight, event)
     serviceDetails: "Booking Of Rooms", // Details about the specific service being booked

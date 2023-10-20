@@ -5,3 +5,4 @@ export const API_loginUser = "/api/signin";
 export const API_availableRooms = '/api/getAvailableRooms'
 export const API_roomBookProcess = '/api/room/bookingProcess';
 export const API_getRoomDetails = '/api/roomDetails';
+export const API_payment = "/api/room/bookingProcess/payment";

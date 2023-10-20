@@ -21,13 +21,14 @@ function getRoomDetails(roomId)
 {
   // console.log(roomId);
   const id = {_id : new mongoose.Types.ObjectId(roomId._id)};
-  console.log(id);
+  // console.log(id);
   const room = Room.findOne(id);
   return room;
 }
 async function getRoomPrice(roomId)
 {
-  const room = await Room.findById(roomId);
-  return room;
+  const id = {_id : new mongoose.Types.ObjectId(roomId)};
+  const room = await Room.findById(id);
+  return room.price;
 }
 module.exports = { getAllRooms, getAvailableRooms,getRoomDetails,getRoomPrice};

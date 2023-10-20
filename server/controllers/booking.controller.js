@@ -1,3 +1,4 @@
+const { default: mongoose } = require("mongoose");
 const Booking = require("../model/booking.model");
 const Room = require('../model/room.model');
 
@@ -39,6 +40,7 @@ async function bookingProcess(booking) {
         );
       } else {
         // console.log("Not Found");
+        console.log(booking);
         return Booking.create(booking);
       }
     })
@@ -50,10 +52,18 @@ async function bookingProcess(booking) {
 
 async function getPayableAmount(bookingId)
 {
-  const amount = await Booking.findById(bookingId).then((booking) =>{
-    console.log(booking);
-  }).catch((e)=>{
-    console.log(e);
-  })
+  const id = {_id : new mongoose.Types.ObjectId(bookingId)};
+  // console.log(id);
+  const booking = await Booking.findById(id);
+  // console.log(booking.amount);
+  return booking.amount;
 }
-module.exports = { bookingProcess,getPayableAmount };
+async function updateBookingAfterPayment(paid){
+  // console.log(paid);
+  const paymentId = paid.paymentId;
+  const bookingId = new mongoose.Types.ObjectId(paid.bookingId);
+  const updated = await Booking.updateOne({_id : bookingId}, {paymentId : paymentId, paymentStatus : "Paid", bookingStatus : "Confirmed"});
+  return updated;
+
+}
+module.exports = { bookingProcess,getPayableAmount,updateBookingAfterPayment};
