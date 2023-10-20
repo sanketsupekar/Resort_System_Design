@@ -1,3 +1,4 @@
+const { default: mongoose } = require("mongoose");
 const Room = require("../model/room.model");
 
 function getAllRooms() {
@@ -8,12 +9,25 @@ function getAllRooms() {
 function getAvailableRooms(availabilityConfig) {
   const query = {
     $and: [
-      { adults: { $gte: availabilityConfig.adult } },
-      { children: { $gte: availabilityConfig.children } },
+      { adults: { $gte: availabilityConfig.adults } },
+      { childrens: { $gte: availabilityConfig.childrens } },
     ],
   };
 
   const availableRooms = Room.find(query);
   return availableRooms;
 }
-module.exports = { getAllRooms, getAvailableRooms };
+function getRoomDetails(roomId)
+{
+  // console.log(roomId);
+  const id = {_id : new mongoose.Types.ObjectId(roomId._id)};
+  console.log(id);
+  const room = Room.findOne(id);
+  return room;
+}
+async function getRoomPrice(roomId)
+{
+  const room = await Room.findById(roomId);
+  return room;
+}
+module.exports = { getAllRooms, getAvailableRooms,getRoomDetails,getRoomPrice};

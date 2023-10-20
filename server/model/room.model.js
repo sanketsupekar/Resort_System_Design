@@ -12,7 +12,7 @@ var RoomSchema = new mongoose.Schema({
   view: String,
   size: String,
   adults: Number,
-  children: Number,
+  childrens: Number,
   bedding: String,
   amenities: [String],
   paragraph: String,

@@ -15,7 +15,7 @@ export default function PageNotFound() {
             We're fairly sure that page used to be here, but seems to have gone
             missing. We do apologize on its behalf.
           </p>
-          <Link to="/home" className="text-decoration-none">
+          <Link to="/" className="text-decoration-none">
             <a className="custom-button">Home</a>
           </Link>
         </div>

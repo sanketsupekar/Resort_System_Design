@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "./NavBar";
 import "../styles/components/RoomCard.css";
-import { rooms } from "./RoomData";
 const {displayIcon} = require('./UserFunctions');
 export default function RoomCard(props) {
   return (
@@ -28,7 +27,7 @@ export default function RoomCard(props) {
                 <div className="detail-2">
                   <h3>Occupancy :</h3>
                   <p>
-                    {props.room.adults} Adults & {props.room.children} Children
+                    {props.room.adults} Adults & {props.room.childrens} Children
                   </p>
                 </div>
               </div>

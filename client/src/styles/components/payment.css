@@ -1,0 +1,9 @@
+.payment .payment_container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.payment .payment_container button{
+    width: 10rem;
+}

@@ -5,15 +5,14 @@ import "../styles/components/bookWidget.css";
 
 function BookWidget(props) {
   const [formData, setFormData] = useState({
-    startDate: new Date(),
-    endDate: new Date(),
-    totalDay: 1,
-    adult: 0,
-    children: 0,
+    checkInDate: new Date(),
+    checkOutDate: new Date(),
+    totalDays: 1,
+    adults: 0,
+    childrens: 0,
   });
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-  const [totalDays, setTotalDays] = useState(0);
+  const [checkInDate, setStartDate] = useState(new Date());
+  const [checkOutDate, setEndDate] = useState(new Date());
   const [adultCount, setAdultCount] = useState(1);
   const [childrenCount, setChildrenCount] = useState(0);
 
@@ -26,30 +25,30 @@ function BookWidget(props) {
   };
 
   function handleCheckAvailability() {
+    // console.log(formData);
     props.handleCheckAvailability(formData);
   }
   function totalDaysSelected() {
-    const timeDifference = Math.abs(endDate.getTime() - startDate.getTime());
+    const timeDifference = Math.abs(checkOutDate.getTime() - checkInDate.getTime());
     const totalDays = Math.ceil(timeDifference / (1000 * 3600 * 24));
     return totalDays + 1;
   }
 
   useEffect(() => {
-    if (startDate > endDate) {
-      setEndDate(startDate);
+    if (checkInDate > checkOutDate) {
+      setEndDate(checkInDate);
     }
-  }, [startDate]);
+  }, [checkInDate]);
   useEffect(() => {
-    setTotalDays(totalDaysSelected);
     setFormData({
       ...formData,
-      startDate: startDate,
-      endDate: endDate,
-      totalDay: totalDaysSelected(),
-      adult: adultCount,
-      children: childrenCount,
+      checkInDate: checkInDate,
+      checkOutDate: checkOutDate,
+      totalDays: totalDaysSelected(),
+      adults: adultCount,
+      childrens: childrenCount,
     });
-  }, [startDate, endDate, adultCount, childrenCount]);
+  }, [checkInDate, checkOutDate, adultCount, childrenCount]);
   return (
     <>
       <div className="book_widget">
@@ -59,11 +58,11 @@ function BookWidget(props) {
               <label className="date_picker_lable">Check-In </label>
               <DatePicker
                 className="start_picker"
-                selected={startDate}
+                selected={checkInDate}
                 onChange={handleStartDateChange}
                 selectsStart
-                startDate={startDate}
-                endDate={endDate}
+                checkInDate={checkInDate}
+                checkOutDate={checkOutDate}
                 minDate={new Date()}
                 maxDate={new Date().setDate(new Date().getDate() + 60)}
                 dateFormat="dd/MM/yyyy"
@@ -74,13 +73,13 @@ function BookWidget(props) {
               <label className="date_picker_lable">Check-Out </label>
               <DatePicker
                 className="end_picker"
-                selected={endDate}
+                selected={checkOutDate}
                 onChange={handleEndDateChange}
                 selectsEnd
-                startDate={startDate}
-                endDate={endDate}
-                minDate={startDate}
-                maxDate={new Date().setDate(startDate.getDate() + 30)}
+                checkInDate={checkInDate}
+                checkOutDate={checkOutDate}
+                minDate={checkInDate}
+                maxDate={new Date().setDate(checkInDate.getDate() + 30)}
                 dateFormat="dd/MM/yyyy"
               />
             </div>

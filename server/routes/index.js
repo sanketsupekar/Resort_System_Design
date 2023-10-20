@@ -19,7 +19,10 @@ const {
   randomOtpGenerate,
 } = require("../controllers/localStorage.controller");
 
-const {getAllRooms, getAvailableRooms} = require('../controllers/rooms.controller');
+const {getAllRooms, getAvailableRooms,getRoomDetails,getRoomPrice} = require('../controllers/rooms.controller');
+const {bookingProcess,getPayableAmount} = require('../controllers/booking.controller');
+const { default: mongoose } = require("mongoose");
+
 // Import the module
 const tokenExpir = 86400000; //Expair in one day;
 router.use(cookieParser());
@@ -105,13 +108,49 @@ router.post('/getAllRooms', Authenticate, (req, res)=>{
 
 router.post('/getAvailableRooms',Authenticate,(req,res)=>{
   const availabilityConfig = req.body;
-  console.log(availabilityConfig);
+  // console.log(availabilityConfig);
   getAvailableRooms(availabilityConfig).then((result)=>{
     res.status(200).json(result);
   }).catch((e)=>{
     res.status(400).send(e);
   })
-  //console.log(availabilityConfig);
-  //res.sendStatus(200);
 })
+
+router.post('/room/bookingProcess',Authenticate,(req,res)=>{
+  // console.log(req.userId);
+  // console.log(req.body);
+  const booking = {
+    ...req.body,
+    customerId : req.userId,
+    roomId : new mongoose.Types.ObjectId(req.body.roomId),
+    dateOfBooking : new Date(),
+  }
+  // console.log(booking);
+  // getRoomPrice(req.body);
+  bookingProcess(booking).then((result)=>{
+    res.status(200).json({success : true, ...result});
+  }).catch((e)=>{
+    // console.log(e);
+    res.status(400).json({success : false});
+  });
+//  res.send('Done');
+  
+})
+
+router.post('/roomDetails',Authenticate,(req,res)=>{
+    const roomId = req.body;
+    console.log(roomId);
+    getRoomDetails(roomId).then((result)=>{
+      console.log("Result : " + result);
+      res.status(200).json({success:true,...result._doc});
+    }).catch((e)=>{
+      res.status(400).json({success:false});
+    })
+});
+
+router.post('/payment/payableAmount',Authenticate,(req,res)=>{
+    console.log(req.body);
+    getPayableAmount(req.body.bookingId);
+    res.send("Done");
+});
 module.exports = router;

@@ -38,3 +38,4 @@ export const displayIcon = (name) => {
      default: return "";
   }
 }
+
