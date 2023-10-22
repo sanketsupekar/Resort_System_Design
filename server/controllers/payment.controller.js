@@ -1,3 +1,4 @@
+const { default: mongoose } = require("mongoose");
 const Payment = require("../model/payment.model");
 
 function generateTransactionId() {
@@ -13,4 +14,11 @@ async function insertBookingPayment(payment)
     return {paymentId : inserted._id, bookingId : payment.bookingId};
 }
 
-module.exports = {generateTransactionId,insertBookingPayment}
+async function getPaymentDetails(id)
+{
+    const paymentId = {_id : new mongoose.Types.ObjectId(id)};
+    const payment = await Payment.findById(paymentId);
+    return payment;
+
+}
+module.exports = {generateTransactionId,insertBookingPayment,getPaymentDetails}

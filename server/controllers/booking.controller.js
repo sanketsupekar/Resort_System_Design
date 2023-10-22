@@ -1,6 +1,6 @@
-const { default: mongoose } = require("mongoose");
+const { default: mongoose, mongo } = require("mongoose");
 const Booking = require("../model/booking.model");
-const Room = require('../model/room.model');
+const Room = require("../model/room.model");
 
 async function bookingProcess(booking) {
   const filter = {
@@ -34,10 +34,7 @@ async function bookingProcess(booking) {
     .then((result) => {
       if (result != null) {
         // console.log("Found This One");
-        return Booking.findOneAndUpdate(
-          { _id: result._id },
-          { ...booking}
-        );
+        return Booking.findOneAndUpdate({ _id: result._id }, { ...booking });
       } else {
         // console.log("Not Found");
         console.log(booking);
@@ -50,20 +47,32 @@ async function bookingProcess(booking) {
   return booked;
 }
 
-async function getPayableAmount(bookingId)
-{
-  const id = {_id : new mongoose.Types.ObjectId(bookingId)};
+async function getPayableAmount(bookingId) {
+  const id = { _id: new mongoose.Types.ObjectId(bookingId) };
   // console.log(id);
   const booking = await Booking.findById(id);
   // console.log(booking.amount);
   return booking.amount;
 }
-async function updateBookingAfterPayment(paid){
+async function updateBookingAfterPayment(paid) {
   // console.log(paid);
   const paymentId = paid.paymentId;
   const bookingId = new mongoose.Types.ObjectId(paid.bookingId);
-  const updated = await Booking.updateOne({_id : bookingId}, {paymentId : paymentId, paymentStatus : "Paid", bookingStatus : "Confirmed"});
+  const updated = await Booking.updateOne(
+    { _id: bookingId },
+    { paymentId: paymentId, paymentStatus: "Paid", bookingStatus: "Confirmed" }
+  );
   return updated;
-
 }
-module.exports = { bookingProcess,getPayableAmount,updateBookingAfterPayment};
+
+async function getBookingDetails(bookingId) {
+  bookingId = { _id: new mongoose.Types.ObjectId(bookingId) };
+  const booking = await Booking.findById(bookingId);
+  return booking;
+}
+module.exports = {
+  bookingProcess,
+  getPayableAmount,
+  updateBookingAfterPayment,
+  getBookingDetails,
+};

@@ -1,0 +1,148 @@
+/* div {
+    border: 1px solid red;
+} */
+.print_button_container{
+    margin : 2rem 0;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.print_button_container .globle_button_design{
+width: 10rem
+}
+.payment_receipt{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.payment_receipt .main_container{
+    width: 70%;
+    /* border: 2px black solid; */
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+}
+
+.payment_receipt .header_section{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 0.5rem solid rgb(155, 8, 8);
+}
+.payment_receipt .header_section .title_item{
+    margin: 0;
+    margin-top: 1rem;
+}
+
+.payment_receipt .header_section .primary_logo{
+    width: 7rem;
+}
+.payment_receipt .invoice_section{
+    /* height: 60vh; */
+    background-image: url("../../../public/img/icon/logoSecondaryTransperant.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20rem;
+    display: flex;
+    flex-direction: column;
+    /* opacity: 0.1; */
+}
+.payment_receipt .invoice_section div{
+    /* border:  2px solid black; */
+}
+
+.payment_receipt .invoice_section .date_item, .id_item{
+    margin: 0rem;
+    font-size: 1rem;
+    align-self: flex-end;
+    
+}
+
+.payment_receipt .invoice_section .id_date_box{
+    margin: 1rem 0rem;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+}
+
+.payment_receipt .invoice_section .customer_info_box  .name_item, .email_item{
+    margin: 0;
+}
+
+.payment_receipt .invoice_section .booking_info_box {
+    margin: 1rem 0rem;
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+
+}
+
+.payment_receipt .invoice_section .booking_info_box .container{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.payment_receipt .invoice_section .booking_info_box .container_mid{
+    border: 2px  rgb(155, 8, 8) solid;
+    margin: 0.5rem 2rem;
+}
+.payment_receipt .invoice_section .booking_info_box .container .bold_para{
+    font-weight: bold;
+}
+/* Table Design */
+.payment_receipt .invoice_section .payment_info_box div{
+    /* border: 1px solid red; */
+}
+
+.payment_receipt .invoice_section .info_table{
+    display: flex;
+    justify-content: space-between;
+}
+.payment_receipt .invoice_section .info_table .table_column{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+}
+.payment_receipt .invoice_section .info_table .table_row{
+    margin: 0;
+   height: 3rem;
+   display: flex;
+   align-items: center;
+   border-bottom: 3px  rgba(155, 8, 8, 0.163) solid;
+   
+}
+.payment_receipt .invoice_section .info_table .table_row_title{
+    border-top: 3px  rgb(155, 8, 8) solid;
+    border-bottom: 3px  rgb(155, 8, 8) solid;
+    margin: 0;
+    display: flex;
+    align-items: center;
+ }
+ .payment_receipt .invoice_section .info_payment{
+    margin: 1rem 0rem;
+    display: flex;
+    /* width: 60%; */
+    justify-content: space-between;
+}
+
+.payment_receipt .invoice_section .info_payment .container{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.payment_receipt .invoice_section .info_payment .container .bold_para{
+    font-weight: bold;
+}
+.payment_receipt .invoice_section .info_payment .container_mid{
+    border: 2px  rgb(155, 8, 8) solid;
+    margin: 0.5rem 0.5rem;
+}
+
+.payment_receipt .footer_section{
+    margin-top: 1rem;
+    border-top: 0.5rem solid rgb(155, 8, 8);
+}
+.payment_receipt .footer_section .title_item, .address_item {
+    margin: 0;
+    margin: 0.2rem;
+}

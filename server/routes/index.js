@@ -9,7 +9,7 @@ const {
   sendOTPMail,
   customerRegister,
   customerExist,
-  getCustomerData,
+  getCustomerDetails,
   getAuthToken,
   updateAuthToken,
 } = require("../controllers/customer.controller");
@@ -29,12 +29,15 @@ const {
   bookingProcess,
   getPayableAmount,
   updateBookingAfterPayment,
+  getBookingDetails,
 } = require("../controllers/booking.controller");
 const {
   generateTransactionId,
   insertBookingPayment,
+  getPaymentDetails,
 } = require("../controllers/payment.controller");
 const { default: mongoose } = require("mongoose");
+const Room = require("../model/room.model");
 
 // Import the module
 const tokenExpir = 86400000; //Expair in one day;
@@ -44,7 +47,7 @@ router.post("/signin", (req, res) => {
   // console.log(req.body);
   const email = req.body.email;
   const password = req.body.password;
-  getCustomerData(email)
+  getCustomerDetails({ email: email })
     .then((result) => {
       if (result == null) {
         res.status(400).json({ valid: false, message: "User Not Found" });
@@ -189,7 +192,6 @@ router.post("/room/bookingProcess/payment", Authenticate, (req, res) => {
   };
   getPayableAmount(req.body.bookingId)
     .then((amount) => {
-
       // Insert Payment GateWay
 
       const transactionId = generateTransactionId();
@@ -225,5 +227,61 @@ router.post("/room/bookingProcess/payment", Authenticate, (req, res) => {
       console.log(message);
       res.status(400).json({ success: false, message: message });
     });
+});
+
+router.post("/room/bookingProcess/invoice", Authenticate, (req, res) => {
+  // console.log(req.body);
+  getBookingDetails(req.body.bookingId)
+    .then((booking) => {
+      getPaymentDetails(booking.paymentId)
+        .then((payment) => {
+          getRoomDetails(booking.roomId)
+            .then((room) => {
+              getCustomerDetails({ _id: booking.customerId })
+                .then((customer) => {
+                  const invoice = {
+                    bookingId: booking._id,
+                    paymentDate: payment.paymentDate,
+                    customerName: customer.firstName + " " + customer.lastName,
+                    customerEmail: customer.email,
+                    roomName: room.title,
+                    customerAdults: booking.adults,
+                    customerChildrens: booking.childrens,
+                    customerCheckIn: booking.checkInDate,
+                    customerCheckOut: booking.checkOutDate,
+                    customerTotalDays: booking.totalDays,
+                    roomPrice: room.price,
+                    bookingAmount: booking.amount,
+                    paymentStatus: booking.paymentStatus,
+                    paymentMethod: payment.paymentMethod,
+                    paymentTransactionId: payment.transactionId,
+                  };
+                  res.status(200).json({ success: true, message: invoice });
+                })
+                .catch((e) => {
+                  res
+                    .status(400)
+                    .json({ success: false, message: "Customer Not Found" });
+                });
+            })
+            .catch((e) => {
+              res
+                .status(400)
+                .json({ success: false, message: "Room Not Found" });
+            });
+        })
+        .catch((e) => {
+          res
+            .status(400)
+            .json({ success: false, message: "Payment Not Found" });
+        });
+      // console.log(result);
+      // res.status(200).json({ success: true, message: result });
+      // if (reuslt == null) throw new Error("Booking Not Found");
+    })
+    .catch((e) => {
+      res.status(400).json({ success: false, message: "Booking Not Found" });
+    });
+  // res.send("Done");
 });
 module.exports = router;

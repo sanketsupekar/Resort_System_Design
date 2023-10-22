@@ -63,10 +63,10 @@ async function customerExist(userMail)
   return isExist;
 }
 
-async function getCustomerData(userMail)
+async function getCustomerDetails(customer)
 {
-//  console.log(userMail);
-  const customerData =  await Customer.findOne({email : userMail});
+  // console.log(userMail);
+  const customerData =  await Customer.findOne(customer);
   return customerData;
 }
 
@@ -85,4 +85,4 @@ async function updateAuthToken(user, token)
     })
     return updateData;
 }
-module.exports = {sendOTPMail, customerRegister,customerExist,getCustomerData, getAuthToken, updateAuthToken};
+module.exports = {sendOTPMail, customerRegister,customerExist,getCustomerDetails, getAuthToken, updateAuthToken};
