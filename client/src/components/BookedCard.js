@@ -1,7 +1,8 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Navbar from "../components/NavBar";
 import "../styles/components/bookedCard.css";
 import bootstrap from "bootstrap";
+import { useNavigate } from "react-router-dom";
 
 export default function BookedCard(props) {
   // const bookedCard = {
@@ -14,12 +15,43 @@ export default function BookedCard(props) {
   //   checkInDate: "Mon, June 25",
   //   checkOutDate: "Mon, June 26",
   // };
-function getDateString(date)
+  const navigate = useNavigate();
+  const [bookedCard, setBookedCard]  = useState({
+    roomName : props.card.roomName,
+    roomHeader : props.card.roomHeader,
+    roomImage : props.card.roomImage,
+    amount : props.card.bookingAmount,
+    checkInDate : props.card.checkInDate,
+    checkOutDate : props.card.checkOutDate,
+  })
+  const [payment,setPayment] = useState(false);
+  function handleBookingDetails(){
+     navigate("./" + props.card.bookingId);
+    // console.log(bookedCard);
+  }
+
+  function handlePayNowClick(){
+    navigate('/rooms/bookingProcess/payment',{state : {
+      bookingId : props.card.bookingId,
+      amount : props.card.bookingAmount,
+    }});
+  }
+function getDateString(date = new Date())
 {
   return new Date(date).toDateString();
 }
   useEffect(() => {
-    // console.log(props.card);
+    // console.log(props.card.trackingDate === null);
+    if(props.card.trackingDate !== null)
+    {
+      setBookedCard({
+        ...bookedCard,
+        ...props.card.trackingDate,
+      })
+      setPayment(true);
+      // console.log({...props.card.trackingDate});
+      // console.log(props.card.trackingDate);
+    }
   }, []);
   return (
     <Fragment>
@@ -31,7 +63,7 @@ function getDateString(date)
       >
         <div className="book-container">
           <div className="content">
-            <button className="btn">Booked</button>
+           { payment ? <button className="btn" onClick={handleBookingDetails}>Booked</button> :  <button className="btn" onClick={handlePayNowClick}>Payment</button>}
           </div>
         </div>
         <div className="informations-container">
@@ -58,17 +90,17 @@ function getDateString(date)
                 <div className="row">
                   <div className="col-12 col-md-10 hh-grayBox pt45 pb20">
                     <div className="track_box">
-                      <div className="order-tracking completed">
+                      <div className={`order-tracking ${payment ? "completed" : ""}`}>
                         <span className="is-complete"></span>
                         <p>
                           Payment
                           <br />
-                          <span>{getDateString(props.card.paymentDate)}</span>
+                          <span>{ payment ? getDateString(bookedCard.paymentDate) : getDateString()}</span>
                         </p>
                       </div>
                       <div
                         className={`order-tracking   ${
-                          props.card.arrivalDate === undefined
+                          bookedCard.arrivalDate === undefined
                             ? ""
                             : "completed"
                         }`}
@@ -78,15 +110,15 @@ function getDateString(date)
                           Arrival
                           <br />
                           <span>
-                            {getDateString(props.card.arrivalDate == undefined
-                              ? props.card.checkInDate
-                              : props.card.arrivalDate)}
+                            {getDateString(bookedCard.arrivalDate == undefined
+                              ? bookedCard.checkInDate
+                              : bookedCard.arrivalDate)}
                           </span>
                         </p>
                       </div>
                       <div
                         className={` order-tracking  ${
-                          props.card.departureDate == undefined
+                          bookedCard.departureDate == undefined
                             ? ""
                             : "completed"
                         }`}
@@ -96,15 +128,15 @@ function getDateString(date)
                           Departure
                           <br />
                           <span>
-                            {getDateString(props.card.departureDate == undefined
-                              ? props.card.checkOutDate
-                              : props.card.departureDate)}
+                            {getDateString(bookedCard.departureDate == undefined
+                              ? bookedCard.checkOutDate
+                              : bookedCard.departureDate)}
                           </span>
                         </p>
                       </div>
                       <div
                         className={`order-tracking ${
-                          props.card.completedDate == undefined
+                          bookedCard.completedDate == undefined
                             ? ""
                             : "completed"
                         }`}
@@ -114,9 +146,9 @@ function getDateString(date)
                           Completed
                           <br />
                           <span>
-                            {getDateString(props.card.completedDate == undefined
-                              ? props.card.checkOutDate
-                              : props.card.completedDate)}
+                            {getDateString(bookedCard.completedDate == undefined
+                              ? bookedCard.checkOutDate
+                              : bookedCard.completedDate)}
                           </span>
                         </p>
                       </div>

@@ -25,12 +25,12 @@ function App() {
         <Route path="/signup" element = {<SignUp/>}></Route>
         <Route path="/signout" element = {<SignOut/>}></Route>
         <Route path="/rooms" element = {<Rooms/>}></Route>
-        <Route path="/bookings" element = {<Bookings/>}></Route>
         <Route path="/rooms/bookingProcess" element = {<BookingProcess/>}></Route>
         <Route path="/rooms/bookingProcess/payment" element = {<Payment/>}></Route>
-        <Route path="/rooms/bookingProcess/:bookingId" element = {<PaymentReceipt/>}></Route>
+        <Route path="/rooms/bookings" element = {<Bookings/>}></Route>
+        <Route path="/rooms/bookings/:bookingId" element = {<PaymentReceipt/>}></Route>
         <Route path="/pageNotFound" element = {<PageNotFound/>}></Route>
-        <Route path="*" element = {<Navigate to='/'/>} ></Route>
+        {/* <Route path="*" element = {<Navigate to='/'/>} ></Route> */}
         </Routes>
       </BrowserRouter>
     </>

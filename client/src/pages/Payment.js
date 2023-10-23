@@ -34,6 +34,7 @@ export default function Payment() {
     if(json.success)
     {
       displaySuccess("Payment Successfull");
+      navigate("/rooms/bookings");
     }
     else
     {

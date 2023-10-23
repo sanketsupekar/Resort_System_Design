@@ -40,6 +40,7 @@ const {
 } = require("../controllers/payment.controller");
 const { default: mongoose } = require("mongoose");
 const Room = require("../model/room.model");
+const { emit } = require("../model/customer.model");
 
 // Import the module
 const tokenExpir = 86400000; //Expair in one day;
@@ -322,6 +323,7 @@ router.get("/room/bookedCard",Authenticate,(req,res)=>{
   getBookedCardDetails(req.userId).then((bookedCards)=>{
     res.status(200).json(bookedCards);
   }).catch((e)=>{
+    console.log(e);
     res.status(400).json({success : false, message : "BookedCard Not Found"})
   })
   

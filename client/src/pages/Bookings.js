@@ -9,6 +9,8 @@ import LoadingSpinner from "../components/LoadingSpinner";
 export default function Bookings() {
   const [bookedCards, setBookedCards] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  // function handleBookingDetails(bookingId)
   async function getBookingCardDetails() {
     setLoading(true);
     const respones = await fetchGetAPI(API_getBookedCard);

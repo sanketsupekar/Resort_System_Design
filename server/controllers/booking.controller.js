@@ -23,7 +23,10 @@ async function bookingProcess(booking) {
         ],
       },
       {
-        customerId: { $eq: booking.customerId },
+        paymentStatus: { $eq: "Pending" },
+      },
+      {
+        bookingStatus: { $eq: "Pending" },
       },
       {
         roomId: { $eq: booking.roomId },
@@ -103,7 +106,7 @@ async function getBookedCardDetails(userId) {
       bookingAmount : booking.amount,
       checkInDate : booking.checkInDate,
       checkOutDate : booking.checkOutDate,
-      ...booking.trackingDate._doc,
+      trackingDate :  booking.trackingDate == undefined ? null : booking.trackingDate._doc,
       bookingId : booking._id,
     }
     bookedCards.push(bookedCard);
