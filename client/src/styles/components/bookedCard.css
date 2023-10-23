@@ -1,0 +1,296 @@
+.booking-card {
+  position: relative;
+  width: 30rem;
+  display: flex;
+  /* flex: 0 0 300px; */
+  flex-direction: column;
+  margin: 20px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  overflow: hidden;
+  /* background-position: center center; */
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* background-size: cover; */
+  text-align: center;
+  color: black;
+  transition: 0.3s;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.booking-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 72, 112, 0);
+  transition: 0.3s;
+}
+
+.booking-card:hover::before {
+  background: rgba(0, 0, 0, 0.6);
+}
+.booking-card .book-container {
+  height: 5rem;
+}
+
+.booking-card .book-container .content {
+  position: relative;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  transform: translateY(-200px);
+  transition: 0.3s;
+}
+
+.booking-card:hover .book-container .content {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.booking-card .book-container .content .btn {
+  border: 3px solid white;
+  padding: 10px 15px;
+  background: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.3em;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.booking-card .book-container .content .btn:hover {
+  background: white;
+  border: 0px solid white;
+  color: black;
+}
+
+.booking-card .informations-container {
+  flex: 1 0 auto;
+  padding: 20px;
+  background: white;
+  transform: translateY(245px);
+  transition: 0.3s;
+}
+
+.booking-card:hover .informations-container {
+  transform: translateY(0px);
+}
+
+.booking-card .informations-container .title {
+  position: relative;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.booking-card .informations-container .title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  width: 50px;
+  margin: auto;
+  background: black;
+}
+
+.booking-card .informations-container .price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.booking-card .informations-container .price .icon {
+  margin-right: 10px;
+  margin-top: 0.4rem;
+  color: black;
+}
+
+.booking-card .informations-container .more-information {
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.booking-card:hover .informations-container .more-information {
+  opacity: 1;
+}
+
+.booking-card .more-information .info-and-date-container {
+  display: flex;
+  margin-top: 20px;
+  /* height: 12rem; */
+  /* margin-bottom: 2rem; */
+}
+
+.booking-card .more-information .box {
+  flex: 1 0;
+  padding: 15px;
+  /* margin-top: 20px; */
+  /* margin-right: 1rem; */
+  margin: 0.5rem;
+  border-radius: 10px;
+  background: white;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.booking-card .more-information .box .icon {
+  margin-bottom: 5px;
+}
+
+.booking-card .more-information .box.info {
+  color: #ec992c;
+  margin-right: 10px;
+}
+.booking-card .more-information .track_container {
+  width: 100%;
+
+}
+.booking-card .more-information .track_box {
+  display: flex;
+
+}
+
+.booking-card .more-information .hh-grayBox {
+  background-color: #f8f8f8;
+  /* width: 100%; */
+  /* margin-bottom: 20px; */
+  padding: 1rem;
+  margin-top: 20px;
+  border-radius: 1rem;
+}
+.booking-card .more-information .pt45 {
+  padding-top: 45px;
+}
+.booking-card .more-information .order-tracking {
+  text-align: center;
+  width: 25%;
+  position: relative;
+  display: block;
+  font-size: 0.7rem;
+}
+.booking-card .more-information .order-tracking .is-complete {
+  display: block;
+  position: relative;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  border: 0px solid #afafaf;
+  background-color: #f7be16;
+  margin: 0 auto;
+  transition: background 0.25s linear;
+  -webkit-transition: background 0.25s linear;
+  z-index: 2;
+}
+.booking-card .more-information .order-tracking .is-complete:after {
+  display: block;
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 7px;
+  top: -2px;
+  bottom: 0;
+  left: 5px;
+  margin: auto 0;
+  border: 0px solid #afafaf;
+  border-width: 0px 2px 2px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+}
+.booking-card .more-information .order-tracking.completed .is-complete {
+  border-color: #27aa80;
+  border-width: 0px;
+  background-color: #27aa80;
+}
+.booking-card .more-information .order-tracking.completed .is-complete:after {
+  border-color: #fff;
+  border-width: 0px 3px 3px 0;
+  width: 7px;
+  left: 11px;
+  opacity: 1;
+}
+/* .booking-card .more-information .order-tracking p {
+  color: #a4a4a4;
+  font-size: 16px;
+  margin-top: 8px;
+  margin-bottom: 0;
+  line-height: 20px;
+}
+.booking-card .more-information .order-tracking p span {
+  font-size: 14px;
+} */
+.booking-card .more-information .order-tracking.completed p {
+  color: #000;
+}
+.booking-card .more-information .order-tracking::before {
+  content: "";
+  display: block;
+  height: 3px;
+  width: calc(100% - 40px);
+  background-color: #f7be16;
+  top: 13px;
+  position: absolute;
+  left: calc(-50% + 20px);
+  z-index: 0;
+}
+.booking-card .more-information .order-tracking:first-child:before {
+  display: none;
+}
+.booking-card .more-information .order-tracking.completed:before {
+  background-color: #27aa80;
+}
+
+.booking-card .more-information .disclaimer {
+  margin-top: 20px;
+  font-size: 0.8em;
+  color: #7d7d7d;
+}
+
+@media (max-width: 768px) {
+  ul .booking-card {
+    &::before {
+      background: rgba(10, 72, 112, 0.6);
+    }
+    .book-container .content {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+    .informations-container {
+      transform: translateY(0px);
+      .more-information {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.booking-card .credits {
+  display: table;
+  background: black;
+  color: white;
+  line-height: 25px;
+  margin: 10px auto;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.booking-card .credits a {
+  color: #e3ebf1;
+}
+
+.booking-card h1 {
+  margin: 10px 20px;
+}

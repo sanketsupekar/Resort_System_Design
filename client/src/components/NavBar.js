@@ -26,7 +26,7 @@ function Navbar() {
             <li>
               <a href="/rooms">Rooms</a>
             </li>
-            <li>
+            {/* <li>
               <a href="/dining">Dining</a>
             </li>
             <li>
@@ -37,13 +37,15 @@ function Navbar() {
             </li>
             <li>
               <a href="/contact">Contact</a>
+            </li> */}
+            <li>
+              <a href="/bookings">Bookings</a>
             </li>
             <li>
               <a href="/signout">Sign Out</a>
             </li>
           </>
         )}
-
       </ul>
     </nav>
   );

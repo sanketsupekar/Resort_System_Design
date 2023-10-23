@@ -16,6 +16,7 @@ var RoomSchema = new mongoose.Schema({
   bedding: String,
   amenities: [String],
   paragraph: String,
+  mainImage:String,
   subImage: String,
   rooms: Number,
   price: Number,

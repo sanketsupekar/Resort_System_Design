@@ -1,4 +1,21 @@
 const mongoose = require("mongoose");
+const TrackingSchema = new mongoose.Schema({
+  paymentDate: {
+    type: Date,
+  },
+
+  arrivalDate: {
+    type: Date,
+  },
+
+  departureDate: {
+    type: Date,
+  },
+
+  comppletedDate: {
+    type: Date,
+  },
+});
 const BookingSchema = new mongoose.Schema({
   customerId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -8,7 +25,7 @@ const BookingSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
-  paymentId:{
+  paymentId: {
     type: mongoose.Schema.Types.ObjectId,
   },
   serviceType: {
@@ -43,13 +60,13 @@ const BookingSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
-  amount :{
-    type:Number,
-    required : true,
+  amount: {
+    type: Number,
+    required: true,
   },
   bookingStatus: {
     type: String,
-    enum: ["Pending", "Confirmed", "Cancelled"],
+    enum: ["Pending", "Confirmed", "Cancelled", "Completed"],
     default: "Pending",
   },
   paymentStatus: {
@@ -57,6 +74,7 @@ const BookingSchema = new mongoose.Schema({
     enum: ["Pending", "Paid"],
     default: "Pending",
   },
+  trackingDate: TrackingSchema,
 });
 
 const Booking = mongoose.model("booking", BookingSchema);

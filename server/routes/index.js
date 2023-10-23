@@ -30,6 +30,8 @@ const {
   getPayableAmount,
   updateBookingAfterPayment,
   getBookingDetails,
+  updateTrackingDate,
+  getBookedCardDetails,
 } = require("../controllers/booking.controller");
 const {
   generateTransactionId,
@@ -193,7 +195,7 @@ router.post("/room/bookingProcess/payment", Authenticate, (req, res) => {
   getPayableAmount(req.body.bookingId)
     .then((amount) => {
       // Insert Payment GateWay
-
+      console.log("Get Paybale Amount");
       const transactionId = generateTransactionId();
       payment = {
         ...payment,
@@ -202,23 +204,42 @@ router.post("/room/bookingProcess/payment", Authenticate, (req, res) => {
       };
       insertBookingPayment(payment)
         .then((paid) => {
+          console.log("Insert Booking Payment");
           updateBookingAfterPayment(paid)
             .then((result) => {
+              console.log("Update Booking Payment");
               if (result.modifiedCount === 0) {
                 throw new Error("Not Updated");
               } else {
-                res.status(200).json({ success: true });
+                console.log("Enter In Else Part");
+                updateTrackingDate({
+                  bookingId: paid.bookingId,
+                  date: {
+                    paymentDate: paid.paymentDate,
+                  },
+                })
+                  .then((date) => {
+                    console.log("Update Tracking Date");
+                    res.status(200).json({ success: true });
+                  })
+                  .catch((e) => {
+                    res.status(400).json({
+                      success: false,
+                      message: "Tracking Date Update Fail",
+                    });
+                  });
+                
               }
             })
             .catch((e) => {
               const message = "Fail Update Booking After Payment";
-              console.log(message);
+              console.log(e);
               res.status(400).json({ success: false, message: message });
             });
         })
         .catch((e) => {
           const message = "Payment Data Insert Fail";
-          console.log(message);
+          console.log(e);
           res.status(400).json({ success: false, message: message });
         });
     })
@@ -284,4 +305,26 @@ router.post("/room/bookingProcess/invoice", Authenticate, (req, res) => {
     });
   // res.send("Done");
 });
+
+router.post("/room/bookingProcess/trackingDate", Authenticate, (req, res) => {
+  updateTrackingDate(req.body)
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((e) => {
+      res.status(400).json(e);
+    });
+  // res.send(req.body);
+});
+
+router.get("/room/bookedCard",Authenticate,(req,res)=>{
+
+  getBookedCardDetails(req.userId).then((bookedCards)=>{
+    res.status(200).json(bookedCards);
+  }).catch((e)=>{
+    res.status(400).json({success : false, message : "BookedCard Not Found"})
+  })
+  
+})
+
 module.exports = router;

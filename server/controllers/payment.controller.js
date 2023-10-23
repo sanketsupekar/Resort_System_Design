@@ -11,7 +11,7 @@ async function insertBookingPayment(payment)
 {
     const inserted = await Payment.create(payment);
     // console.log(inserted);
-    return {paymentId : inserted._id, bookingId : payment.bookingId};
+    return {paymentId : inserted._id,paymentDate : payment.paymentDate, bookingId : payment.bookingId};
 }
 
 async function getPaymentDetails(id)
