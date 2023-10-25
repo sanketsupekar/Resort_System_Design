@@ -39,7 +39,7 @@ width: 10rem
 }
 .payment_receipt .invoice_section{
     /* height: 60vh; */
-    background-image: url("../../../public/img/icon/logoSecondaryTransperant.png");
+    background-image: url("/img/icon/logoSecondaryTransperant.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 20rem;

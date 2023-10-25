@@ -101,6 +101,12 @@ useEffect(()=>{
                 Sign Up
               </a>
             </Link>
+
+            <Link to="/forgetPassword" className="text-decoration-none">
+              <a className="nav-link active" aria-current="page">
+                Forget Password
+              </a>
+            </Link>
           </form>
         </div>
       </div>

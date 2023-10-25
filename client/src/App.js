@@ -14,6 +14,7 @@ import PageNotFound from './pages/PageNotFound'
 import Payment from "./pages/Payment";
 import PaymentReceipt from "./pages/PaymentReceipt";
 import Bookings from "./pages/Bookings";
+import ForgetPassword from "./pages/ForgetPassword";
 function App() {
 
   return (
@@ -30,6 +31,9 @@ function App() {
         <Route path="/rooms/bookings" element = {<Bookings/>}></Route>
         <Route path="/rooms/bookings/:bookingId" element = {<PaymentReceipt/>}></Route>
         <Route path="/pageNotFound" element = {<PageNotFound/>}></Route>
+        <Route path="/forgetPassword" element = {<ForgetPassword/>}></Route>
+        
+        
         {/* <Route path="*" element = {<Navigate to='/'/>} ></Route> */}
         </Routes>
       </BrowserRouter>
