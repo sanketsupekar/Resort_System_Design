@@ -32,6 +32,7 @@ const {
   getBookingDetails,
   updateTrackingDate,
   getBookedCardDetails,
+  setInOutTime,
 } = require("../controllers/booking.controller");
 const {
   generateTransactionId,
@@ -129,10 +130,18 @@ router.post("/getAllRooms", Authenticate, (req, res) => {
 });
 
 router.post("/getAvailableRooms", Authenticate, (req, res) => {
-  const availabilityConfig = req.body;
+  const availabilityConfig = {
+    ...req.body,
+    ...setInOutTime({
+      checkInDate: req.body.checkInDate,
+      checkOutDate: req.body.checkOutDate,
+    }),
+  };
   // console.log(availabilityConfig);
+
   getAvailableRooms(availabilityConfig)
     .then((result) => {
+      // console.log(result);
       res.status(200).json(result);
     })
     .catch((e) => {
@@ -141,10 +150,12 @@ router.post("/getAvailableRooms", Authenticate, (req, res) => {
 });
 
 router.post("/room/bookingProcess", Authenticate, (req, res) => {
-  // console.log(req.userId);
-  // console.log(req.body);
   let booking = {
     ...req.body,
+    ...setInOutTime({
+      checkInDate: req.body.checkInDate,
+      checkOutDate: req.body.checkOutDate,
+    }),
     customerId: req.userId,
     roomId: new mongoose.Types.ObjectId(req.body.roomId),
     dateOfBooking: new Date(),
@@ -159,16 +170,9 @@ router.post("/room/bookingProcess", Authenticate, (req, res) => {
         res.status(200).json({ success: true, ...result });
       })
       .catch((e) => {
-        // console.log(e);
         res.status(400).json({ success: false });
       });
-    // console.log(booking);
   });
-  // console.log(price);
-
-  // console.log(booking);
-
-  // res.status(400).json({success : false})
 });
 
 router.post("/roomDetails", Authenticate, (req, res) => {
@@ -176,10 +180,11 @@ router.post("/roomDetails", Authenticate, (req, res) => {
   // console.log(roomId);
   getRoomDetails(roomId)
     .then((result) => {
-      // console.log("Result : " + result);
-      res.status(200).json({ success: true, ...result._doc });
+      console.log("Result : " + result);
+      res.status(200).json({ success: true, ...result._doc});
     })
     .catch((e) => {
+      console.log(e);
       res.status(400).json({ success: false });
     });
 });
@@ -229,7 +234,6 @@ router.post("/room/bookingProcess/payment", Authenticate, (req, res) => {
                       message: "Tracking Date Update Fail",
                     });
                   });
-                
               }
             })
             .catch((e) => {
@@ -318,15 +322,15 @@ router.post("/room/bookingProcess/trackingDate", Authenticate, (req, res) => {
   // res.send(req.body);
 });
 
-router.get("/room/bookedCard",Authenticate,(req,res)=>{
-
-  getBookedCardDetails(req.userId).then((bookedCards)=>{
-    res.status(200).json(bookedCards);
-  }).catch((e)=>{
-    console.log(e);
-    res.status(400).json({success : false, message : "BookedCard Not Found"})
-  })
-  
-})
+router.get("/room/bookedCard", Authenticate, (req, res) => {
+  getBookedCardDetails(req.userId)
+    .then((bookedCards) => {
+      res.status(200).json(bookedCards);
+    })
+    .catch((e) => {
+      console.log(e);
+      res.status(400).json({ success: false, message: "BookedCard Not Found" });
+    });
+});
 
 module.exports = router;

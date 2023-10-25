@@ -6,10 +6,18 @@ import NavBar from "../components/NavBar";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { Fragment } from "react";
 import "../styles/components/bookingProcess.css";
+import Header from "../components/Header";
 const { API_getRoomDetails } = require("../api/index");
 const { displayIcon, fetchAPI } = require("../components/UserFunctions");
 
 export default function BookingProcess() {
+  const headerData = {
+    title: "Payment",
+    sub_title:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde quod autem commodi iste eum omnis saepe temporibus? Veniam ipsam, exercitationem laborum quaerat rerum repellendus voluptatibus quod quae impedit officia quas.",
+      image : "payment_header.jpg"
+  };
+
   const { state } = useLocation();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -63,6 +71,7 @@ export default function BookingProcess() {
     <>
       <NavBar></NavBar>
       {loading ? <LoadingSpinner /> : <Fragment>
+        <Header data = {headerData}/>
       <div className="booking_process">
         <div className="booking_process_container">
           <div className="room_info_card">

@@ -3,6 +3,15 @@ const Booking = require("../model/booking.model");
 const Room = require("../model/room.model");
 const { findOne } = require("../model/customer.model");
 const { getRoomDetails } = require("./rooms.controller");
+
+const dayStartWith = 9;
+const dayEndWith = 8;
+function setInOutTime(date) {
+  return {
+    checkInDate: new Date(new Date(date.checkInDate).setHours(dayStartWith, 0, 0, 0)),
+    checkOutDate: new Date(new Date(date.checkOutDate).setHours(dayEndWith, 0, 0, 0)),
+  };
+}
 async function bookingProcess(booking) {
   const filter = {
     $and: [
@@ -100,15 +109,16 @@ async function getBookedCardDetails(userId) {
     })[0];
 
     const bookedCard = {
-      roomName : room.title,
-      roomHeader : room.titleHeader,
-      roomImage : room.mainImage,
-      bookingAmount : booking.amount,
-      checkInDate : booking.checkInDate,
-      checkOutDate : booking.checkOutDate,
-      trackingDate :  booking.trackingDate == undefined ? null : booking.trackingDate._doc,
-      bookingId : booking._id,
-    }
+      roomName: room.title,
+      roomHeader: room.titleHeader,
+      roomImage: room.mainImage,
+      bookingAmount: booking.amount,
+      checkInDate: booking.checkInDate,
+      checkOutDate: booking.checkOutDate,
+      trackingDate:
+        booking.trackingDate == undefined ? null : booking.trackingDate._doc,
+      bookingId: booking._id,
+    };
     bookedCards.push(bookedCard);
   });
 
@@ -121,4 +131,5 @@ module.exports = {
   getBookingDetails,
   updateTrackingDate,
   getBookedCardDetails,
+  setInOutTime,
 };

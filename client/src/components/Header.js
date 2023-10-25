@@ -1,0 +1,20 @@
+import React from "react";
+import "../styles/components/header.css";
+export default function Header(props) {
+  return (
+    <div className="header">
+      <div
+        className="header_container"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+            url("/img/header/${props.data.image}")`,
+        }}
+      >
+        <div className=" header_content">
+          <h1 className="header_title">{props.data.title}</h1>
+          <p className="header_sub_title"> {props.data.sub_title}</p>
+        </div>
+      </div>
+    </div>
+  );
+}

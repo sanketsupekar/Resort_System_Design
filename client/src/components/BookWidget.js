@@ -4,15 +4,23 @@ import "react-datepicker/dist/react-datepicker.css";
 import "../styles/components/bookWidget.css";
 
 function BookWidget(props) {
+  const dayStartWith = 9;
+  const dayEndWith = 8;
+
+  const initalInDate = new Date();
+  const initalOutDate = new Date(
+    new Date().setDate(initalInDate.getDate() + 1)
+  );
+
   const [formData, setFormData] = useState({
-    checkInDate: new Date(),
-    checkOutDate: new Date(),
+    checkInDate: initalInDate,
+    checkOutDate: initalOutDate,
     totalDays: 1,
     adults: 0,
     childrens: 0,
   });
-  const [checkInDate, setStartDate] = useState(new Date());
-  const [checkOutDate, setEndDate] = useState(new Date());
+  const [checkInDate, setStartDate] = useState(initalInDate);
+  const [checkOutDate, setEndDate] = useState(initalOutDate);
   const [adultCount, setAdultCount] = useState(1);
   const [childrenCount, setChildrenCount] = useState(0);
 
@@ -25,18 +33,29 @@ function BookWidget(props) {
   };
 
   function handleCheckAvailability() {
-    // console.log(formData);
+    // console.log(formData.checkInDate.toLocaleString());
+    // console.log(formData.checkOutDate.toLocaleString());
     props.handleCheckAvailability(formData);
   }
+
+  // Update  checkOutDate when checkIndate is equal to its
+  //complete time formate
+
+  function checkInToCheckOut() {
+    setEndDate(new Date(new Date().setDate(checkInDate.getDate() + 1)));
+  }
   function totalDaysSelected() {
-    const timeDifference = Math.abs(checkOutDate.getTime() - checkInDate.getTime());
+    const timeDifference = Math.abs(
+      checkOutDate.getTime() - checkInDate.getTime()
+    );
     const totalDays = Math.ceil(timeDifference / (1000 * 3600 * 24));
-    return totalDays + 1;
+    return totalDays;
   }
 
   useEffect(() => {
-    if (checkInDate > checkOutDate) {
-      setEndDate(checkInDate);
+    if ( new Date(checkInDate.setHours(0, 0, 0, 0)) >= new Date(checkOutDate.setHours(0, 0, 0, 0))) {
+      // console.log("Check_In_Less");
+      checkInToCheckOut();
     }
   }, [checkInDate]);
   useEffect(() => {
@@ -78,7 +97,7 @@ function BookWidget(props) {
                 selectsEnd
                 checkInDate={checkInDate}
                 checkOutDate={checkOutDate}
-                minDate={checkInDate}
+                minDate={new Date().setDate(checkInDate.getDate() + 1)}
                 maxDate={new Date().setDate(checkInDate.getDate() + 30)}
                 dateFormat="dd/MM/yyyy"
               />

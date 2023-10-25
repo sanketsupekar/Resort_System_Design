@@ -4,11 +4,17 @@ import RoomCard from "../components/RoomCard";
 import BookWidget from "../components/BookWidget";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { Navigate, useNavigate } from "react-router-dom";
+import Header from "../components/Header";
 // const { rooms } = require("../components/RoomData");
 const { API_availableRooms } = require("../api/index");
 const { fetchAPI } = require("../components/UserFunctions");
 const { API_roomBookProcess } = require("../api/index");
-
+const headerData = {
+  title: "Rooms",
+  sub_title:
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde quod autem commodi iste eum omnis saepe temporibus? Veniam ipsam, exercitationem laborum quaerat rerum repellendus voluptatibus quod quae impedit officia quas.",
+    image : "room_header.jpg"
+};
 export default function Rooms(props) {
   const [loading, setLoading] = useState(false);
   const [rooms, setRooms] = useState([]);
@@ -86,7 +92,7 @@ export default function Rooms(props) {
     if (booking.roomId != null) {
       roomBookProcess(booking);
     } else {
-      console.log("Select Room");
+      // console.log("Select Room");
     }
     // console.log(booking);
   }, [booking]);
@@ -94,8 +100,9 @@ export default function Rooms(props) {
     <>
       <Navbar />
       {loading ? <LoadingSpinner /> : <Fragment />}
+      <Header data = {headerData}/>
       <BookWidget handleCheckAvailability={handleCheckAvailability} />
-      {rooms.map((room, key) => {
+      {rooms.length === 0 ? <h1></h1> : rooms.map((room, key) => {
         return (
           <RoomCard
             room={room}
@@ -103,7 +110,7 @@ export default function Rooms(props) {
             handleBookRoom={handleBookRoom}
           ></RoomCard>
         );
-      })}
+      })};
 
       {/* {rooms} */}
     </>

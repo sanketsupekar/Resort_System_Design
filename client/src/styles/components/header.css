@@ -1,0 +1,47 @@
+.header {
+  color: white;
+}
+.header .header_container {
+  height: 70vh;
+  /* background-repeat:repeat-y; */
+  /* background-position: 1px; */
+  margin-bottom: 2rem;
+  background-size:cover;
+  display: flex;
+  justify-content: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.header .header_container .header_content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+}
+@keyframes header-fade {
+    from {
+        opacity: 0;
+        margin-top: 5rem;
+    }
+    to {
+        opacity: 1;
+        margin-top: 0rem;
+    }
+}
+
+.header .header_content .header_title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation-name: header-fade;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+
+.header .header_content .header_sub_title {
+  /* margin: 0; */
+  font-size: 1rem;
+  text-align: center;
+
+}

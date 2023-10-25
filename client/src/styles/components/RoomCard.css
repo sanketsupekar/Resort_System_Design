@@ -21,7 +21,7 @@
 }
 
 .room_card .info_container {
-   width: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   padding: 1.5rem;
@@ -36,9 +36,9 @@
   flex-wrap: wrap; */
 }
 
-.room_card .info_container .room_details .room_size_occu{
-   display: flex;
-   flex-direction: row;
+.room_card .info_container .room_details .room_size_occu {
+  display: flex;
+  flex-direction: row;
 }
 .room_card .book_container {
   padding: 1.5rem;
@@ -60,7 +60,7 @@ p {
   font-size: 1.2rem;
   margin: 0.3rem;
   border: 1px solid rgba(192, 192, 192, 0.822);
-  color: var(--secondary-color);;
+  color: var(--secondary-color);
 }
 
 .room_card .book_container .price_info h5 {
@@ -123,4 +123,19 @@ p {
 .room_card .book_container .book_button:active {
   box-shadow: none;
   transform: translateY(0);
+}
+
+.room_card .book_container .reserved_icon {
+  width: 4rem;
+  padding: 0;
+}
+
+
+.room_card .info_container .reserved_info {
+  font-size: 0.7rem;
+  color: red;
+}
+.room_card .book_container .reserved_info {
+  font-size: 0.7rem;
+  color: red;
 }

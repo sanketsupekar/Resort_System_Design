@@ -5,8 +5,15 @@ import BookedCard from "../components/BookedCard";
 import {fetchGetAPI } from "../components/UserFunctions";
 import { API_getBookedCard } from "../api/index";
 import LoadingSpinner from "../components/LoadingSpinner";
+import Header from "../components/Header";
 
 export default function Bookings() {
+  const headerData = {
+    title: "Booking",
+    sub_title:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde quod autem commodi iste eum omnis saepe temporibus? Veniam ipsam, exercitationem laborum quaerat rerum repellendus voluptatibus quod quae impedit officia quas.",
+      image : "booking_header.jpg"
+  };
   const [bookedCards, setBookedCards] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -26,6 +33,7 @@ export default function Bookings() {
     <Fragment>
       <Navbar></Navbar>
       {loading ? <LoadingSpinner/> : <Fragment/>}
+      <Header data = {headerData}/>
       <div className="bookings">
         <div className="booked_card_container">
           {bookedCards.length === 0 ? <h1>No Booking Found</h1> : bookedCards.map((card)=>{
