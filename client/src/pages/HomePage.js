@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Navigate, useNavigate } from "react-router-dom";
 import Payment from "./Payment";
 import Header from "../components/Header";
+import CustomerProfileCard from "../components/CustomerProfileCard";
 const { fetchAPI, isLoggedIn } = require("../components/UserFunctions");
 function HomePage() {
   const data = {
@@ -22,6 +23,7 @@ function HomePage() {
     <>
       <Navbar />
       <Header data = {data} />
+     
       {/* <h1>Dashboard</h1> */}
       {/* <Payment></Payment> */}
 

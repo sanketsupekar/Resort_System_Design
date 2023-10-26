@@ -1,0 +1,27 @@
+.amenities_card {
+    padding: 1rem;
+    /* border: 1px solid red; */
+}
+
+.amenities_card .container{
+    width: 10rem;
+    /* height: 10rem; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border-radius: 0.5rem;
+    transition: width ease-in;
+}
+
+.amenities_card .container:hover{
+    width: 10.5rem;
+}
+
+.amenities_card .amenity_img{
+    border-radius: 0.5rem;
+}
+.amenities_card .amenity_name{
+    margin: 0.5rem;
+}
+

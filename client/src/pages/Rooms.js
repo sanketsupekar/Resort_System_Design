@@ -5,6 +5,7 @@ import BookWidget from "../components/BookWidget";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { Navigate, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
+import CustomerProfileCard from "../components/CustomerProfileCard";
 // const { rooms } = require("../components/RoomData");
 const { API_availableRooms } = require("../api/index");
 const { fetchAPI } = require("../components/UserFunctions");
@@ -99,6 +100,7 @@ export default function Rooms(props) {
   return (
     <>
       <Navbar />
+      
       {loading ? <LoadingSpinner /> : <Fragment />}
       <Header data = {headerData}/>
       <BookWidget handleCheckAvailability={handleCheckAvailability} />

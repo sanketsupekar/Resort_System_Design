@@ -1,58 +1,90 @@
-/* Navbar.css */
 
 .navbar {
-    background-color: var(--primary-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
-  }
-  
-  .navbar:hover {
-    background-color: var(--secondary-color);
-  }
-  
-  .navbar .logo {
-    font-family: 'Pacifico', cursive;
-    font-size: 28px;
-    color: white;
-    text-transform: uppercase;
-  }
-  
-  .navbar .nav-links {
-    list-style: none;
-    display: flex;
-  }
-  
-  .navbar  .nav-links li {
-    margin-right: 20px;
-  }
-  
-  .navbar  .nav-links a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    transition: color 0.3s ease;
-  }
-  
-  .navbar  .nav-links a:hover {
-    color: var(--accent-color);
-  }
-  
-  /* Stylish button for call-to-action */
-  .navbar  .button {
-    background-color: var(--accent-color);
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .navbar   .button:hover {
-    background-color: #ff5733; /* A shade of orange */
-  }
-  
+  background-color: white;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: 1rem 2rem; */
+  padding-left: 1rem;
+  padding-right: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  font-weight: 500;
+  /* width: 98%; */
+  /* position:fixed; */
+  /* z-index: 100;
+  overflow: hidden; */
+
+
+}
+
+.navbar .logo .img {
+  width: 4rem;
+  height: 4rem;
+}
+
+.navbar  .nav-list {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.navbar .nav-item {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+.navbar .nav-item .item{
+  text-decoration: none;
+  color: black;
+}
+
+.navbar .nav-item:hover {
+  background-color: #0000000f;
+}
+
+.navbar .icon-buttons{
+  /* width: 20%; */
+  display: flex;
+  justify-content: space-between;
+}
+.navbar .icon-item {
+  width: 2rem;
+  height: 2em;
+  /* height: 40px; */
+  margin-left: 2rem;
+  /* margin-right: 2rem; */
+
+  /* display: grid; */
+  /* place-content: center; */
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: box-shadow 0.2s ease-in-out;
+}
+.navbar .icon-item .img-profile{
+  width: 3rem;
+  border-radius: 50%;
+  transition: width 0.1s ease-in;
+}
+
+
+.navbar .icon-item .img-bell{
+  width: 1.5rem;
+  /* height: 2rem; */
+  border-radius: 50%;
+  transition: width 0.1s ease-in;
+
+}
+.navbar .icon-item .img-profile:hover  {
+  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; */
+  width: 2.8rem;
+}
+
+.navbar .icon-item .img-bell:hover{
+  width: 1.2rem;
+}

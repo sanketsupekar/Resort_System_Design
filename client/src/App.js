@@ -15,6 +15,7 @@ import Payment from "./pages/Payment";
 import PaymentReceipt from "./pages/PaymentReceipt";
 import Bookings from "./pages/Bookings";
 import ForgetPassword from "./pages/ForgetPassword";
+import RoomDetails from "./pages/RoomDetails";
 function App() {
 
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/signin" element = {<SignIn/>}></Route>
         <Route path="/signup" element = {<SignUp/>}></Route>
         <Route path="/signout" element = {<SignOut/>}></Route>
+        <Route path="/rooms/:roomId" element = {<RoomDetails/>}></Route>
         <Route path="/rooms" element = {<Rooms/>}></Route>
         <Route path="/rooms/bookingProcess" element = {<BookingProcess/>}></Route>
         <Route path="/rooms/bookingProcess/payment" element = {<Payment/>}></Route>
