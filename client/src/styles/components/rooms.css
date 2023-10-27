@@ -1,0 +1,88 @@
+.rooms-page{
+  
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rooms-page .overview{
+    /* border: red 1px solid; */
+    width: 70%;
+}
+
+.rooms-page .rooms-container div{
+    /* border: red 1px solid; */
+    /* width: 80%; */
+}
+
+.rooms-page .overview .overview-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.rooms-page .overview .overview-container-reverse{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.rooms-page .overview-container .container-item{
+    padding: 1rem;
+}
+.rooms-page .overview .img-container .img{
+    width: 100%;
+}
+
+.rooms-page .overview .info-container .title{
+    margin-top: 0;
+}
+
+.rooms-page .overview .info-container .sub-title{
+    margin-top: 0;
+    width: 100%;
+}
+
+.rooms-page .overview .info-container .button{
+    margin-top: 1rem;
+    width: 10rem;
+}
+
+.rooms-page .rooms{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.rooms-page .rooms-container{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.rooms-page .rooms-container .container-item{
+    width: 20rem;
+    padding: 1rem;
+    text-align: center;
+}
+.rooms-page .rooms .img-container .img{
+    width: 100%;
+}
+
+.rooms-page .rooms .info-container .title{
+    margin-top: 0;
+}
+
+.rooms-page .rooms .info-container .sub-title{
+    margin-top: 0;
+    width: 100%;
+}
+
+.rooms-page .rooms .info-container .button{
+    margin-top: 1rem;
+    width: 10rem;
+}
+
+.rooms-page .rooms div{
+    /* border: red 1px solid; */
+}

@@ -19,6 +19,7 @@ import RoomDetails from "./pages/RoomDetails";
 import Test from "./pages/Test";
 import Profile from "./pages/Profile";
 import YourReserved from "./pages/YourReserved";
+import Rooms from "./pages/Rooms";
 function App() {
 
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/signin" element = {<SignIn/>}></Route>
         <Route path="/signup" element = {<SignUp/>}></Route>
         <Route path="/signout" element = {<SignOut/>}></Route>
+        <Route path="/rooms/" element = {<Rooms/>}></Route>
         <Route path="/rooms/:roomId" element = {<RoomDetails/>}></Route>
         <Route path="/booking" element = {<Booking/>}></Route>
         <Route path="/rooms/bookingProcess" element = {<BookingProcess/>}></Route>

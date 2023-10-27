@@ -121,10 +121,11 @@ router.get("/getProfileDetails", Authenticate, (req, res) => {
   res.status(200).json({name : firstName +" "+lastName, email : email});
 });
 
-router.post("/getAllRooms", Authenticate, (req, res) => {
+router.get("/getAllRooms", (req, res) => {
+  // console.log("Reached");
   getAllRooms()
     .then((result) => {
-      res.send(result);
+      res.status(200).json({rooms : result});
     })
     .catch((e) => {
       res.status(400).send(e);

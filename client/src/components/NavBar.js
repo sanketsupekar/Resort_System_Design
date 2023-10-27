@@ -44,7 +44,7 @@ function Navbar() {
               </li>
               <li className="nav-item">
                 <a className="item" href="/reserved">
-                  Your Reserved
+                  Reservations
                 </a>
               </li>
             </ul>

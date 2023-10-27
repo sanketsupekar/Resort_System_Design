@@ -10,3 +10,4 @@ export const API_getInvoiceDetails = "/api/room/bookingProcess/invoice";
 
 export const API_getBookedCard = "/api/room/bookedCard";
 export const API_getProfileDetails = "/api/getProfileDetails"
+export const API_getAllRooms = "/api/getAllRooms";
