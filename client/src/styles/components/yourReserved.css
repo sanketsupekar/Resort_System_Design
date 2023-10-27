@@ -1,4 +1,4 @@
-.bookings .booked_card_container{
+.yourReserved .booked_card_container{
     display: flex;
     flex-wrap: wrap;
     /* justify-content: space-between; */

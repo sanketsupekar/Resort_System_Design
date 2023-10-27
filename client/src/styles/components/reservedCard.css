@@ -1,4 +1,4 @@
-.booking-card {
+.reserved-card {
   position: relative;
   width: 30rem;
   display: flex;
@@ -18,7 +18,7 @@
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
-.booking-card::before {
+.reserved-card::before {
   content: "";
   position: absolute;
   top: 0;
@@ -29,14 +29,14 @@
   transition: 0.3s;
 }
 
-.booking-card:hover::before {
+.reserved-card:hover::before {
   background: rgba(0, 0, 0, 0.6);
 }
-.booking-card .book-container {
+.reserved-card .book-container {
   height: 5rem;
 }
 
-.booking-card .book-container .content {
+.reserved-card .book-container .content {
   position: relative;
   opacity: 0;
   display: flex;
@@ -48,12 +48,12 @@
   transition: 0.3s;
 }
 
-.booking-card:hover .book-container .content {
+.reserved-card:hover .book-container .content {
   opacity: 1;
   transform: translateY(0px);
 }
 
-.booking-card .book-container .content .btn {
+.reserved-card .book-container .content .btn {
   border: 3px solid white;
   padding: 10px 15px;
   background: none;
@@ -65,13 +65,13 @@
   transition: 0.3s;
 }
 
-.booking-card .book-container .content .btn:hover {
+.reserved-card .book-container .content .btn:hover {
   background: white;
   border: 0px solid white;
   color: black;
 }
 
-.booking-card .informations-container {
+.reserved-card .informations-container {
   flex: 1 0 auto;
   padding: 20px;
   background: white;
@@ -79,11 +79,11 @@
   transition: 0.3s;
 }
 
-.booking-card:hover .informations-container {
+.reserved-card:hover .informations-container {
   transform: translateY(0px);
 }
 
-.booking-card .informations-container .title {
+.reserved-card .informations-container .title {
   position: relative;
   padding-bottom: 10px;
   margin-bottom: 10px;
@@ -91,7 +91,7 @@
   font-size: 1.2em;
 }
 
-.booking-card .informations-container .title::after {
+.reserved-card .informations-container .title::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -103,7 +103,7 @@
   background: black;
 }
 
-.booking-card .informations-container .price {
+.reserved-card .informations-container .price {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -112,29 +112,29 @@
   font-size: 1.5rem;
 }
 
-.booking-card .informations-container .price .icon {
+.reserved-card .informations-container .price .icon {
   margin-right: 10px;
   margin-top: 0.4rem;
   color: black;
 }
 
-.booking-card .informations-container .more-information {
+.reserved-card .informations-container .more-information {
   opacity: 0;
   transition: 0.3s;
 }
 
-.booking-card:hover .informations-container .more-information {
+.reserved-card:hover .informations-container .more-information {
   opacity: 1;
 }
 
-.booking-card .more-information .info-and-date-container {
+.reserved-card .more-information .info-and-date-container {
   display: flex;
   margin-top: 20px;
   /* height: 12rem; */
   /* margin-bottom: 2rem; */
 }
 
-.booking-card .more-information .box {
+.reserved-card .more-information .box {
   flex: 1 0;
   padding: 15px;
   /* margin-top: 20px; */
@@ -146,24 +146,24 @@
   font-size: 0.9em;
 }
 
-.booking-card .more-information .box .icon {
+.reserved-card .more-information .box .icon {
   margin-bottom: 5px;
 }
 
-.booking-card .more-information .box.info {
+.reserved-card .more-information .box.info {
   color: #ec992c;
   margin-right: 10px;
 }
-.booking-card .more-information .track_container {
+.reserved-card .more-information .track_container {
   width: 100%;
 
 }
-.booking-card .more-information .track_box {
+.reserved-card .more-information .track_box {
   display: flex;
 
 }
 
-.booking-card .more-information .hh-grayBox {
+.reserved-card .more-information .hh-grayBox {
   background-color: #f8f8f8;
   /* width: 100%; */
   /* margin-bottom: 20px; */
@@ -171,17 +171,17 @@
   margin-top: 20px;
   border-radius: 1rem;
 }
-.booking-card .more-information .pt45 {
+.reserved-card .more-information .pt45 {
   padding-top: 45px;
 }
-.booking-card .more-information .order-tracking {
+.reserved-card .more-information .order-tracking {
   text-align: center;
   width: 25%;
   position: relative;
   display: block;
   font-size: 0.7rem;
 }
-.booking-card .more-information .order-tracking .is-complete {
+.reserved-card .more-information .order-tracking .is-complete {
   display: block;
   position: relative;
   border-radius: 50%;
@@ -194,7 +194,7 @@
   -webkit-transition: background 0.25s linear;
   z-index: 2;
 }
-.booking-card .more-information .order-tracking .is-complete:after {
+.reserved-card .more-information .order-tracking .is-complete:after {
   display: block;
   position: absolute;
   content: "";
@@ -209,32 +209,32 @@
   transform: rotate(45deg);
   opacity: 0;
 }
-.booking-card .more-information .order-tracking.completed .is-complete {
+.reserved-card .more-information .order-tracking.completed .is-complete {
   border-color: #27aa80;
   border-width: 0px;
   background-color: #27aa80;
 }
-.booking-card .more-information .order-tracking.completed .is-complete:after {
+.reserved-card .more-information .order-tracking.completed .is-complete:after {
   border-color: #fff;
   border-width: 0px 3px 3px 0;
   width: 7px;
   left: 11px;
   opacity: 1;
 }
-/* .booking-card .more-information .order-tracking p {
+/* .reserved-card .more-information .order-tracking p {
   color: #a4a4a4;
   font-size: 16px;
   margin-top: 8px;
   margin-bottom: 0;
   line-height: 20px;
 }
-.booking-card .more-information .order-tracking p span {
+.reserved-card .more-information .order-tracking p span {
   font-size: 14px;
 } */
-.booking-card .more-information .order-tracking.completed p {
+.reserved-card .more-information .order-tracking.completed p {
   color: #000;
 }
-.booking-card .more-information .order-tracking::before {
+.reserved-card .more-information .order-tracking::before {
   content: "";
   display: block;
   height: 3px;
@@ -245,21 +245,21 @@
   left: calc(-50% + 20px);
   z-index: 0;
 }
-.booking-card .more-information .order-tracking:first-child:before {
+.reserved-card .more-information .order-tracking:first-child:before {
   display: none;
 }
-.booking-card .more-information .order-tracking.completed:before {
+.reserved-card .more-information .order-tracking.completed:before {
   background-color: #27aa80;
 }
 
-.booking-card .more-information .disclaimer {
+.reserved-card .more-information .disclaimer {
   margin-top: 20px;
   font-size: 0.8em;
   color: #7d7d7d;
 }
 
 @media (max-width: 768px) {
-  ul .booking-card {
+  ul .reserved-card {
     &::before {
       background: rgba(10, 72, 112, 0.6);
     }
@@ -276,7 +276,7 @@
   }
 }
 
-.booking-card .credits {
+.reserved-card .credits {
   display: table;
   background: black;
   color: white;
@@ -287,10 +287,10 @@
   text-align: center;
 }
 
-.booking-card .credits a {
+.reserved-card .credits a {
   color: #e3ebf1;
 }
 
-.booking-card h1 {
+.reserved-card h1 {
   margin: 10px 20px;
 }

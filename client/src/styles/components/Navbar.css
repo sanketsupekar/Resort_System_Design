@@ -8,6 +8,7 @@
   position: fixed;
   top: 0;
   width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 .navbar .navbar-container {
   background-color: white;
@@ -18,7 +19,7 @@
   /* padding: 1rem 2rem; */
   padding-left: 1rem;
   padding-right: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+ 
   font-size: 1rem;
   font-weight: 500;
   /* width: 98%; */
@@ -40,10 +41,12 @@
   border-radius: 0.5rem;
   font-size: 1rem;
   transition: background-color 0.3s ease;
+
 }
 .navbar .navbar-container .nav-item .item{
   text-decoration: none;
   color: black;
+  z-index: 100;
 }
 
 .navbar .navbar-container .nav-item:hover {

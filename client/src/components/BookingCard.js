@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./NavBar";
-import "../styles/components/RoomCard.css";
+import "../styles/components/bookingCard.css";
 const {displayIcon} = require('./UserFunctions');
 const {reservedIcon} = require("../image/index")
-export default function RoomCard(props) {
+export default function BookingCard(props) {
   const [reservedInfo, setReservedInfo] = useState(false);
   // const [roomReserved, setRoomReserved] = useState(false);
   
@@ -15,7 +15,7 @@ export default function RoomCard(props) {
 
   return (
     <>
-      <div className="room_card">
+      <div className="booking_card">
         <div className="card_container">
           <div className="img_container">
             {/* <h1>Image</h1> */}

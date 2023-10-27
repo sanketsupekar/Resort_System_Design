@@ -36,7 +36,7 @@ export default function Payment() {
     setLoading(false);
     if (json.success) {
       displaySuccess("Payment Successfull");
-      navigate("/rooms/bookings");
+      navigate("/reserved");
     } else {
       displayError("Payment Fail");
     }

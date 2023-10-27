@@ -13,7 +13,7 @@ width: 10rem
 .payment_receipt{
     display: flex;
     justify-content: center;
-    
+    margin-top: 2rem;
 }
 
 .payment_receipt .main_container{

@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import Navbar from "../components/NavBar";
-import "../styles/components/bookings.css";
-import BookedCard from "../components/BookedCard";
+// import "../styles/components/bookings.css";
+// import BookedCard from "../components/BookedCard";
 import {fetchGetAPI,isLoggedIn } from "../components/UserFunctions";
 import { API_getProfileDetails } from "../api/index";
 import LoadingSpinner from "../components/LoadingSpinner";

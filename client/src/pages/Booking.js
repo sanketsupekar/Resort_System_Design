@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import Navbar from "../components/NavBar";
-import RoomCard from "../components/RoomCard";
+import RoomCard from "../components/BookingCard";
 import BookWidget from "../components/BookWidget";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { Navigate, useNavigate } from "react-router-dom";
@@ -14,7 +14,7 @@ const { API_availableRooms } = require("../api/index");
 const { fetchAPI } = require("../components/UserFunctions");
 const { API_roomBookProcess } = require("../api/index");
 const headerData = {
-  title: "Rooms",
+  title: "Book Now",
   sub_title:
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde quod autem commodi iste eum omnis saepe temporibus? Veniam ipsam, exercitationem laborum quaerat rerum repellendus voluptatibus quod quae impedit officia quas.",
   image: "room_header.jpg",
@@ -100,9 +100,10 @@ export default function Rooms(props) {
   }, [booking]);
   return (
     <Fragment>
+       <Navbar />
       {loggedIn ? (
         <Fragment>
-          <Navbar />
+         
           {loading ? <LoadingSpinner /> : null}
           <Header data={headerData} />
           <BookWidget handleCheckAvailability={handleCheckAvailability} />

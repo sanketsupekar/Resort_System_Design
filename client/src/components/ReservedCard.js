@@ -1,10 +1,10 @@
 import React, { Fragment, useEffect, useState } from "react";
-import Navbar from "../components/NavBar";
-import "../styles/components/bookedCard.css";
+import Navbar from "./NavBar";
+import "../styles/components/reservedCard.css";
 import bootstrap from "bootstrap";
 import { useNavigate } from "react-router-dom";
 
-export default function BookedCard(props) {
+export default function ReservedCard(props) {
   // const bookedCard = {
   //   roomName: "Deluxe Bedroom",
   //   roomHeader:
@@ -56,14 +56,14 @@ function getDateString(date = new Date())
   return (
     <Fragment>
       <div
-        className="booking-card"
+        className="reserved-card"
         style={{
           backgroundImage: `url(/img/rooms/${props.card.roomImage}`,
         }}
       >
         <div className="book-container">
           <div className="content">
-           { payment ? <button className="btn" onClick={handleBookingDetails}>Booked</button> :  <button className="btn" onClick={handlePayNowClick}>Payment</button>}
+           { payment ? <button className="btn" onClick={handleBookingDetails}>RECEIPT</button> :  <button className="btn" onClick={handlePayNowClick}>Payment</button>}
           </div>
         </div>
         <div className="informations-container">

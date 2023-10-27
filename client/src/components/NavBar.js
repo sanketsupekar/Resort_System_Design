@@ -31,15 +31,20 @@ function Navbar() {
               </li>
               <li className="nav-item">
                 <a className="item" href="/rooms">
-                  Room
+                  Rooms
                 </a>
               </li>
-              {/* <li className="nav-item">
-        <a className="item" href="#">Dinig</a>
-      </li> */}
               <li className="nav-item">
-                <a className="item" href="/rooms/bookings">
-                  Booking
+        <a className="item" href="#">Dining</a>
+      </li>
+              <li className="nav-item">
+                <a className="item" href="/booking">
+                  Book Now
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="item" href="/reserved">
+                  Your Reserved
                 </a>
               </li>
             </ul>

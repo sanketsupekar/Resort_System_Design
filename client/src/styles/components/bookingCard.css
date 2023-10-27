@@ -1,11 +1,11 @@
-.room_card {
+.booking_card {
   display: flex;
   justify-content: center;
   align-items: center;
   /* border: solid 5px red; */
 }
 
-.room_card .card_container {
+.booking_card .card_container {
   margin-top: 2rem;
   margin-bottom: 2rem;
   width: 70%;
@@ -15,72 +15,72 @@
   flex-direction: row;
   justify-content: space-between;
 }
-.room_card img {
+.booking_card img {
   padding: 1.5rem;
   width: 25rem;
 }
 
-.room_card .info_container {
+.booking_card .info_container {
   width: 100%;
   display: flex;
   flex-direction: column;
   padding: 1.5rem;
 }
-.room_card .info_container .room_name h2 {
+.booking_card .info_container .room_name h2 {
   margin-top: 0;
 }
-.room_card .info_container .room_details {
+.booking_card .info_container .room_details {
   width: 90%;
   /* display: flex;
   flex-direction: row;
   flex-wrap: wrap; */
 }
 
-.room_card .info_container .room_details .room_size_occu {
+.booking_card .info_container .room_details .room_size_occu {
   display: flex;
   flex-direction: row;
 }
-.room_card .book_container {
+.booking_card .book_container {
   padding: 1.5rem;
   text-align: end;
 }
 
-.room_card .room_details .detail-1,
+.booking_card .room_details .detail-1,
 .detail-2,
 .detail-3 {
   margin-right: 3rem;
   margin-bottom: 1rem;
 }
-.room_card .room_details h3,
+.booking_card .room_details h3,
 p {
   margin: 0;
 }
 
-.room_card .room_details .detail-4 i {
+.booking_card .room_details .detail-4 i {
   font-size: 1.2rem;
   margin: 0.3rem;
   border: 1px solid rgba(192, 192, 192, 0.822);
   color: var(--secondary-color);
 }
 
-.room_card .book_container .price_info h5 {
+.booking_card .book_container .price_info h5 {
   color: var(--secondary-color);
   margin: 0;
 }
-.room_card .book_container .price_info h2 {
+.booking_card .book_container .price_info h2 {
   /* color: var(--secondary-color); */
   margin: 0;
 }
-.room_card .book_container .price_info_2 {
+.booking_card .book_container .price_info_2 {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
-.room_card .book_container .price_info_1 {
+.booking_card .book_container .price_info_1 {
   margin-top: 1rem;
 }
 
 /* CSS */
-.room_card .book_container .book_button {
+.booking_card .book_container .book_button {
   appearance: none;
   background-color: transparent;
   border: 2px solid #1a1a1a;
@@ -109,33 +109,33 @@ p {
   will-change: transform;
 }
 
-/* .room_card .book_container .book_button:disabled {
+/* .booking_card .book_container .book_button:disabled {
   pointer-events: none;
 } */
 
-.room_card .book_container .book_button:hover {
+.booking_card .book_container .book_button:hover {
   color: #fff;
   background-color: #1a1a1a;
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
   transform: translateY(-2px);
 }
 
-.room_card .book_container .book_button:active {
+.booking_card .book_container .book_button:active {
   box-shadow: none;
   transform: translateY(0);
 }
 
-.room_card .book_container .reserved_icon {
+.booking_card .book_container .reserved_icon {
   width: 4rem;
   padding: 0;
 }
 
 
-.room_card .info_container .reserved_info {
+.booking_card .info_container .reserved_info {
   font-size: 0.7rem;
   color: red;
 }
-.room_card .book_container .reserved_info {
+.booking_card .book_container .reserved_info {
   font-size: 0.7rem;
   color: red;
 }
