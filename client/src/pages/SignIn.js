@@ -5,14 +5,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadingSpinner from "../components/LoadingSpinner";
-import {useStateValue} from '../Context/StateProvider';
-import {actionTypes} from '../Context/reducer';
+import { useStateValue } from "../Context/StateProvider";
+import { actionTypes } from "../Context/reducer";
 
 const { displaySuccess, displayError } = require("../components/NotifyToast");
 const { fetchAPI, isLoggedIn } = require("../components/UserFunctions");
-const {API_loginUser} = require('../api/index');
+const { API_loginUser } = require("../api/index");
 function SignIn() {
-  const [{CustomerUser}, dispatchUser] = useStateValue();
+  const [{ CustomerUser }, dispatchUser] = useStateValue();
   // const API_loginUser = "/api/signin";
   const [loadingVisible, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -51,10 +51,9 @@ function SignIn() {
     e.preventDefault();
     userValidation(formData);
   };
-useEffect(()=>{
-  if(isLoggedIn())
-  navigate('/');
-},[])
+  useEffect(() => {
+    if (isLoggedIn()) navigate("/");
+  }, []);
   return (
     <>
       <Navbar />
@@ -96,17 +95,19 @@ useEffect(()=>{
             <div className="button">
               <button> Login</button>
             </div>
-            <Link to="/signup" className="text-decoration-none">
-              <a className="nav-link active" aria-current="page">
-                Sign Up
-              </a>
-            </Link>
+            <div className="extra-link">
+              <Link to="/signup" className="text-decoration-none">
+                <a className="nav-link active" aria-current="page">
+                  Sign Up
+                </a>
+              </Link>
 
-            <Link to="/forgetPassword" className="text-decoration-none">
-              <a className="nav-link active" aria-current="page">
-                Forget Password
-              </a>
-            </Link>
+              <Link to="/forgetPassword" className="text-decoration-none">
+                <a className="nav-link active" aria-current="page">
+                  Forget Password
+                </a>
+              </Link>
+            </div>
           </form>
         </div>
       </div>

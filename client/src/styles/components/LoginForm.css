@@ -100,13 +100,13 @@
 
   /* styles.css */
 
-.text-decoration-none {
+.login_container .text-decoration-none {
   text-decoration: none;
   display: flex;
   justify-content: center;
 }
 
-.nav-link.active {
+.login_container .nav-link.active {
   
   /* Your styles for the active navigation link */
   /* For example, you can set the text color and background color */
@@ -115,6 +115,11 @@
   background-color: #f8f9fa; /* Light gray color */
 }
 
+.login_container .extra-link{
+  display: flex;
+  justify-content: space-around;
+
+}
  @media(max-width: 584px){
  .container{
   max-width: 100%;
@@ -134,6 +139,8 @@
     width: 5px;
   }
   }
+
+
   @media(max-width: 459px){
     .login_container  .content .category{
     flex-direction: column;

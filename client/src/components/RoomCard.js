@@ -5,24 +5,14 @@ const {displayIcon} = require('./UserFunctions');
 const {reservedIcon} = require("../image/index")
 export default function RoomCard(props) {
   const [reservedInfo, setReservedInfo] = useState(false);
-  const [roomReserved, setRoomReserved] = useState(false);
+  // const [roomReserved, setRoomReserved] = useState(false);
   
   function onChangeReservedInfo()
   {
     setReservedInfo(!reservedInfo);
   }
-  useEffect(()=>{
-    if(props.room.booked !== undefined)
-    {
-      setRoomReserved(true)
-      console.log(props.room.title + " Booked");
-    }
-    else
-    {
-      console.log(props.room.title + " Not Booked");
-    }
-    // console.log(props.room.booked);
-  });
+
+
   return (
     <>
       <div className="room_card">
@@ -60,7 +50,7 @@ export default function RoomCard(props) {
                 {props.room.amenities.map((item, index) => (
                   <i key={index} className={displayIcon(item)}></i>
                 ))}
-                {roomReserved && reservedInfo && <p className="reserved_info">Reserved From {new Date(props.room.booked.checkInDate).toLocaleDateString()} To {new Date(props.room.booked.checkOutDate).toLocaleDateString()}</p>}
+                {props.room.reserved && reservedInfo && <p className="reserved_info">Reserved From {new Date(props.room.booked.checkInDate).toLocaleDateString()} To {new Date(props.room.booked.checkOutDate).toLocaleDateString()}</p>}
               </div>
             </div>
           </div>
@@ -76,7 +66,7 @@ export default function RoomCard(props) {
               </div>
             </div>
             {
-              roomReserved ? <div>
+              props.room.reserved ? <div>
               <img  className= "reserved_icon" onMouseEnter={onChangeReservedInfo} onMouseLeave={onChangeReservedInfo} src={reservedIcon}/>
            
             </div> : <div>

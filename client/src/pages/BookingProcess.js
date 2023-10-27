@@ -8,7 +8,7 @@ import { Fragment } from "react";
 import "../styles/components/bookingProcess.css";
 import Header from "../components/Header";
 const { API_getRoomDetails } = require("../api/index");
-const { displayIcon, fetchAPI } = require("../components/UserFunctions");
+const { displayIcon, fetchAPI,isLoggedIn } = require("../components/UserFunctions");
 
 export default function BookingProcess() {
   const headerData = {
@@ -19,6 +19,7 @@ export default function BookingProcess() {
   };
 
   const { state } = useLocation();
+  const [loggedIn, setLogin] = useState(isLoggedIn() && (state != null));
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [room, setRoom] = useState({
@@ -60,7 +61,7 @@ export default function BookingProcess() {
     if (state == null) {
       navigate("/pageNotFound");
     }
-    // console.log(state._id);
+    console.log(state);
     getRoomDetails({ _id: state.roomId });
     // console.log(state);
   }, []);
@@ -68,7 +69,8 @@ export default function BookingProcess() {
   //   // console.log(payment);
   // }, [payment]);
   return (
-    <>
+    <Fragment>
+      {loggedIn && <Fragment>
       <NavBar></NavBar>
       {loading ? <LoadingSpinner /> : <Fragment>
         <Header data = {headerData}/>
@@ -176,6 +178,7 @@ export default function BookingProcess() {
           </div>
         </div>
       </div> </Fragment>}
-    </>
+      </Fragment>}
+    </Fragment>
   );
 }

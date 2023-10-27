@@ -114,9 +114,11 @@ router.post("/verificationOTP", (req, res) => {
   }
 });
 
-router.get("/getUserData", Authenticate, (req, res) => {
-  console.log(req);
-  res.send("Reached To Destination");
+router.get("/getProfileDetails", Authenticate, (req, res) => {
+  // console.log(req.rootUser);
+  const {firstName, lastName, email} = req.rootUser;
+  // console.log(firstName +" "+lastName);
+  res.status(200).json({name : firstName +" "+lastName, email : email});
 });
 
 router.post("/getAllRooms", Authenticate, (req, res) => {
@@ -180,7 +182,7 @@ router.post("/roomDetails", Authenticate, (req, res) => {
   // console.log(roomId);
   getRoomDetails(roomId)
     .then((result) => {
-      console.log("Result : " + result);
+      // console.log("Result : " + result);
       res.status(200).json({ success: true, ...result._doc});
     })
     .catch((e) => {

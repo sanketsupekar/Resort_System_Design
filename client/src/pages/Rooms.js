@@ -6,7 +6,10 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import { Navigate, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import CustomerProfileCard from "../components/CustomerProfileCard";
+import PageNotFound from "./PageNotFound"
 // const { rooms } = require("../components/RoomData");
+const { isLoggedIn } = require("../components/UserFunctions");
+
 const { API_availableRooms } = require("../api/index");
 const { fetchAPI } = require("../components/UserFunctions");
 const { API_roomBookProcess } = require("../api/index");
@@ -14,13 +17,14 @@ const headerData = {
   title: "Rooms",
   sub_title:
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde quod autem commodi iste eum omnis saepe temporibus? Veniam ipsam, exercitationem laborum quaerat rerum repellendus voluptatibus quod quae impedit officia quas.",
-    image : "room_header.jpg"
+  image: "room_header.jpg",
 };
 export default function Rooms(props) {
+  const [loggedIn, setLogin] = useState(isLoggedIn());
   const [loading, setLoading] = useState(false);
   const [rooms, setRooms] = useState([]);
-
   const navigate = useNavigate();
+
   const [checkAvailability, setCheckAvailability] = useState({
     checkInDate: new Date(),
     checkOutDate: new Date(),
@@ -66,7 +70,7 @@ export default function Rooms(props) {
           ...json._doc,
         },
       });
-       console.log(json);
+      console.log(json);
       return true;
     }
   }
@@ -92,29 +96,32 @@ export default function Rooms(props) {
     // console.log(booking);
     if (booking.roomId != null) {
       roomBookProcess(booking);
-    } else {
-      // console.log("Select Room");
     }
-    // console.log(booking);
   }, [booking]);
   return (
-    <>
-      <Navbar />
-      
-      {loading ? <LoadingSpinner /> : <Fragment />}
-      <Header data = {headerData}/>
-      <BookWidget handleCheckAvailability={handleCheckAvailability} />
-      {rooms.length === 0 ? <h1></h1> : rooms.map((room, key) => {
-        return (
-          <RoomCard
-            room={room}
-            totalDays={checkAvailability.totalDays}
-            handleBookRoom={handleBookRoom}
-          ></RoomCard>
-        );
-      })};
-
-      {/* {rooms} */}
-    </>
+    <Fragment>
+      {loggedIn ? (
+        <Fragment>
+          <Navbar />
+          {loading ? <LoadingSpinner /> : null}
+          <Header data={headerData} />
+          <BookWidget handleCheckAvailability={handleCheckAvailability} />
+          {rooms.length === 0 ? (
+            <h1></h1>
+          ) : (
+            rooms.map((room, key) => (
+              <RoomCard
+                key={key}
+                room={room}
+                totalDays={checkAvailability.totalDays}
+                handleBookRoom={handleBookRoom}
+              />
+            ))
+          )}
+        </Fragment>
+      ) : (
+        <PageNotFound></PageNotFound>
+      )}
+    </Fragment>
   );
 }

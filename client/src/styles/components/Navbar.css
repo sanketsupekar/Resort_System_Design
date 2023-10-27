@@ -1,5 +1,15 @@
 
-.navbar {
+.navbar{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  /* background-color: #333; */
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.navbar .navbar-container {
   background-color: white;
   color: white;
   display: flex;
@@ -12,45 +22,40 @@
   font-size: 1rem;
   font-weight: 500;
   /* width: 98%; */
-  /* position:fixed; */
-  /* z-index: 100;
-  overflow: hidden; */
-
-
 }
 
-.navbar .logo .img {
+.navbar .navbar-container .logo .img {
   width: 4rem;
   height: 4rem;
 }
 
-.navbar  .nav-list {
+.navbar .navbar-container  .nav-list {
   list-style: none;
   display: flex;
   gap: 1rem;
 }
 
-.navbar .nav-item {
+.navbar .navbar-container .nav-item {
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   font-size: 1rem;
   transition: background-color 0.3s ease;
 }
-.navbar .nav-item .item{
+.navbar .navbar-container .nav-item .item{
   text-decoration: none;
   color: black;
 }
 
-.navbar .nav-item:hover {
+.navbar .navbar-container .nav-item:hover {
   background-color: #0000000f;
 }
 
-.navbar .icon-buttons{
+.navbar .navbar-container .icon-buttons{
   /* width: 20%; */
   display: flex;
   justify-content: space-between;
 }
-.navbar .icon-item {
+.navbar .navbar-container .icon-item {
   width: 2rem;
   height: 2em;
   /* height: 40px; */
@@ -66,25 +71,29 @@
   border-radius: 50%;
   transition: box-shadow 0.2s ease-in-out;
 }
-.navbar .icon-item .img-profile{
+.navbar .navbar-container .icon-item .img-profile{
   width: 3rem;
   border-radius: 50%;
   transition: width 0.1s ease-in;
 }
 
 
-.navbar .icon-item .img-bell{
+.navbar .navbar-container .icon-item .img-bell{
   width: 1.5rem;
   /* height: 2rem; */
   border-radius: 50%;
   transition: width 0.1s ease-in;
 
 }
-.navbar .icon-item .img-profile:hover  {
+.navbar .navbar-container .icon-item .img-profile:hover  {
   /* box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; */
   width: 2.8rem;
 }
 
-.navbar .icon-item .img-bell:hover{
+.navbar .navbar-container .icon-item .img-bell:hover{
   width: 1.2rem;
 }
+
+
+
+

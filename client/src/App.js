@@ -16,6 +16,8 @@ import PaymentReceipt from "./pages/PaymentReceipt";
 import Bookings from "./pages/Bookings";
 import ForgetPassword from "./pages/ForgetPassword";
 import RoomDetails from "./pages/RoomDetails";
+import Test from "./pages/Test";
+import Profile from "./pages/Profile";
 function App() {
 
   return (
@@ -34,9 +36,9 @@ function App() {
         <Route path="/rooms/bookings/:bookingId" element = {<PaymentReceipt/>}></Route>
         <Route path="/pageNotFound" element = {<PageNotFound/>}></Route>
         <Route path="/forgetPassword" element = {<ForgetPassword/>}></Route>
-        
-        
-        {/* <Route path="*" element = {<Navigate to='/'/>} ></Route> */}
+        <Route path="/profile" element={<Profile />}></Route>
+        <Route path="/test" element={<Test />}></Route>
+        <Route path="*" element = {<Navigate to='/'/>} ></Route>
         </Routes>
       </BrowserRouter>
     </>

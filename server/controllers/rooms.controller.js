@@ -84,12 +84,20 @@ async function getAvailableRooms(availabilityConfig) {
     if (result != undefined) {
       room = {
         ...room._doc,
+        reserved : true,
         booked: {
           checkInDate: result.checkInDate,
           checkOutDate: result.checkOutDate,
         },
       };
       return room;
+    }
+    else
+    {
+      room = {
+        ...room._doc,
+        reserved : false,
+      }
     }
     return room;
   });
