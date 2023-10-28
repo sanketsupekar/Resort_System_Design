@@ -7,6 +7,7 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
 const { displayError, displaySuccess } = require("../components/NotifyToast");
 const { fetchAPI } = require("../components/UserFunctions");
 const {API_customerExist,API_verificationOTP, API_generateOTP} = require('../api/index');
@@ -117,6 +118,7 @@ function SignUp() {
       ) : (
         <Fragment />
       )}
+      <Footer></Footer>
       <ToastContainer />
     </>
   );

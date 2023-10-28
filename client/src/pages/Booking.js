@@ -7,6 +7,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import CustomerProfileCard from "../components/CustomerProfileCard";
 import PageNotFound from "./PageNotFound"
+import Footer from "../components/Footer";
 // const { rooms } = require("../components/RoomData");
 const { isLoggedIn } = require("../components/UserFunctions");
 
@@ -119,6 +120,7 @@ export default function Rooms(props) {
               />
             ))
           )}
+          <Footer></Footer>
         </Fragment>
       ) : (
         <PageNotFound></PageNotFound>

@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { useStateValue } from "../Context/StateProvider";
 import { actionTypes } from "../Context/reducer";
+import Footer from "../components/Footer";
 
 const { displaySuccess, displayError } = require("../components/NotifyToast");
 const { fetchAPI, isLoggedIn } = require("../components/UserFunctions");
@@ -112,6 +113,7 @@ function SignIn() {
         </div>
       </div>
       <ToastContainer />
+      <Footer></Footer>
     </>
   );
 }

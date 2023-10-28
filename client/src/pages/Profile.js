@@ -8,6 +8,7 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import Header from "../components/Header";
 import PageNotFound from "./PageNotFound";
 import { Navigate, useNavigate } from 'react-router-dom';
+import Footer from "../components/Footer";
 const {loggedOut} = require('../components/UserFunctions');
 
 export default function Profile() {
@@ -52,6 +53,7 @@ export default function Profile() {
      <Navbar></Navbar>
       {loading ? <LoadingSpinner/> : <Fragment/>}
       {(headerData.title !== undefined) && <Header data = {headerData} buttonClick = {handleLogOutClick}/>}
+      <Footer></Footer>
       </Fragment>}
       {!loggedIn && <PageNotFound></PageNotFound>}
     </Fragment>

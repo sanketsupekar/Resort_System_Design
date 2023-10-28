@@ -1,0 +1,119 @@
+
+  
+  footer {
+    /* position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+   */
+    background: #111;
+    height: auto;
+    /* width: 100vw; */
+    margin-top: 1rem;
+    /* padding-top: ; */
+    color: #fff;
+  }
+  
+  footer .footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* text-align: center; */
+  }
+  footer .footer-content .container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    /* flex-direction: column; */
+    /* text-align: center; */
+  }
+  footer .footer-content .container .item{
+    margin: 0rem 1rem;
+    /* flex-direction: column; */
+    /* text-align: center; */
+  }
+  footer .footer-content .address {
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: capitalize;
+    line-height: 3rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  footer .footer-content .sub-address{
+    /* max-width: 500px; */
+    /* margin: 10px auto; */
+    line-height: 28px;
+    font-size: 1rem;
+    text-align: center;
+    color: #cacdd2;
+  }
+  
+  footer .footer-content .socials {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0 1rem 0;
+    padding: 1rem;
+    border-top: 1px solid rgb(255, 255, 255);
+  }
+  
+  /* .socials li {
+    margin: 0 10px;
+  } */
+  
+  footer .footer-content .socials .link {
+    text-decoration: none;  
+    color: #fff;
+    padding: 5px;
+  }
+  
+   footer .footer-content .socials .link .icon{
+    font-size: 2rem;
+    padding: 0rem 1rem;
+    width: 2rem;
+    transition: color 0.4s ease;
+  }
+  
+  footer .footer-content .socials .icon:hover {
+    /* font-size: 5rem; */
+    /* width: 5rem; */
+    /* background-color: red; */
+    color: antiquewhite;
+  }
+  
+  footer .footer-bottom {
+    background: #000;
+  
+    /* width: 100vw; */
+    
+    /* padding: 20px; */
+  
+    padding-bottom: 40px;
+    text-align: center;
+  }
+  
+  footer .footer-bottom .paragraph {
+    float: left;
+
+    font-size: 14px;
+    
+    word-spacing: 2px;
+  }
+  
+  .footer-bottom .paragraph .title{
+    color: #ccc;
+  
+    font-size: 16px;
+  
+    text-decoration: none;
+  }
+  
+  .footer-bottom span {
+    text-transform: uppercase;
+  }
+ 

@@ -1,6 +1,6 @@
 import React from "react";
-import "../styles/components/test.css";
-export default function Test() {
+import "../styles/components/footer.css";
+export default function Footer() {
   return (
     <>
       <footer>
@@ -59,7 +59,7 @@ export default function Test() {
             </li>
           </ul>
         </div>
-
+{/* 
         <div class="footer-bottom">
           <p className="paragraph">
             Developed By : <span id="year"></span>{" "}
@@ -67,7 +67,7 @@ export default function Test() {
               VIIT Students
             </a>{" "}
           </p>
-        </div>
+        </div> */}
       </footer>
     </>
   );

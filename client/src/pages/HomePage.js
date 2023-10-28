@@ -6,6 +6,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import Payment from "./Payment";
 import Header from "../components/Header";
 import CustomerProfileCard from "../components/CustomerProfileCard";
+import Footer from "../components/Footer";
 const { fetchAPI, isLoggedIn } = require("../components/UserFunctions");
 function HomePage() {
   const data = {
@@ -28,6 +29,7 @@ function HomePage() {
       {/* <Payment></Payment> */}
 
       <ToastContainer />
+      <Footer></Footer>
     </>
   );
 }

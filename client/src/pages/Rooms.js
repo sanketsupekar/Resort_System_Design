@@ -6,6 +6,7 @@ import { fetchGetAPI } from "../components/UserFunctions";
 import {API_getAllRooms} from "../api/index";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
 export default function Rooms() {
   const [rooms,setRooms] =useState([]);
   const [loading, setLoading] = useState(false);
@@ -84,6 +85,7 @@ export default function Rooms() {
           })}
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 }

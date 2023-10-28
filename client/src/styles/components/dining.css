@@ -1,0 +1,78 @@
+.dining-page {
+    /* width: 70%; */
+    display: flex;
+    justify-content: center;
+}
+
+div{
+/* border: 1px solid red; */
+}
+.dining-page .containers{
+    width: 70%;
+}
+.dining-page .container_one{
+    margin-top: 1rem;
+    text-align: center;
+}
+
+
+.dining-page .container_two {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: space-between;
+    /* padding: 20px; */
+  }
+
+  .dining-page .container_two .right-pane{
+    width: 35%;
+}
+.dining-page .container_two .left-pane{
+    width: 60%;
+}
+
+.dining-page .container_two .split-pane{
+ 
+}
+.dining-page .container_two .left-pane img{
+    width: 100%;
+}
+
+.dining-page .container_two .right-pane{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.dining-page .container_two .right-pane .paragraph{
+ text-align: center;
+}
+.dining-page .container_two .right-pane .title{
+    margin: 0.5rem;
+    text-align: center;
+}
+
+
+
+
+.dining-page .container_three{
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: #f7f7f7;
+}
+
+.dining-page .container_three .container-item{
+    padding: 1rem;
+}
+.dining-page  .img-container .img{
+    width: 100%;
+}
+
+.dining-page  .info-container .title{
+    margin-top: 0;
+}
+
+.dining-page  .info-container .sub-title{
+    margin-top: 0;
+    width: 100%;
+}

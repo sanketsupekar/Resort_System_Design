@@ -9,6 +9,7 @@ import { fetchAPI,isLoggedIn } from "../components/UserFunctions";
 import LoadingSpinner from "../components/LoadingSpinner";
 import PageNotFound from "./PageNotFound"
 import { useParams } from "react-router-dom";
+import Footer from "../components/Footer";
 export default function PaymentReceipt() {
   const { bookingId } = useParams();
   const [loading, setLoading] = useState(false);
@@ -218,10 +219,12 @@ export default function PaymentReceipt() {
                 content={() => componentRef.current}
               ></ReactToPrint>
             </div>{" "}
+            <Footer></Footer>
           </Fragment>
         ) : (
           <Fragment> </Fragment>
         )}
+        
       </Fragment> : <PageNotFound></PageNotFound>}
     </Fragment>
   );

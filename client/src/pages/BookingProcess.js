@@ -7,6 +7,7 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import { Fragment } from "react";
 import "../styles/components/bookingProcess.css";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 const { API_getRoomDetails } = require("../api/index");
 const { displayIcon, fetchAPI,isLoggedIn } = require("../components/UserFunctions");
 
@@ -177,8 +178,11 @@ export default function BookingProcess() {
             </button>
           </div>
         </div>
-      </div> </Fragment>}
+      </div> 
+      <Footer></Footer>
       </Fragment>}
+      </Fragment>}
+ 
     </Fragment>
   );
 }

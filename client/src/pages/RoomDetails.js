@@ -9,6 +9,7 @@ import { Fragment } from "react";
 import Header from "../components/Header";
 import "../styles/components/roomDetails.css";
 import AmenitiesCard from "../components/AmenitiesCard";
+import Footer from "../components/Footer";
 const { API_getRoomDetails } = require("../api/index");
 const { displayIcon, fetchAPI } = require("../components/UserFunctions");
 
@@ -138,7 +139,9 @@ useEffect(()=>{
               </div>
             </div>
           </div>{" "}
+          <Footer></Footer>
         </Fragment>
+       
       )}
     </>
   );

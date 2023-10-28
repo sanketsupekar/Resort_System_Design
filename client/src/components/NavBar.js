@@ -19,7 +19,7 @@ function Navbar() {
     <Fragment>
       <div className="navbar">
         <div className="navbar-container">
-          <a href="#" className="logo">
+          <a href="/" className="logo">
             <img className="img" src={primaryIcon} alt="logo" />
           </a>
           <ul className="nav-list">
@@ -34,7 +34,7 @@ function Navbar() {
               </a>
             </li>
             <li className="nav-item">
-              <a className="item" href="#">
+              <a className="item" href="/dining">
                 Dining
               </a>
             </li>
