@@ -85,4 +85,11 @@ async function updateAuthToken(user, token)
     })
     return updateData;
 }
-module.exports = {sendOTPMail, customerRegister,customerExist,getCustomerDetails, getAuthToken, updateAuthToken};
+async function updatePassword(data)
+{
+  console.log(data);
+  const updated = await Customer.updateOne({_id : data._id}, {password : data.password});
+  console.log(updated);
+  return updated;
+}
+module.exports = {sendOTPMail, customerRegister,customerExist,getCustomerDetails, getAuthToken, updateAuthToken,updatePassword};

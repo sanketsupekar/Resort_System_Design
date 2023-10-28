@@ -6,20 +6,20 @@ import { Link } from "react-router-dom";
 
 function RegistrationForm(props) {
   const [formData, setFormData] = useState({
-    firstName: "Sanket",
-    lastName: "Supekar",
-    email: "sanketsupekar123@gmail.com",
-    phoneNumber: "9130420859",
-    password: "sanket",
-    confirmPassword: "sanket",
-    gender: "Male", // Default value
-    // firstName: "",
-    // lastName: "",
-    // email: "",
-    // phoneNumber: "",
-    // password: "",
-    // confirmPassword: "",
+    // firstName: "Sanket",
+    // lastName: "Supekar",
+    // email: "sanketsupekar123@gmail.com",
+    // phoneNumber: "9130420859",
+    // password: "sanket",
+    // confirmPassword: "sanket",
     // gender: "Male", // Default value
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    password: "",
+    confirmPassword: "",
+    gender: "Male", // Default value
   });
 
   const handleChange = (e) => {

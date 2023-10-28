@@ -12,6 +12,7 @@ const {
   getCustomerDetails,
   getAuthToken,
   updateAuthToken,
+  updatePassword
 } = require("../controllers/customer.controller");
 const {
   setOtpWithExpiration,
@@ -72,6 +73,29 @@ router.post("/signin", (req, res) => {
     .catch((e) => console.log(e));
 });
 
+router.post("/updatePassword",Authenticate,(req,res)=>{
+  const id = req.userId;
+  const password = req.body.password;
+  const confirmPassword = req.body.password;
+  if(password == confirmPassword)
+  {
+      const data = {
+        _id : id,
+        password : password,
+      }
+        updatePassword(data).then((result)=>{
+          res.status(200).json({success : true, message : "Password Updated !"});
+        }).catch((e)=>{
+          res.status(400).json({success : false, message : "Password Updating Failed !"});
+        })
+  }
+  else
+  {
+    res.status(400).json({success : false , message : "Forget Password Failed"});
+  }
+
+})
+
 router.post("/userAlreadyExist", (req, res) => {
   console.log(req);
   const userMail = req.body.email;
@@ -84,11 +108,14 @@ router.post("/userAlreadyExist", (req, res) => {
     .catch((e) => console.log(e));
 });
 router.post("/generateOTP", (req, res) => {
-  //console.log(req.body);
+  console.log(req.body);
   const customerEmail = req.body.email;
   const emailSubject = "Email Verification";
   const verificationOTP = randomOtpGenerate();
   setOtpWithExpiration(customerEmail, verificationOTP);
+  // res
+  //   .status(200)
+  //   .json({ message: "Email Sent Successfully " + verificationOTP });
   sendOTPMail(customerEmail, emailSubject, verificationOTP)
     .then((result) => {
       res.status(200).json({ message: "Email Sent Successfully" });
@@ -114,18 +141,47 @@ router.post("/verificationOTP", (req, res) => {
   }
 });
 
+router.post("/userAndOtpVerification", (req, res) => {
+  const email = req.body.userEmail;
+  const otp = req.body.userOtp;
+  const generatedOtp = getOtp(email);
+  console.log(otp + " " + generatedOtp);
+  if (otp == generatedOtp) {
+    customerExist(email)
+      .then((result) => {
+        if (result != null) {
+          const token = jwt.sign({ _id: result._id }, process.env.SECREAT_KEY);
+          updateAuthToken(result, token);
+          res.cookie("jwtoken", token, {
+            expires: new Date(Date.now() + tokenExpir),
+            httpOnly: true,
+          });
+          // console.log(result);
+          res.status(200).json({ success: true, message: "Email Verified !" });
+        } else {
+          res
+            .status(400)
+            .json({ success: false, message: "Email Not Registered" });
+        }
+      })
+      .catch((e) => console.log(e));
+  } else {
+    res.status(400).json({ message: "Email Verification Failed" });
+  }
+});
+
 router.get("/getProfileDetails", Authenticate, (req, res) => {
   // console.log(req.rootUser);
-  const {firstName, lastName, email} = req.rootUser;
+  const { firstName, lastName, email } = req.rootUser;
   // console.log(firstName +" "+lastName);
-  res.status(200).json({name : firstName +" "+lastName, email : email});
+  res.status(200).json({ name: firstName + " " + lastName, email: email });
 });
 
 router.get("/getAllRooms", (req, res) => {
   // console.log("Reached");
   getAllRooms()
     .then((result) => {
-      res.status(200).json({rooms : result});
+      res.status(200).json({ rooms: result });
     })
     .catch((e) => {
       res.status(400).send(e);
@@ -184,7 +240,7 @@ router.post("/roomDetails", Authenticate, (req, res) => {
   getRoomDetails(roomId)
     .then((result) => {
       // console.log("Result : " + result);
-      res.status(200).json({ success: true, ...result._doc});
+      res.status(200).json({ success: true, ...result._doc });
     })
     .catch((e) => {
       console.log(e);

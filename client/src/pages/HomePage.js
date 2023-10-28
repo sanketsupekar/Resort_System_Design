@@ -15,10 +15,10 @@ function HomePage() {
       image : "resort_header.jpg"
   };
   const navigate = useNavigate();
-  useEffect(() => {
-    //console.log(isLoggedIn);
-    if (!isLoggedIn()) navigate("/signin");
-  }, []);
+  // useEffect(() => {
+  //   //console.log(isLoggedIn);
+  //   if (!isLoggedIn()) navigate("/signin");
+  // }, []);
   return (
     <>
       <Navbar />

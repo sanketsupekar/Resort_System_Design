@@ -13,7 +13,7 @@ export default function Header(props) {
         <div className=" header_content">
           <h1 className="header_title">{props.data.title}</h1>
           <p className="header_sub_title"> {props.data.sub_title}</p>
-         { props.data.button_name !== undefined && <button className="header_button">Log Out</button>}
+         { props.data.button_name !== undefined && <button className="header_button" onClick={props.buttonClick}>Log Out</button>}
         </div>
       </div>
     </div>

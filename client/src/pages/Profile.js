@@ -7,6 +7,9 @@ import { API_getProfileDetails } from "../api/index";
 import LoadingSpinner from "../components/LoadingSpinner";
 import Header from "../components/Header";
 import PageNotFound from "./PageNotFound";
+import { Navigate, useNavigate } from 'react-router-dom';
+const {loggedOut} = require('../components/UserFunctions');
+
 export default function Profile() {
 //   const headerData = {
 //     title: "Sanket Supekar",
@@ -19,6 +22,13 @@ export default function Profile() {
   const [loggedIn, setLogin] = useState(isLoggedIn());
   const [headerData, setHeaderData] = useState({})
   // function handleBookingDetails(bookingId)
+  const navigate = useNavigate();
+  
+  function handleLogOutClick()
+  {
+    loggedOut();
+        navigate('/signin');
+  }
   async function getProfileDetails() {
     // setLoading(true);
     const respones = await fetchGetAPI(API_getProfileDetails);
@@ -41,7 +51,7 @@ export default function Profile() {
      {loggedIn && <Fragment>
      <Navbar></Navbar>
       {loading ? <LoadingSpinner/> : <Fragment/>}
-      {(headerData.title !== undefined) && <Header data = {headerData}/>}
+      {(headerData.title !== undefined) && <Header data = {headerData} buttonClick = {handleLogOutClick}/>}
       </Fragment>}
       {!loggedIn && <PageNotFound></PageNotFound>}
     </Fragment>

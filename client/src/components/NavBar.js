@@ -22,47 +22,51 @@ function Navbar() {
           <a href="#" className="logo">
             <img className="img" src={primaryIcon} alt="logo" />
           </a>
-          {loggedIn && (
-            <ul className="nav-list">
-              <li className="nav-item">
-                <a className="item" href="/">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="item" href="/rooms">
-                  Rooms
-                </a>
-              </li>
-              <li className="nav-item">
-        <a className="item" href="#">Dining</a>
-      </li>
-              <li className="nav-item">
-                <a className="item" href="/booking">
-                  Book Now
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="item" href="/reserved">
-                  Reservations
-                </a>
-              </li>
-            </ul>
-          )}
-          {!loggedIn && (
-            <ul className="nav-list">
-              <li className="nav-item">
-                <a className="item" href="/signin">
-                  Sign In
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="item" href="/signup">
-                  Sign Up
-                </a>
-              </li>
-            </ul>
-          )}
+          <ul className="nav-list">
+            <li className="nav-item">
+              <a className="item" href="/">
+                Home
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="item" href="/rooms">
+                Rooms
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="item" href="#">
+                Dining
+              </a>
+            </li>
+            {loggedIn ? (
+              <Fragment>
+                <li className="nav-item">
+                  <a className="item" href="/booking">
+                    Book Now
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="item" href="/reserved">
+                    Reservations
+                  </a>
+                </li>
+              </Fragment>
+            ) : (
+              <Fragment>
+                <li className="nav-item">
+                  <a className="item" href="/signin">
+                    Sign In
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="item" href="/signup">
+                    Sign Up
+                  </a>
+                </li>
+              </Fragment>
+            )}
+          </ul>
+
           {loggedIn && (
             <div className="icon-buttons">
               <div className="icon-item">
@@ -74,7 +78,6 @@ function Navbar() {
                   onClick={handleProfileClick}
                   src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2OTgyNDMzOTN8&ixlib=rb-4.0.3&q=85"
                 ></img>
-              
               </div>
             </div>
           )}
