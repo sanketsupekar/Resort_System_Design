@@ -12,7 +12,7 @@ const {
   getCustomerDetails,
   getAuthToken,
   updateAuthToken,
-  updatePassword
+  updatePassword,
 } = require("../controllers/customer.controller");
 const {
   setOtpWithExpiration,
@@ -39,6 +39,8 @@ const {
   generateTransactionId,
   insertBookingPayment,
   getPaymentDetails,
+  checkout,
+  paymentVerification,
 } = require("../controllers/payment.controller");
 const { default: mongoose } = require("mongoose");
 const Room = require("../model/room.model");
@@ -73,28 +75,28 @@ router.post("/signin", (req, res) => {
     .catch((e) => console.log(e));
 });
 
-router.post("/updatePassword",Authenticate,(req,res)=>{
+router.post("/updatePassword", Authenticate, (req, res) => {
   const id = req.userId;
   const password = req.body.password;
   const confirmPassword = req.body.password;
-  if(password == confirmPassword)
-  {
-      const data = {
-        _id : id,
-        password : password,
-      }
-        updatePassword(data).then((result)=>{
-          res.status(200).json({success : true, message : "Password Updated !"});
-        }).catch((e)=>{
-          res.status(400).json({success : false, message : "Password Updating Failed !"});
-        })
+  if (password == confirmPassword) {
+    const data = {
+      _id: id,
+      password: password,
+    };
+    updatePassword(data)
+      .then((result) => {
+        res.status(200).json({ success: true, message: "Password Updated !" });
+      })
+      .catch((e) => {
+        res
+          .status(400)
+          .json({ success: false, message: "Password Updating Failed !" });
+      });
+  } else {
+    res.status(400).json({ success: false, message: "Forget Password Failed" });
   }
-  else
-  {
-    res.status(400).json({success : false , message : "Forget Password Failed"});
-  }
-
-})
+});
 
 router.post("/userAlreadyExist", (req, res) => {
   console.log(req);
@@ -389,6 +391,34 @@ router.get("/room/bookedCard", Authenticate, (req, res) => {
     .catch((e) => {
       console.log(e);
       res.status(400).json({ success: false, message: "BookedCard Not Found" });
+    });
+});
+
+router.post("/checkout", Authenticate, (req, res) => {
+  checkout(req.body, req.rootUser)
+    .then((result) => {
+      res.status(200).send(result);
+    })
+    .catch((e) => {
+      res.status(400).send(e);
+    });
+});
+router.get("/getPaymentKey", (req, res) => {
+  res.status(200).json({ key: process.env.RAZORPAY_KEY_ID });
+});
+
+router.post("/paymentVerification", (req, res) => {
+  console.log(req.body);
+  paymentVerification(req.body)
+    .then((result) => {
+      // res.status(200).json({
+      //   success : true,message : "Payment Successfull !"
+      // });
+      res.redirect("http://localhost:3000/reserved");
+    })
+    .catch((e) => {
+      console.log(e);
+      res.status(500).send(e);
     });
 });
 
