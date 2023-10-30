@@ -37,6 +37,7 @@ function App() {
         <Route path="/booking" element = {<Booking/>}></Route>
         <Route path="/rooms/bookingProcess" element = {<BookingProcess/>}></Route>
         <Route path="/rooms/bookingProcess/payment" element = {<Payment/>}></Route>
+        {/* <Route path="/payment" element = {<Payment/>}></Route> */}
         <Route path="/reserved" element = {<YourReserved/>}></Route>
         <Route path="/reserved/:bookingId" element = {<PaymentReceipt/>}></Route>
         <Route path="/pageNotFound" element = {<PageNotFound/>}></Route>
