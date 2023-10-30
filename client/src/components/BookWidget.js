@@ -42,7 +42,7 @@ function BookWidget(props) {
   //complete time formate
 
   function checkInToCheckOut() {
-    setEndDate(new Date(new Date().setDate(checkInDate.getDate() + 1)));
+    setEndDate(new Date(checkInDate.getTime() + (24 * 60 * 60 * 1000)));
   }
   function totalDaysSelected() {
     const timeDifference = Math.abs(

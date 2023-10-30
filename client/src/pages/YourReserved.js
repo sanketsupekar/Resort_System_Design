@@ -10,7 +10,7 @@ import PageNotFound from "./PageNotFound";
 import Footer from "../components/Footer";
 export default function YourReserved() {
   const headerData = {
-    title: "Your Reserved",
+    title: "Reservations",
     sub_title:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde quod autem commodi iste eum omnis saepe temporibus? Veniam ipsam, exercitationem laborum quaerat rerum repellendus voluptatibus quod quae impedit officia quas.",
     image: "reserved_header.jpg",

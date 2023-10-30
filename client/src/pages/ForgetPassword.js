@@ -189,7 +189,10 @@ function ForgetPassword() {
         </div>
       </div>
       <ToastContainer />
-      <Footer></Footer>
+      <div className="footer-at-end">
+       {/* <Footer></Footer> */}
+      </div>
+     
     </>
   );
 }

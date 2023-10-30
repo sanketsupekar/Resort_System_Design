@@ -3,6 +3,7 @@ import "../styles/components/footer.css";
 export default function Footer() {
   return (
     <>
+    <div className="footer">
       <footer>
         <div class="footer-content">
           {/* <i class="fa-regular fa-location-pin"></i> */}
@@ -69,6 +70,7 @@ export default function Footer() {
           </p>
         </div> */}
       </footer>
+      </div>
     </>
   );
 }

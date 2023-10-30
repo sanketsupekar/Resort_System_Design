@@ -7,6 +7,7 @@ import {API_getAllRooms} from "../api/index";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
+import {room_main} from "../image/index";
 export default function Rooms() {
   const [rooms,setRooms] =useState([]);
   const [loading, setLoading] = useState(false);
@@ -39,7 +40,7 @@ export default function Rooms() {
         <div className="overview">
           <div className="overview-container">
             <div className="container-item img-container">
-              <img className="img" src="/img/header/resort_header.jpg" />
+              <img className="img" src={room_main} />
             </div>
             <div className="container-item info-container">
               <h2 className="title">OUR ROOMS</h2>

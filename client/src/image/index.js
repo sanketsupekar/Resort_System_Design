@@ -5,3 +5,4 @@ export const delux_room = "/img/rooms/delux_room.jpg"
 export const dining_main = "/img/dining/dining_main.jpg";
 export const dining_staff = "/img/dining/dining_staff.jpg"
 export const dining_sub = "/img/dining/dining_breakfast.jpg"
+export const room_main = "/img/rooms/room_main.jpg";

@@ -56,6 +56,7 @@ div{
 
 .dining-page .container_three{
     margin-top: 5rem;
+    margin-bottom: 5rem;
     display: flex;
     flex-direction: row-reverse;
     background-color: #f7f7f7;

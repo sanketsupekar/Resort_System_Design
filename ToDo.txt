@@ -1,3 +1,2 @@
-1 .reserved date formate
-2. boking in process prevent from reserved
-3. Email Send of Payment
+1. Footer fix location (Not Done)
+2. Forgot password otp timmer
