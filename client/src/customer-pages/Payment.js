@@ -9,7 +9,7 @@ import PageNotFound from "./PageNotFound";
 
 import { fetchAPI, fetchGetAPI, isLoggedIn } from "../components/UserFunctions";
 const { displaySuccess, displayError } = require("../components/NotifyToast");
-const { API_payment, API_getProfileDetails } = require("./../api/index");
+const { API_payment, API_getProfileDetails } = require("../api/index");
 const resort_name = "Coconut County Resort";
 const resort_img_url =
   "https://github.com/sanketsupekar/Resort_System_Design/assets/72608053/9824ec38-d406-485e-af53-41c7119c7f72";

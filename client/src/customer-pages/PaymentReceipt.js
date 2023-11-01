@@ -182,7 +182,7 @@ export default function PaymentReceipt() {
                           <p>{invoice.paymentMethod}</p>
                         </div>
                       </div>
-                      <div className="container_mid"></div>
+                      {/* <div className="container_mid"></div>
                       <div className="container">
                         <div>
                           <p className="bold_para">Transaction ID</p>
@@ -193,7 +193,7 @@ export default function PaymentReceipt() {
                         <div>
                           <p>{invoice.paymentTransactionId}</p>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
