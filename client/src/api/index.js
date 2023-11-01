@@ -14,4 +14,4 @@ export const API_getBookedCard = "/api/room/bookedCard";
 export const API_getProfileDetails = "/api/getProfileDetails"
 export const API_getAllRooms = "/api/getAllRooms";
 export const API_updatePassword = "/api/updatePassword";
-
+export const API_contactus ='/api/contactus';

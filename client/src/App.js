@@ -21,6 +21,7 @@ import Profile from "./pages/Profile";
 import YourReserved from "./pages/YourReserved";
 import Rooms from "./pages/Rooms";
 import Dining from "./pages/Dining";
+import Enquire from "./pages/Enquire";
 function App() {
 
   return (
@@ -33,11 +34,12 @@ function App() {
         <Route path="/signout" element = {<SignOut/>}></Route>
         <Route path="/rooms" element = {<Rooms/>}></Route>
         <Route path="/dining" element = {<Dining/>}></Route>
+        <Route path="/enquire" element = {<Enquire/>}></Route>
         <Route path="/rooms/:roomId" element = {<RoomDetails/>}></Route>
         <Route path="/booking" element = {<Booking/>}></Route>
         <Route path="/rooms/bookingProcess" element = {<BookingProcess/>}></Route>
         <Route path="/rooms/bookingProcess/payment" element = {<Payment/>}></Route>
-        {/* <Route path="/payment" element = {<Payment/>}></Route> */}
+        <Route path="/payment" element = {<Payment/>}></Route>
         <Route path="/reserved" element = {<YourReserved/>}></Route>
         <Route path="/reserved/:bookingId" element = {<PaymentReceipt/>}></Route>
         <Route path="/pageNotFound" element = {<PageNotFound/>}></Route>

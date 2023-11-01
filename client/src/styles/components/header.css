@@ -5,7 +5,7 @@
   height: 70vh;
   background-repeat:no-repeat;
   /* background-position: ; */
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
   background-size:cover;
   display: flex;
   justify-content: center;
@@ -38,6 +38,12 @@
     animation-fill-mode: forwards;
 }
 
+.header .header_content{
+  
+  animation-name: header-fade;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
 
 .header .header_content .header_sub_title {
   /* margin: 0; */

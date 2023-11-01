@@ -1,0 +1,103 @@
+.room-suites-component .container {
+    width: 70%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    animation-name: header-fade;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    padding-bottom: 1rem;
+  }
+  @keyframes header-fade {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+  .room-suites-component .row {
+    /* display: -webkit-box;
+    display: -ms-flexbox; */
+    display: flex;
+    /* -ms-flex-wrap: wrap; */
+    flex-wrap: wrap;
+    /* margin-right: -15px;
+    margin-left: -15px; */
+    justify-content: space-between;
+    text-align: center;
+  }
+  .room-suites-component .mb-5,
+  .my-5 {
+    margin-bottom: 3rem !important;
+  }
+  .room-suites-component .col-md-7 {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  
+  .room-suites-component .col-lg-4 {
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%;
+  }
+  .room-suites-component .room {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    color: black;
+  }
+  .room-suites-component .room .img-wrap {
+    position: relative;
+    overflow: hidden;
+  }
+  .room-suites-component .room .img-wrap img {
+    -webkit-transition: 0.3s all ease-in-out;
+    -o-transition: 0.3s all ease-in-out;
+    transition: 0.3s all ease-in-out;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    margin-bottom: 0 !important;
+  }
+  .room-suites-component .room:hover .img-wrap img,
+  .room-suites-component .room:focus .img-wrap img {
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+  .room-suites-component .img-fluid{
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    border-style: none;
+  }
+  .room-suites-component .mb-3,
+  .my-3 {
+    margin-bottom: 1rem !important;
+  }
+  
+  .room-suites-component .p-3 {
+    padding: 1rem !important;
+  }
+  .room-suites-component .text-center {
+    text-align: center !important;
+  }
+  .room-suites-component .heading{
+    font-size: 60px;
+    font-family: "Playfair Display", times, serif;
+    font-weight: 700;
+  }
+  .room-suites-component .sub-heading{
+    /* width: 70%; */
+    margin: 0rem 10rem;
+    text-align: center;
+    /* font-size: 60px; */
+    /* font-family: "Playfair Display", times, serif; */
+    /* font-weight: 700; */
+  }

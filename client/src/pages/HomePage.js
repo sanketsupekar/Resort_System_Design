@@ -7,6 +7,9 @@ import Payment from "./Payment";
 import Header from "../components/Header";
 import CustomerProfileCard from "../components/CustomerProfileCard";
 import Footer from "../components/Footer";
+import HomeWelcome from "../components/HomeWelcome"
+import HomeRoomSuites from "../components/HomeRoomSuites"
+import HomePhotos from "../components/HomePhotos";
 const { fetchAPI, isLoggedIn } = require("../components/UserFunctions");
 function HomePage() {
   const data = {
@@ -24,12 +27,15 @@ function HomePage() {
     <>
       <Navbar />
       <Header data = {data} />
-     
+     <HomeWelcome></HomeWelcome>
+     <HomeRoomSuites></HomeRoomSuites>
+     <HomePhotos></HomePhotos>
       {/* <h1>Dashboard</h1> */}
       {/* <Payment></Payment> */}
 
       <ToastContainer />
       <Footer></Footer>
+
     </>
   );
 }

@@ -38,6 +38,12 @@ function Navbar() {
                 Dining
               </a>
             </li>
+
+            <li className="nav-item">
+              <a className="item" href="/enquire">
+                Enquire
+              </a>
+            </li>
             {loggedIn ? (
               <Fragment>
                 <li className="nav-item">

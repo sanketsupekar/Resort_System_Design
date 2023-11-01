@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import Navbar from "./NavBar";
 import "../styles/components/reservedCard.css";
-import bootstrap from "bootstrap";
 import { useNavigate } from "react-router-dom";
 
 export default function ReservedCard(props) {

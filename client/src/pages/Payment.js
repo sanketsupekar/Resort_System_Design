@@ -85,14 +85,15 @@ export default function Payment() {
     razor.open();
   }
   function handlePaymentClick() {
-    setVisiblility(false);
-    paymentProcess();
+    
   }
   useEffect(() => {
     if (state == undefined) {
       navigate("/pageNotFound");
     }
-    console.log(state);
+    setVisiblility(false);
+    paymentProcess();
+    // console.log(state);
   }, []);
   return (
     <Fragment>

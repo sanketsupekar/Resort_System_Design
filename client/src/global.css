@@ -6,7 +6,9 @@
   --link-color: #007BFF;
   --accent-color: #FFC107;
 }
-
+p{
+  line-height: 1.5;
+}
 /* Globle Button */
  .globle_button_design{
   z-index: 0;

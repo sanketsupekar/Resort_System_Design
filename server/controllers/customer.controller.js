@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 require('dotenv').config();
 const Customer = require('../model/customer.model');
-
+const ContactUs = require('../model/contact.model')
 function getOtpformat(verificationOTP)
 {
   return `<div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
@@ -92,4 +92,9 @@ async function updatePassword(data)
   console.log(updated);
   return updated;
 }
-module.exports = {sendOTPMail, customerRegister,customerExist,getCustomerDetails, getAuthToken, updateAuthToken,updatePassword};
+async function insertContactRequest(contactData)
+{
+  const inserted = ContactUs.create(contactData);
+  return inserted;
+}
+module.exports = {sendOTPMail, customerRegister,customerExist,getCustomerDetails, getAuthToken, updateAuthToken,updatePassword,insertContactRequest};
