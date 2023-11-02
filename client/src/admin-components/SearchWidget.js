@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import "../styles/components/bookWidget.css";
+import "../styles/admin-styles/searchWidget.css";
 
-function BookWidget(props) {
+function SearchWidget (props) {
   const dayStartWith = 9;
   const dayEndWith = 8;
 
@@ -15,43 +15,41 @@ function BookWidget(props) {
   const [formData, setFormData] = useState({
     checkInDate: initalInDate,
     checkOutDate: initalOutDate,
-    totalDays: 1,
-    adults: 0,
-    childrens: 0,
+    searchBar : ""
   });
   const [checkInDate, setStartDate] = useState(initalInDate);
   const [checkOutDate, setEndDate] = useState(initalOutDate);
-  const [adultCount, setAdultCount] = useState(1);
-  const [childrenCount, setChildrenCount] = useState(0);
+  const [searchBar, setSearchBar] = useState("");
 
   const handleStartDateChange = (date) => {
     setStartDate(date);
+    // console.log(formData);
   };
 
   const handleEndDateChange = (date) => {
     setEndDate(date);
+    
   };
 
-  function handleCheckAvailability() {
-    // console.log(formData.checkInDate.toLocaleString());
-    // console.log(formData.checkOutDate.toLocaleString());
-    console.log(formData);
-    props.handleCheckAvailability(formData);
-  }
+  const handleSearchClick = (e) =>{
+    const {name , value} = e.target;
+    setSearchBar(value);
 
+  }
+  function handleCheckAvailability(){
+    props.dateOnChangeHandle(formData);
+  }
+  const handleSearchOnChange = (e) =>{
+     const {name , value} = e.target;
+     setSearchBar(value);
+  }
   // Update  checkOutDate when checkIndate is equal to its
   //complete time formate
 
   function checkInToCheckOut() {
     setEndDate(new Date(checkInDate.getTime() + (24 * 60 * 60 * 1000)));
   }
-  function totalDaysSelected() {
-    const timeDifference = Math.abs(
-      checkOutDate.getTime() - checkInDate.getTime()
-    );
-    const totalDays = Math.ceil(timeDifference / (1000 * 3600 * 24));
-    return totalDays;
-  }
+
 
   useEffect(() => {
     if ( new Date(checkInDate.setHours(0, 0, 0, 0)) >= new Date(checkOutDate.setHours(0, 0, 0, 0))) {
@@ -61,21 +59,19 @@ function BookWidget(props) {
   }, [checkInDate]);
   useEffect(() => {
     setFormData({
-      ...formData,
       checkInDate: checkInDate,
       checkOutDate: checkOutDate,
-      totalDays: totalDaysSelected(),
-      adults: adultCount,
-      childrens: childrenCount,
+      searchBar : searchBar
     });
-  }, [checkInDate, checkOutDate, adultCount, childrenCount]);
+  }, [checkInDate, checkOutDate,searchBar]);
   return (
     <>
-      <div className="book_widget">
+      <div className="search_widget">
+        
         <div className="book_widget_container">
           <div className="date_picker">
             <div className="start_date_container">
-              <label className="date_picker_lable">Check-In </label>
+              <label className="date_picker_lable">From </label>
               <DatePicker
                 className="start_picker"
                 selected={checkInDate}
@@ -90,7 +86,7 @@ function BookWidget(props) {
             </div>
             {/* <label> TO </label> */}
             <div className="end_date_container">
-              <label className="date_picker_lable">Check-Out </label>
+              <label className="date_picker_lable">To </label>
               <DatePicker
                 className="end_picker"
                 selected={checkOutDate}
@@ -107,52 +103,20 @@ function BookWidget(props) {
           <label>Total Days: {totalDays} </label>
         </div> */}
           </div>
-          <div className="person_picker">
-            <div className="adult_picker">
-              <label className="person_lable">Adult</label>
-              <div className="person_count">
-                <i
-                  className="fa-solid fa-plus"
-                  onClick={() => {
-                    setAdultCount(adultCount + 1);
-                  }}
-                ></i>
-                <label>{adultCount}</label>
-                <i
-                  className="fa-solid fa-minus"
-                  onClick={() => {
-                    setAdultCount(adultCount > 1 ? adultCount - 1 : adultCount);
-                  }}
-                ></i>
-              </div>
-            </div>
-            <div className="children_picker">
-              <label className="person_lable"> Children</label>
-              <div className="person_count">
-                <i
-                  className="fa-solid fa-plus"
-                  onClick={() => {
-                    setChildrenCount(childrenCount + 1);
-                  }}
-                ></i>
-                <label>{childrenCount}</label>
-                <i
-                  className="fa-solid fa-minus"
-                  onClick={() => {
-                    setChildrenCount(
-                      childrenCount > 0 ? childrenCount - 1 : childrenCount
-                    );
-                  }}
-                ></i>
-              </div>
-            </div>
-          </div>
+          {/* <div class="wrap">
+   <div class="search">
+      <input type="text" name="searchBar" value={searchBar} onChange={handleSearchOnChange} class="searchTerm" placeholder="Customer Name / Email / Phone"/>
+      <button  onClick={handleSearchClick} class="searchButton">
+        <i class="fa fa-search"></i>
+     </button>
+   </div>
+</div> */}
           <div className="check_availability">
             <button
               className="availability_button"
               onClick={handleCheckAvailability}
             >
-              Check Availability
+              Search Booking
             </button>
           </div>
         </div>
@@ -160,4 +124,4 @@ function BookWidget(props) {
     </>
   );
 }
-export default BookWidget;
+export default SearchWidget;

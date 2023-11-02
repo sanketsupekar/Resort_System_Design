@@ -1,0 +1,21 @@
+
+.date-line{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.date-line .date-line-container{    
+    width: 70%;
+    display: flex;
+}
+.date-line .date-line-container .date{
+    color: gray;
+    padding: 0rem 1rem;
+}
+.date-line .date-line-container .line{
+    width: 100%;
+    height: 0;
+    /* justify-self: center; */
+    align-self: center;
+    border: gray 1px solid;
+}

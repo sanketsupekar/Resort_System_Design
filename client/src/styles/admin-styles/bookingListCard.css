@@ -1,0 +1,57 @@
+/* div{
+    border: 1px solid red;
+} */
+.booking-list-card {
+    /* width: ; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+
+}
+.booking-list-card .card-container{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid gray;
+    padding: 1rem;
+    border-radius: 0.3rem;
+}
+.booking-list-card .card-container .item{
+    display: flex;
+    
+}
+.booking-list-card .card-container .icon, .title{
+    margin: 0;
+    padding: 0.5rem;
+    line-height: 1;
+}
+.booking-list-card .card-container .button{
+    height: 100%;
+    background-color: white;
+    border-radius: 0.5rem;
+}
+.booking-list-card .card-container .button:hover{
+    background-color: black;
+    color: white;
+}
+.booking-list-card{
+    
+}
+
+.booking-list-card{
+    
+}
+.booking-list-card{
+    
+}
+.booking-list-card{
+    
+}
+.booking-list-card{
+    
+}
+.booking-list-card{
+    
+}

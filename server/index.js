@@ -1,7 +1,7 @@
 //console.log("Project Runnig");
 //qyre btbx oagg tiwj
 const express = require("express");
-const apiRouter = require("./routes");
+const apiRouter = require("./routes/index");
 const Razorpay = require("razorpay");
 require("dotenv").config();
 const port = process.env.PORT || 3001;

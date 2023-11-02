@@ -2,6 +2,8 @@ const { default: mongoose } = require("mongoose");
 const Room = require("../model/room.model");
 const Booking = require("../model/booking.model");
 const { checkout } = require("../routes");
+const dayStartWith = 9;
+const dayEndWith = 8;
 function getAllRooms() {
   const roomData = Room.find();
   return roomData;

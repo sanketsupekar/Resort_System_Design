@@ -1,7 +1,10 @@
 const express = require("express");
 const router = express.Router();
+const app = express();
 const nodemailer = require("nodemailer");
 const jwt = require("jsonwebtoken");
+const adminRouter = require("./adminRoutes");
+
 const cookieParser = require("cookie-parser");
 const { Authenticate } = require("../middleware/authenticate");
 require("dotenv").config();
@@ -46,11 +49,14 @@ const {
 const { default: mongoose } = require("mongoose");
 const Room = require("../model/room.model");
 const { emit } = require("../model/customer.model");
+// const adminRouter = require("./adminRoutes");
 
 // Import the module
+const dayStartWith = 9;
+const dayEndWith = 8;
 const tokenExpir = 86400000; //Expair in one day;
 router.use(cookieParser());
-
+router.use("/admin",adminRouter);
 router.post("/signin", (req, res) => {
   // console.log(req.body);
   const email = req.body.email;
@@ -197,7 +203,7 @@ router.post("/getAvailableRooms", Authenticate, (req, res) => {
     ...setInOutTime({
       checkInDate: req.body.checkInDate,
       checkOutDate: req.body.checkOutDate,
-    }),
+    },dayStartWith,dayEndWith ),
   };
   // console.log(availabilityConfig);
 
@@ -217,7 +223,7 @@ router.post("/room/bookingProcess", Authenticate, (req, res) => {
     ...setInOutTime({
       checkInDate: req.body.checkInDate,
       checkOutDate: req.body.checkOutDate,
-    }),
+    },dayStartWith,dayEndWith),
     customerId: req.userId,
     roomId: new mongoose.Types.ObjectId(req.body.roomId),
     dateOfBooking: new Date(),
@@ -242,7 +248,7 @@ router.post("/roomDetails", Authenticate, (req, res) => {
   // console.log(roomId);
   getRoomDetails(roomId)
     .then((result) => {
-      // console.log("Result : " + result);
+      console.log("Result : " + result);
       res.status(200).json({ success: true, ...result._doc });
     })
     .catch((e) => {

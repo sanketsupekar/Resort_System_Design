@@ -1,0 +1,43 @@
+.admin-booking-process div{
+    border: 1px solid red;
+}
+.admin-booking-process .room_information .margin-zero {
+    padding: 0.5rem 0rem;
+}
+.admin-booking-process .room_information .detail-5 .icon {
+    font-size: 2rem;
+    margin: 0.3rem;
+    border: 1px solid rgba(192, 192, 192, 0.822);
+    color: var(--secondary-color);;
+  }
+.admin-booking-process .booking-information{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.admin-booking-process .booking-information .booking-information-container{
+    width: 80%;
+}
+.admin-booking-process .booking-information .box-conatainer {
+    margin: 1rem;
+    display: flex;
+}
+.admin-booking-process .booking-information .box-conatainer .part{
+    padding: 1rem;
+}
+.admin-booking-process .booking-information .infomation-box{
+    display: flex;
+    
+}
+.admin-booking-process .booking-information{
+    
+}
+
+.admin-booking-process .payment-information{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.admin-booking-process .payment-information .payment-information-container{
+    width: 80%;
+}

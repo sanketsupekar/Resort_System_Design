@@ -6,7 +6,7 @@ const { getRoomDetails } = require("./rooms.controller");
 
 const dayStartWith = 9;
 const dayEndWith = 8;
-function setInOutTime(date) {
+function setInOutTime(date,dayStartWith,dayEndWith) {
   return {
     checkInDate: new Date(new Date(date.checkInDate).setHours(dayStartWith, 0, 0, 0)),
     checkOutDate: new Date(new Date(date.checkOutDate).setHours(dayEndWith, 0, 0, 0)),
@@ -124,6 +124,84 @@ async function getBookedCardDetails(userId) {
 
   return bookedCards;
 }
+
+async function getBookingsDateWise(date)
+{
+  target = setInOutTime(date,dayStartWith,dayEndWith);
+  // console.log(new Date(target.checkInDate).toDateString());
+  // console.log(new Date(target.checkOutDate).toDateString());
+  const bookedRoomQuery = {
+    $and: [
+      {
+        $or: [
+          {
+            $and: [
+              {
+                checkInDate: {
+                  $gte: target.checkInDate,
+                },
+              },
+              {
+                checkInDate: {
+                  $lte: target.checkOutDate,
+                },
+              },
+            ],
+          },
+          {
+            $and: [
+              {
+                checkOutDate: {
+                  $gte: target.checkInDate,
+                },
+              },
+              {
+                checkInDate: {
+                  $lte: target.checkOutDate,
+                },
+              },
+            ],
+          },
+          // {
+          //   $and: [
+          //     {
+          //       checkInDate: {
+          //         $lte: target.checkOutDate,
+          //       },
+          //     },
+          //     {
+          //       checkOutDate: {
+          //         $gte: target.checkOutDate,
+          //       },
+          //     },
+          //   ],
+          // },
+          // {
+          //   $and: [
+          //     {
+          //       checkInDate: {
+          //         $gte: target.checkInDate,
+          //       },
+          //     },
+          //     {
+          //       checkOutDate: {
+          //         $lte: target.checkOutDate,
+          //       },
+          //     },
+          //   ],
+          // },
+        ],
+      },
+      {
+        bookingStatus: {
+          $eq: "Confirmed",
+        },
+      },
+    ],
+  };
+  const bookings = await Booking.find(bookedRoomQuery);
+  return bookings;
+}
 module.exports = {
   bookingProcess,
   getPayableAmount,
@@ -132,4 +210,5 @@ module.exports = {
   updateTrackingDate,
   getBookedCardDetails,
   setInOutTime,
+  getBookingsDateWise,
 };

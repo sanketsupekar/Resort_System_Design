@@ -22,6 +22,8 @@ import YourReserved from "./customer-pages/YourReserved";
 import Rooms from "./customer-pages/Rooms";
 import Dining from "./customer-pages/Dining";
 import Enquire from "./customer-pages/Enquire";
+import AdminHome from "./admin-pages/AdminHome";
+import AdminBookingProcess from "./admin-pages/AdminBookingProcess";
 function App() {
 
   return (
@@ -46,7 +48,11 @@ function App() {
         <Route path="/forgetPassword" element = {<ForgetPassword/>}></Route>
         <Route path="/profile" element={<Profile />}></Route>
         <Route path="/test" element={<Test />}></Route>
-        <Route path="*" element = {<Navigate to='/'/>} ></Route>
+        {/* <Route path="*" element = {<Navigate to='/'/>} ></Route> */}
+
+        {/* Admin Routes */}
+        <Route path="/admin/" element={<AdminHome />}></Route>
+        <Route path="/admin/:bookingId" element={<AdminBookingProcess />}></Route>
         </Routes>
       </BrowserRouter>
     </>
