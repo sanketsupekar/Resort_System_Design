@@ -202,6 +202,66 @@ async function getBookingsDateWise(date)
   const bookings = await Booking.find(bookedRoomQuery);
   return bookings;
 }
+async function getOnlineBookedStatistics(req) {
+  const bookings = await Booking.find();
+  const rooms = await Room.find();
+  
+  // Create a map to store the sum of booking amounts for each room
+  const roomBookingSums = new Map();
+
+  bookings.forEach((booking) => {
+    const room = rooms.find((item) => booking.roomId.toString() === item._id.toString());
+
+    if (room) {
+      const roomId = room._id.toString();
+      const bookingAmount = booking.amount;
+
+      // If the room is already in the map, add the booking amount to the sum
+      if (roomBookingSums.has(roomId)) {
+        roomBookingSums.set(roomId, roomBookingSums.get(roomId) + bookingAmount);
+      } else {
+        // If the room is not in the map, initialize the sum with the booking amount
+        roomBookingSums.set(roomId, bookingAmount);
+      }
+    }
+  });
+
+  // Convert the map to an array of objects
+  const bookedRooms = Array.from(roomBookingSums, ([roomId, totalAmount]) => ({
+    roomName: rooms.find((item) => item._id.toString() === roomId).title,
+    totalBookingAmount: totalAmount,
+  }));
+
+  return bookedRooms;
+}
+
+
+async function getMonthlyFun(req) {
+  const bookings = await Booking.find();
+
+  const bookingCountsByMonth = {};
+
+  bookings.forEach((booking) => {
+    const checkInDate = booking.checkInDate;
+    const monthKey = `${checkInDate.getFullYear()}-${checkInDate.getMonth() + 1}`; // Month is zero-based, so add 1
+
+    if (!bookingCountsByMonth[monthKey]) {
+      bookingCountsByMonth[monthKey] = 0;
+    }
+
+    bookingCountsByMonth[monthKey]++;
+  });
+
+  const result = Object.entries(bookingCountsByMonth).map(([monthKey, count]) => {
+    const [year, month] = monthKey.split('-');
+    return {
+      month: parseInt(month),
+      count,
+    };
+  });
+
+  return result;
+}
 module.exports = {
   bookingProcess,
   getPayableAmount,
@@ -211,4 +271,6 @@ module.exports = {
   getBookedCardDetails,
   setInOutTime,
   getBookingsDateWise,
+  getMonthlyFun,
+  getOnlineBookedStatistics,
 };

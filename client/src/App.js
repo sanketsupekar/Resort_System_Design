@@ -24,6 +24,7 @@ import Dining from "./customer-pages/Dining";
 import Enquire from "./customer-pages/Enquire";
 import AdminHome from "./admin-pages/AdminHome";
 import AdminBookingProcess from "./admin-pages/AdminBookingProcess";
+import MonthlyBarChart from "./admin-components/MonthlyBarChart";
 function App() {
 
   return (
@@ -53,6 +54,7 @@ function App() {
         {/* Admin Routes */}
         <Route path="/admin/" element={<AdminHome />}></Route>
         <Route path="/admin/:bookingId" element={<AdminBookingProcess />}></Route>
+        <Route path="/admin/monthlyBarChart" element={<MonthlyBarChart />}></Route>
         </Routes>
       </BrowserRouter>
     </>

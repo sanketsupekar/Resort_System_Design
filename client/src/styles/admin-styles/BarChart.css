@@ -1,0 +1,40 @@
+.chart-container{
+    width: 700px;
+    height: 700px;
+    margin-left: 10%;
+    padding: 100px;
+}.chart-container1{
+    width: 700px;
+    height: 700px;
+    padding: 100px;
+}
+.fig{
+
+    /* Set the font family */
+    font-family: Arial, sans-serif;
+    
+    /* Set the font size */
+    font-size: 16px;
+    
+    /* Set the font color */
+    color: #333;
+    
+    /* Make the text bold */
+    font-weight: bold;
+    
+    /* Set the text alignment to center */
+    text-align: center;
+    
+    /* Add some padding around the text */
+    padding: 10px;
+    
+    /* Add a background color behind the text */
+    background-color: #f0f0f0;
+    
+    /* Add some text shadow */
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+  
+}
+.barcontainer{
+    display: flex;
+}

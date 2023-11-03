@@ -33,7 +33,11 @@ function NavBar() {
                 Bookings
               </a>
             </li>
-           
+            <li className="nav-item">
+              <a className="item" href="/admin/monthlyBarChart">
+                Statistics
+              </a>
+            </li>
 
             <li className="nav-item">
               <a className="item" href="/enquire">

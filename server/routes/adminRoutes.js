@@ -4,41 +4,79 @@ const nodemailer = require("nodemailer");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
-const {getBookingsDateWise, getBookingDetails}  = require("../controllers/booking.controller");
+const {
+  getBookingsDateWise,
+  getBookingDetails,
+  getMonthlyFun,
+  getOnlineBookedStatistics,
+} = require("../controllers/booking.controller");
 const { getCustomerDetails } = require("../controllers/customer.controller");
 const { getRoomDetails } = require("../controllers/rooms.controller");
 
-adminRouter.post("/getBookings",(req,res)=>{
-    getBookingsDateWise(req.body).then((bookings)=>{
-        res.status(200).json({bookings});
-    }).catch((e)=>{
-        res.status(400).json({success:false, message : e});
+adminRouter.post("/getBookings", (req, res) => {
+  getBookingsDateWise(req.body)
+    .then((bookings) => {
+      res.status(200).json({ bookings });
     })
+    .catch((e) => {
+      res.status(400).json({ success: false, message: e });
+    });
 });
-adminRouter.post("/getCustomerDetails",(req,res)=>{
-    getCustomerDetails(req.body).then((customer)=>{
-        res.status(200).json(customer);
-    }).catch((e)=>{
-        res.status(400).json(e);
+adminRouter.post("/getCustomerDetails", (req, res) => {
+  getCustomerDetails(req.body)
+    .then((customer) => {
+      res.status(200).json(customer);
     })
-})
-adminRouter.post("/getRoomDetails",(req,res)=>{
-    // console.log(req.body);
-    getRoomDetails(req.body).then((room)=>{
-        res.status(200).json(room);
-    }).catch((e)=>{
-        res.status(400).json(e);
+    .catch((e) => {
+      res.status(400).json(e);
+    });
+});
+adminRouter.post("/getRoomDetails", (req, res) => {
+  // console.log(req.body);
+  getRoomDetails(req.body)
+    .then((room) => {
+      res.status(200).json(room);
     })
-})
-adminRouter.post("/getBookingDetails",(req,res)=>{
-    // console.log(req.body);
-    getBookingDetails(req.body._id).then((booking)=>{
-        console.log(booking);
-        res.status(200).json({success:true,...booking});
-    }).catch((e)=>{
-        console.log(e);
-        res.status(200).json({success:false});
+    .catch((e) => {
+      res.status(400).json(e);
+    });
+});
+adminRouter.post("/getBookingDetails", (req, res) => {
+  // console.log(req.body);
+  getBookingDetails(req.body._id)
+    .then((booking) => {
+      console.log(booking);
+      res.status(200).json({ success: true, ...booking });
     })
-   
-})
+    .catch((e) => {
+      console.log(e);
+      res.status(200).json({ success: false });
+    });
+});
+adminRouter.get("/getStatistics", (req, res) => {
+  getOnlineBookedStatistics(req)
+    .then((bookedCards) => {
+      console.log("BookedCards");
+      console.log(bookedCards);
+      res.status(200).json(bookedCards);
+    })
+    .catch((e) => {
+      console.log(e);
+      res.status(400).json({ success: false, message: "BookedCard Not Found" });
+    });
+});
+
+adminRouter.get("/getMonthly", (req, res) => {
+  console.log(req.body);
+  getMonthlyFun(req)
+    .then((bookedCards) => {
+      console.log("BookedCards");
+      console.log(bookedCards);
+      res.status(200).json(bookedCards);
+    })
+    .catch((e) => {
+      console.log(e);
+      res.status(400).json({ success: false, message: "BookedCard Not Found" });
+    });
+});
 module.exports = adminRouter;
