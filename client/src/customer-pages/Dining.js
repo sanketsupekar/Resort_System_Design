@@ -58,15 +58,9 @@ export default function Dining() {
               <h1 className="title">Dine in Paradise</h1>
               <p className="sub-title">
               
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Tempora alias placeat deleniti voluptates debitis quibusdam
-                quidem inventore distinctio. Nostrum itaque soluta recusandae
-                repudiandae? Cum facere, dolores vel aliquam libero
-                perspiciatis?<br></br>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis
-                reiciendis quisquam in et asperiores omnis repellat vitae
-                placeat id doloribus? Sed rerum repellendus voluptates molestias
-                cumque illo nisi consequatur assumenda.
+              Savor the flavors of perfection at our resort's dining oasis. From farm-to-table freshness to gourmet delights, every bite is a culinary masterpiece. Our chefs craft dishes that dance on your taste buds, while the ambiance transforms your meal into an unforgettable experience.
+              <br></br>
+              Whether you prefer intimate candlelit dinners or vibrant social gatherings, our dining venues offer the perfect setting. Come, indulge in a symphony of tastes, where every meal is a celebration of exquisite flavors and impeccable service. Bon appétit!
               </p>
             
             </div>

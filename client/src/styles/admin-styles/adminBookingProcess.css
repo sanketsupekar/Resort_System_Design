@@ -1,5 +1,9 @@
-.admin-booking-process div{
-    border: 1px solid red;
+.admin-booking-process .booking_process_container, .booking-information-container{
+    /* border: 1px solid red; */
+    width: 70%;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 .admin-booking-process .room_information .margin-zero {
     padding: 0.5rem 0rem;
@@ -16,21 +20,42 @@
     align-items: center;
 }
 .admin-booking-process .booking-information .booking-information-container{
-    width: 80%;
+    width: 70%;
 }
 .admin-booking-process .booking-information .box-conatainer {
     margin: 1rem;
     display: flex;
 }
 .admin-booking-process .booking-information .box-conatainer .part{
-    padding: 1rem;
+    padding: 0rem 1rem;
 }
+.admin-booking-process .booking-information .box-conatainer .button-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* align-self: end; */
+}
+
+.admin-booking-process .booking-information .box-conatainer .button-box .btn{
+    height: 2rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    border: 1px solid black;
+}
+.admin-booking-process .booking-information .box-conatainer .button-box .btn:hover{
+    background-color: black;
+    color: white;
+}
+
+
+
+
 .admin-booking-process .booking-information .infomation-box{
     display: flex;
     
 }
-.admin-booking-process .booking-information{
-    
+.admin-booking-process .booking-information .title-box .title{
+    margin: 0;
 }
 
 .admin-booking-process .payment-information{

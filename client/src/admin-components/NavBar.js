@@ -5,15 +5,15 @@ import "../styles/components/Navbar.css"; // Import the CSS file for styling
 import { primaryIcon } from "../image/index.js";
 // import CustomerProfileCard from "./CustomerProfileCard";
 import { useNavigate } from "react-router-dom";
-const { isLoggedIn } = require("../components/UserFunctions");
+const { isAdminLoggedIn } = require("../components/UserFunctions");
 
 function NavBar() {
-  const [loggedIn, setLogin] = useState(isLoggedIn());
+  const [loggedIn, setLogin] = useState(isAdminLoggedIn());
   const [searchActive, setSearchActive] = useState(false);
   const [userProfile, setViewProfile] = useState(false);
   const navigate = useNavigate();
   function handleProfileClick() {
-    navigate("/profile");
+    // navigate("/profile");
   }
   return (
     <Fragment>
@@ -23,37 +23,30 @@ function NavBar() {
             <img className="img" src={primaryIcon} alt="logo" />
           </a>
           <ul className="nav-list">
-            <li className="nav-item">
-              <a className="item" href="/">
-                Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="item" href="/rooms">
-                Bookings
-              </a>
-            </li>
-           
-
-            <li className="nav-item">
-              <a className="item" href="/enquire">
-                Enquire
-              </a>
-            </li>
             {loggedIn ? (
               <Fragment>
-      
+                <li className="nav-item">
+                  <a className="item" href="/admin">
+                    Home
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="item" href="/admin/bookings">
+                    Bookings
+                  </a>
+                </li>
+
+                <li className="nav-item">
+                  <a className="item" href="/admin/enquire">
+                    Enquire
+                  </a>
+                </li>
               </Fragment>
             ) : (
               <Fragment>
                 <li className="nav-item">
-                  <a className="item" href="/signin">
+                  <a className="item" href="/admin/signin">
                     Sign In
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="item" href="/signup">
-                    Sign Up
                   </a>
                 </li>
               </Fragment>

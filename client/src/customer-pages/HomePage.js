@@ -15,7 +15,7 @@ function HomePage() {
   const data = {
     title: "Coconut County Resort",
     sub_title:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde quod autem commodi iste eum omnis saepe temporibus? Veniam ipsam, exercitationem laborum quaerat rerum repellendus voluptatibus quod quae impedit officia quas.",
+      "A Paradise Unparalleled: Where Tranquility Meets Luxury! Nestled amidst nature's embrace, our resort is a sanctuary for the soul, a haven for the senses, and an escape from the ordinary. Experience the epitome of opulence and relaxation as you embark on a journey to discover the true meaning of bliss. Your unforgettable escape awaits at our resort – where every moment is designed to enchant, inspire, and rejuvenate.",
       image : "resort_header.jpg"
   };
   const navigate = useNavigate();

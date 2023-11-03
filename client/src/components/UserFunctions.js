@@ -23,6 +23,12 @@ export function isLoggedIn() {
   //console.log(token);
   return token != undefined;
 }
+export function isAdminLoggedIn() {
+  const token = window.localStorage.admin_token;
+  //console.log(token);
+  return token != undefined;
+}
+
 export function loggedOut() {
   window.localStorage.clear();
 }

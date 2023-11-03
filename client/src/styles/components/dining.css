@@ -75,5 +75,6 @@ div{
 
 .dining-page  .info-container .sub-title{
     margin-top: 0;
-    width: 100%;
+    width: 90%;
+    text-align: justify;
 }

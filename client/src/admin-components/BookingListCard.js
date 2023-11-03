@@ -26,7 +26,7 @@ export default function BookingListCard(props) {
     }
     function handleOnProcessClick()
     {
-        navigate("/admin/"+props.card._id);
+        navigate("/admin/bookings/"+props.card._id);
     }
     useEffect(()=>{
         // console.log(props.card);
