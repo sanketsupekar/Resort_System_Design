@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react'; 
 import NavBar from './NavBar';
 import "../styles/admin-styles/BarChart.css";
-import Header from '../components/Header';
+import AdminHeader from "../admin-components/AdminHeader";
 import { Bar, Doughnut,Pie } from 'react-chartjs-2'; 
 import {Chart as ChartJS,BarElement,LinearScale,CategoryScale, ArcElement,Legend, Tooltip} from "chart.js";
 import { fetchGetAPI } from "../components/UserFunctions";
@@ -22,10 +22,15 @@ function MonthlyBarChart() {
   const [chart,setChart] = useState([]);
   const [roomName, setRoomName] = useState([]);
   const [bookAmount, setBookAmount] = useState([]);
-  
   const [barchart,setbarChart] = useState([]);
-
   const [loading, setLoading] = useState(false);
+
+  const headerData = {
+    title: "Statistics",
+    sub_title:
+    "Explore our resort's success through statistics. Where numbers meet excellence, witness our commitment to exceptional hospitality and guest satisfaction.",
+      image : "admin_header.jpg"
+  };
     
   const data = { 
     labels: monthNumber, 
@@ -145,7 +150,7 @@ useEffect(() => {
   return ( 
     <>
     <NavBar/>
-    <Header/>
+    <AdminHeader data = {headerData}></AdminHeader>
     <center>
     <div className='barcontainer'>
     <div className='chart-container'> 

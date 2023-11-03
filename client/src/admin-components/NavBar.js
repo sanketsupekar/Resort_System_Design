@@ -23,30 +23,6 @@ function NavBar() {
             <img className="img" src={primaryIcon} alt="logo" />
           </a>
           <ul className="nav-list">
-<<<<<<< HEAD
-            <li className="nav-item">
-              <a className="item" href="/">
-                Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="item" href="/rooms">
-                Bookings
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="item" href="/admin/monthlyBarChart">
-                Statistics
-              </a>
-            </li>
-
-            <li className="nav-item">
-              <a className="item" href="/enquire">
-                Enquire
-              </a>
-            </li>
-=======
->>>>>>> 116ccd9d20fe02cc7d59278902a0a5d04cb951fa
             {loggedIn ? (
               <Fragment>
                 <li className="nav-item">
@@ -60,6 +36,11 @@ function NavBar() {
                   </a>
                 </li>
 
+                <li className="nav-item">
+                  <a className="item" href="/admin/monthlyBarChart">
+                    Statistic
+                  </a>
+                </li>
                 <li className="nav-item">
                   <a className="item" href="/admin/enquire">
                     Enquire

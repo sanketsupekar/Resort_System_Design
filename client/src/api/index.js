@@ -20,12 +20,9 @@ export const API_ADMIN_getBookings = "/api/admin/getBookings";
 export const API_ADMIN_getCustomerDetails = "/api/admin/getCustomerDetails";
 export const API_ADMIN_getRoomDetails = "/api/admin/getRoomDetails";
 export const API_ADMIN_getBookingDetails = "/api/admin/getBookingDetails";
-<<<<<<< HEAD
 export const API_ADMIN_getOnlineBookedStatistics = "/api/admin/getStatistics";
 export const API_ADMIN_getMonthlyStatistics = "/api/admin/getMonthly";
-=======
 
 export const API_ADMIN_getPaymentDetails = "/api/admin/getPaymentDetails";
 
 export const API_ADMIN_adminLogin = "/api/admin/signin";
->>>>>>> 116ccd9d20fe02cc7d59278902a0a5d04cb951fa

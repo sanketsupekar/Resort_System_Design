@@ -42,6 +42,7 @@ function AdminSignIn() {
         adminToken: json.token,
       });
       console.log("success");
+      navigate("/admin");
       
     }
   }
