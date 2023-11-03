@@ -16,10 +16,7 @@ export default function HomePhotos() {
                 Photos
               </h2>
               <p data-aos="fade-up" data-aos-delay="100">
-                Far far away, behind the word mountains, far from the countries
-                Vokalia and Consonantia, there live the blind texts. Separated
-                they live in Bookmarksgrove right at the coast of the Semantics,
-                a large language ocean.
+              Welcome to our resort, where every window frames a masterpiece. Bask in the breathtaking vistas that stretch beyond the horizon. Your stay promises panoramic views, endless serenity, and a connection to nature like never before. Prepare to be captivated by the beauty that surrounds you.
               </p>
             </div>
           </div>

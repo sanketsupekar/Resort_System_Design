@@ -1,46 +1,29 @@
-import React, { useState } from "react";
-import "../styles/admin-styles/adminHome.css";
-import SearchWidget from "../admin-components/SearchWidget";
-import BookingListCard from "../admin-components/BookingListCard";
-import DateLineCard from "../admin-components/DateLineCard";
-import LoadingSpinner from "../components/LoadingSpinner";
-import {fetchAPI} from "../components/UserFunctions";
-import { API_ADMIN_getBookings } from "../api";
-import Navbar from "../admin-components/NavBar";
+import React, { useEffect,useState } from "react";
+import NavBar from "../admin-components/NavBar";
+import { isAdminLoggedIn } from "../components/UserFunctions";
+import { useNavigate } from "react-router-dom";
+import AdminHeader from "../admin-components/AdminHeader";
 export default function AdminHome() {
-  const card = {
-    bookingId: "12345678",
-    customerName: "Sanket Supekar",
-    roomName: "Delux Room",
-    checkInDate: new Date(),
-    checkOutDate: new Date(),
+  const [loggedIn,setLogin] = useState(isAdminLoggedIn());
+  const navigate = useNavigate();
+  const data = {
+    title: "Admin",
+    sub_title:
+      "You have rights to do any thing",
+      image : "admin_header.jpg"
   };
-  const [bookings,setBookings] = useState([]);
-  const [loading,setLoading] = useState(false);
 
-  async function getBookingsDateWise(data)
-  {
-    setLoading(true);
-    const respones  = await fetchAPI(data,API_ADMIN_getBookings,"POST");
-    const json = await respones.json();
-    setLoading(false);
-    setBookings(json.bookings)
-    console.log(json);
-  }
-  function dateOnChangeHandle(data) {
-    console.log(data);
-    getBookingsDateWise(data);
-  }
+  useEffect(()=>{
+    if(!loggedIn)
+    {
+      navigate("/admin/signin");
+    }
+  },[])
   return (
     <>
-    <Navbar></Navbar>
-      {loading && <LoadingSpinner></LoadingSpinner>}
-      <SearchWidget dateOnChangeHandle={dateOnChangeHandle}></SearchWidget>
-      {/* <div>AdminHome</div> */}
-
-     {bookings.length > 0 && bookings.map((booking,index)=>{
-          return (<BookingListCard card={booking}></BookingListCard>)
-     }) }
+    <NavBar></NavBar>
+    <AdminHeader data = {data}></AdminHeader>
+      <div>AdminHome</div>
     </>
   );
 }

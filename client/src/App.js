@@ -22,9 +22,16 @@ import YourReserved from "./customer-pages/YourReserved";
 import Rooms from "./customer-pages/Rooms";
 import Dining from "./customer-pages/Dining";
 import Enquire from "./customer-pages/Enquire";
-import AdminHome from "./admin-pages/AdminHome";
+// import AdminHome from "./admin-pages/AdminHome";
 import AdminBookingProcess from "./admin-pages/AdminBookingProcess";
+<<<<<<< HEAD
 import MonthlyBarChart from "./admin-components/MonthlyBarChart";
+=======
+import AdminBookings from "./admin-pages/AdminBookings";
+import AdminHome from "./admin-pages/AdminHome";
+import AdminSignIn from "./admin-pages/AdminSignIn";
+import AdminEnquire from "./admin-pages/AdminEnquire";
+>>>>>>> 116ccd9d20fe02cc7d59278902a0a5d04cb951fa
 function App() {
 
   return (
@@ -52,9 +59,17 @@ function App() {
         {/* <Route path="*" element = {<Navigate to='/'/>} ></Route> */}
 
         {/* Admin Routes */}
+
         <Route path="/admin/" element={<AdminHome />}></Route>
+<<<<<<< HEAD
         <Route path="/admin/:bookingId" element={<AdminBookingProcess />}></Route>
         <Route path="/admin/monthlyBarChart" element={<MonthlyBarChart />}></Route>
+=======
+        <Route path="/admin/signin" element={<AdminSignIn />}></Route>
+        <Route path="/admin/bookings/" element={<AdminBookings />}></Route>
+        <Route path="/admin/enquire/" element={<AdminEnquire />}></Route>
+        <Route path="/admin/bookings/:bookingId" element={<AdminBookingProcess />}></Route>
+>>>>>>> 116ccd9d20fe02cc7d59278902a0a5d04cb951fa
         </Routes>
       </BrowserRouter>
     </>

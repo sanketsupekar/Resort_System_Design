@@ -30,10 +30,7 @@ export default function HomeWelcome() {
             <div className="col-md-12 col-lg-4 order-lg-1" data-aos="fade-up">
               <h2 className="heading">Welcome!</h2>
               <p className="mb-4">
-                Far far away, behind the word mountains, far from the countries
-                Vokalia and Consonantia, there live the blind texts. Separated
-                they live in Bookmarksgrove right at the coast of the Semantics,
-                a large language ocean.
+             Place where every moment is a whisper of paradise. Embrace the tranquility, indulge in luxury, and let the tropical charm of our resort envelop your senses. Your unforgettable escape begins here, where the sun, sea, and smiles await to greet you.
               </p>
               {/* <p>
                 <a

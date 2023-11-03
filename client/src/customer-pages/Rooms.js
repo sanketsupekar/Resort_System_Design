@@ -45,16 +45,8 @@ export default function Rooms() {
             <div className="container-item info-container">
               <h2 className="title">OUR ROOMS</h2>
               <p className="sub-title">
-                {" "}
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Tempora alias placeat deleniti voluptates debitis quibusdam
-                quidem inventore distinctio. Nostrum itaque soluta recusandae
-                repudiandae? Cum facere, dolores vel aliquam libero
-                perspiciatis?<br></br>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis
-                reiciendis quisquam in et asperiores omnis repellat vitae
-                placeat id doloribus? Sed rerum repellendus voluptates molestias
-                cumque illo nisi consequatur assumenda.
+            
+                Indulge in the epitome of luxury at our resort's rooms. Each space is thoughtfully crafted to provide a perfect blend of elegance and comfort. Immerse yourself in a stylish ambiance, adorned with modern amenities and adorned with exquisite decor. Wake up to picturesque views, relax in plush furnishings, and experience unparalleled tranquility. Our rooms offer not just accommodation, but a sanctuary where your every need is met with seamless hospitality. Whether you choose a cozy retreat or a lavish suite, expect a stay that redefines relaxation. Welcome to a world of sophistication and serenity, where your comfort is our utmost priority.
               </p>
               <button className="button globle_button_design" onClick={()=>{
                   navigate("/booking")

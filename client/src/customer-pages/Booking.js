@@ -17,7 +17,7 @@ const { API_roomBookProcess } = require("../api/index");
 const headerData = {
   title: "Book Now",
   sub_title:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde quod autem commodi iste eum omnis saepe temporibus? Veniam ipsam, exercitationem laborum quaerat rerum repellendus voluptatibus quod quae impedit officia quas.",
+  "Book your blissful escape now! Discover luxury, reserve memories. Your dream stay awaits at our resort.",
   image: "room_header.jpg",
 };
 export default function Rooms(props) {
