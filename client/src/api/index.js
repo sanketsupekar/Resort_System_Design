@@ -26,3 +26,6 @@ export const API_ADMIN_getMonthlyStatistics = "/api/admin/getMonthly";
 export const API_ADMIN_getPaymentDetails = "/api/admin/getPaymentDetails";
 
 export const API_ADMIN_adminLogin = "/api/admin/signin";
+export const API_ADMIN_getEnquiryDetails = "/api/admin/getEnquiryDetails";
+export const API_ADMIN_replyToEnquiry = "/api/admin/replyToEnquiry";
+

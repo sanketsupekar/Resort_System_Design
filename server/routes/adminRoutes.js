@@ -10,10 +10,11 @@ const {
   getMonthlyFun,
   getOnlineBookedStatistics,
 } = require("../controllers/booking.controller");
-const { getCustomerDetails } = require("../controllers/customer.controller");
+const { getCustomerDetails,getEnquiryDetails,updateReplyToEnquiry,sendEmail } = require("../controllers/customer.controller");
 const { getRoomDetails } = require("../controllers/rooms.controller");
 const { getPaymentDetails } = require("../controllers/payment.controller");
 const {getAdminDetails,updateAdminAuthToken} = require("../controllers/administrator.controller");
+const {getEnquiryFormat} = require("../utilities/emailFormat");
 const tokenExpir = 86400000; //Expair in one day;
 
 adminRouter.post("/getBookings", (req, res) => {
@@ -136,4 +137,36 @@ adminRouter.post("/signin", (req, res) => {
       .catch((e) => console.log(e));
   
   });
+
+  adminRouter.get("/getEnquiryDetails",(req,res)=>{
+    getEnquiryDetails().then((Enquiries)=>{
+      res.status(200).json(Enquiries);
+    }).catch((e)=>{
+      res.status(400).json(e);
+    })
+  })
+
+  adminRouter.post("/replyToEnquiry",(req,res)=>{
+    const customerEmail = req.body.email;
+    const emailSubject = "Your Questions Answered";
+    const chat = req.body.chat;
+    // console.log(chat);
+    // var question = "j";
+
+    //get recent msg from customer
+    const question = chat.slice().reverse().find(msg => msg.sender === "user")?.text;
+    const answer = req.body.answer;
+    // res.send([customerEmail,emailSubject,question,answer]);
+    const emailFormat = getEnquiryFormat(question,answer);
+    updateReplyToEnquiry(req.body).then((replied)=>{
+      sendEmail(customerEmail,emailSubject,emailFormat).then((sent)=>{
+        res.status(200).json(sent)
+      }).catch((e)=>{
+        throw e;
+      })
+    }).catch((e)=>{
+      res.status(400).json(e);
+    })
+    // res.send("Done");
+  })
 module.exports = adminRouter;

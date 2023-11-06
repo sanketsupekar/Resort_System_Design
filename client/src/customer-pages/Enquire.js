@@ -108,17 +108,18 @@ function Enquire(props) {
                 />
               </div>
               {/* Message */}
-              <div className="input-box text-area">
+              <div className="input-box">
                 <span className="details">Message</span>
                 <textarea
                   // type="text-box"
+                  className="text-area"
                   placeholder="Enter Message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   required
                   rows="10"
-                  cols="95"
+                  cols="90"
                 />
               </div>
             </div>

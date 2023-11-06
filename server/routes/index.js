@@ -430,11 +430,11 @@ router.post("/paymentVerification", (req, res) => {
 });
 
 router.post('/contactus',(req,res)=>{
-  console.log(req.body);
+  // console.log(req.body);
   insertContactRequest(req.body).then((result)=>{
     console.log(result);
     res.status(200).json({success : true, message:"Inserted Successfully"});
-    console.log("Inserted");
+    // console.log("Inserted");
   }).catch((e)=>{
     res.status(400).json({success : false, message:e});
     console.log(e);

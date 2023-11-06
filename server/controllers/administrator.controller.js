@@ -21,5 +21,6 @@ async function updateAdminAuthToken(user, token)
     return updateData;
 }
 
+
 module.exports = {getAdminDetails,updateAdminAuthToken};
 

@@ -17,7 +17,7 @@
   position: relative;
 }
 .registration_container .text-area{
-
+padding: 1rem;
   }
   textarea {
     border: 0;

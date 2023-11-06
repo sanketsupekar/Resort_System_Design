@@ -1,0 +1,182 @@
+
+.chat-app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.chat-app .chat-app-container {
+  display: flex;
+  width: 70%;
+  margin-bottom: 5rem;
+  margin-top: 5rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border-radius: 1rem;
+}
+
+.chat-app .contact-list-view {
+  width: 25rem;
+  height: calc(100vh - 15em);
+  padding: 20px;
+  border-right: 1px solid #ccc;
+  overflow-y: auto;
+}
+
+@keyframes chat-app-onActiveChat {
+  from {
+    transform: translate(0rem);
+  }
+  to {
+    transform: translate(1rem);
+  }
+}
+
+@keyframes chat-app-onDeActiveChat {
+  from {
+    transform: translate(1rem);
+  }
+  to {
+    transform: translate(0rem);
+  }
+}
+
+.chat-app .contact {
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  animation-name: chat-app-onDeActiveChat;
+  animation-duration: 0.3s;
+}
+
+.chat-app .contact.active {
+  background-color: #ededed;
+  transform: translate(1rem);
+  animation-name: chat-app-onActiveChat;
+  animation-duration: 0.3s;
+}
+
+.chat-app .chat-box-title {
+  border: 1px solid gray;
+  background-color: rgba(0, 0, 0, 0.664);
+  color: white;
+  margin: 1rem;
+}
+
+.chat-app .chat-box-title .title {
+  margin: 0;
+}
+
+.chat-app .chat-box-title .sub-title {
+  margin: 0.1rem 0.5rem;
+}
+
+.chat-app .chat-box-view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-app .chat-header {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.chat-app .chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.chat-app .message {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  width: 80%;
+}
+
+.chat-app .user-message {
+  background-color: #add8e6;
+  align-self: flex-start;
+}
+
+.chat-app .contact-message {
+  background-color: #e1e1e1;
+  align-self: flex-end;
+}
+
+.chat-app .message-input {
+  margin-top: 20px;
+  margin: 0 1rem;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.chat-app .send-button {
+  margin: 1rem;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.chat-app .send-button:hover {
+  background-color: black;
+  color: white;
+}
+
+.chat-app .contact-card {
+  height: 3rem;
+}
+
+.chat-app .contact-card .main-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.chat-app .contact-card .main-info .name {
+  margin-top: 0;
+  font-weight: bold;
+}
+
+.chat-app .contact-card .main-info .date {
+  margin-top: 0;
+  color: gray;
+}
+
+.chat-app .contact-card .sub-info .sub-message {
+  margin-top: 0;
+  color: gray;
+  overflow-x: hidden;
+}
+
+.chat-app .contact-card .sub-info .color-green {
+  color: green;
+  font-weight: bold;
+}
+
+.chat-app .contact-list .contact-list-title {
+  background-color: rgba(0, 0, 0, 0.664);
+  color: white;
+  margin: 1rem;
+}
+
+.chat-app .contact-list .contact-list-title .title {
+  padding: 1rem;
+}
+
+.chat-app .select-chat {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
