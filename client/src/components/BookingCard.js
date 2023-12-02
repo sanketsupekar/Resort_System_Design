@@ -1,17 +1,80 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./NavBar";
 import "../styles/components/bookingCard.css";
-const {displayIcon} = require('./UserFunctions');
-const {reservedIcon} = require("../image/index")
+const { displayIcon } = require('./UserFunctions');
+const { reservedIcon } = require("../image/index")
+const { displayError, displaySuccess } = require("../components/NotifyToast");
+const { fetchAPI,fetchGetAPI } = require("../components/UserFunctions");
+const { API_roomNotification ,API_getroomNotification} = require("../api/index");
+
+
 export default function BookingCard(props) {
+  const [loadingVisible, setLoading] = useState(false);
+
   const [reservedInfo, setReservedInfo] = useState(false);
+  const [notificationData, setNotificationData] = useState([]);
+  const [isNotified, setIsNotified] = useState(false);
+  const [notificationDetails, setNotificationDetails] = useState([]);
   // const [roomReserved, setRoomReserved] = useState(false);
-  
-  function onChangeReservedInfo()
-  {
+
+  function onChangeReservedInfo() {
     setReservedInfo(!reservedInfo);
   }
 
+  function handleNotificationData(data) {
+    console.log(data);
+    setNotificationData({
+
+      roomId: data._id,
+    });
+    // console.log(NotificationData);
+    //  
+  }
+
+  async function uploadMessage(formData) {
+    setLoading(true);
+    const respones = await fetchAPI(formData, API_roomNotification, "POST");
+    const json = await respones.json();
+    if (respones.status == 200) {
+      // displaySuccess(json.message);
+      setNotificationData(notificationData)
+    } else {
+      displayError(json.message);
+    }
+    console.log(json.message);
+    setLoading(false);
+
+  }
+
+
+  useEffect(() => {
+    // console.log(notificationData);
+    uploadMessage(notificationData);
+  }, [notificationData])
+
+
+  async function getNotificationDetails() {
+    setLoading(true);
+    const respones = await fetchGetAPI(API_getroomNotification);
+    const json = await respones.json();
+    setNotificationDetails(json);
+    setLoading(false);
+    // console.log(json);
+    // console.log("All reseved Room Details");
+    // console.log(notificationDetails);
+  }
+  useEffect(() => {
+    getNotificationDetails();
+  }, []);
+
+  useEffect(() => {
+    // console.log(notificationDetails);
+    const result = notificationDetails.find((notification) =>{
+      return notification.roomId === props.room._id;
+    });
+    setIsNotified(result)
+    console.log(result?._id,props.room.title);
+ },[notificationDetails])
 
   return (
     <>
@@ -40,6 +103,10 @@ export default function BookingCard(props) {
                     {props.room.adults} Adults & {props.room.childrens} Children
                   </p>
                 </div>
+
+
+
+
               </div>
               <div className="detail-3">
                 <h3>Bedding :</h3>
@@ -66,18 +133,27 @@ export default function BookingCard(props) {
               </div>
             </div>
             {
-              props.room.reserved ? <div>
-              <img  className= "reserved_icon" onMouseEnter={onChangeReservedInfo} onMouseLeave={onChangeReservedInfo} src={reservedIcon}/>
-           
-            </div> : <div>
-              <button className="book_button" onClick={()=> {props.handleBookRoom(props.room)}}>Book</button>
-            </div>
+              props.room.reserved ? <div className="reserved-corner">
+                {/* onMouseLeave={onChangeReservedInfo} */}
+                <div className="" > <img className="reserved_icon" onMouseEnter={onChangeReservedInfo} src={reservedIcon} /></div>
+                {/* send Notification to the customer  */}
+                <div> <button className="bell-icon " onClick={() => { handleNotificationData(props.room) }} disabled={isNotified}>
+                 {isNotified ?<i class="fa-solid fa-bell" style={{ color: "#c3b309", }} ></i>  : <i class="fa-regular fa-bell fa-beat-fade" style={{ color: "#434044", }} ></i>}
+                 
+                
+                
+                </button>
+                </div>
+
+              </div> : <div>
+                <button className="book_button" onClick={() => { props.handleBookRoom(props.room) }}>Book</button>
+              </div>
             }
-            
+
           </div>
-          
+
         </div>
-        
+
       </div>
     </>
   );

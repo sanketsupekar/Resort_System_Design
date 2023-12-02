@@ -91,6 +91,7 @@ export default function Rooms(props) {
   }
   useEffect(() => {
     getAvailableRooms(checkAvailability);
+    // console.log(checkAvailability);
   }, [checkAvailability]);
 
   useEffect(() => {
@@ -102,12 +103,16 @@ export default function Rooms(props) {
   return (
     <Fragment>
        <Navbar />
+
+
+
       {loggedIn ? (
         <Fragment>
          
           {loading ? <LoadingSpinner /> : null}
           <Header data={headerData} />
           <BookWidget handleCheckAvailability={handleCheckAvailability} />
+          {/* {console.log(rooms)} */}
           {rooms.length === 0 ? (
             <h1></h1>
           ) : (

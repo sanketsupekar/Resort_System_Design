@@ -18,6 +18,13 @@ const {
   updatePassword,
   insertContactRequest,
 } = require("../controllers/customer.controller");
+
+const {
+  addNotification,
+  getNotificationRoomDetails,
+} = require("../controllers/notification.controller");
+
+
 const {
   setOtpWithExpiration,
   getOtp,
@@ -442,5 +449,31 @@ router.post('/contactus',(req,res)=>{
   })
   // res.status(200).send("Done");
 })
+
+
+router.post('/roomNotification',Authenticate,(req,res)=>{
+  req.body.customerId = req.userId;
+  console.log(req.body);
+  addNotification(req.body).then((result)=>{
+    res.status(200).json({success : true, message:"Inserted  one Successfully"});
+  }).catch((e)=>{
+    res.status(400).json({success : false, message:e});
+    console.log(e);
+  })
+})
+
+
+router.get("/roomNotificationDetails", Authenticate, (req, res) => {
+  getNotificationRoomDetails(req.userId)
+    .then((bookedRoomDetails) => {
+      res.status(200).json(bookedRoomDetails);
+    })
+    .catch((e) => {
+      console.log(e);
+      res.status(400).json({ success: false, message: "BookedCard Not Found" });
+    });
+});
+
+
 
 module.exports = router;

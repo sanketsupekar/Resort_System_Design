@@ -29,3 +29,6 @@ export const API_ADMIN_adminLogin = "/api/admin/signin";
 export const API_ADMIN_getEnquiryDetails = "/api/admin/getEnquiryDetails";
 export const API_ADMIN_replyToEnquiry = "/api/admin/replyToEnquiry";
 
+export const API_roomNotification ='/api/roomNotification';
+export const API_getroomNotification ='/api/roomNotificationDetails';
+
