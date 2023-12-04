@@ -139,12 +139,13 @@ p {
   font-size: 0.7rem;
   color: red;
 }
-.bell-icon{
+.booking_card .book_container  .bell-icon{
   background-color: white;
   border: none;
   margin-top: 1rem;
   font-size: 2.1rem;
   margin-left: 1rem;
+  cursor: pointer;
 }
 
 .reserved-corner{

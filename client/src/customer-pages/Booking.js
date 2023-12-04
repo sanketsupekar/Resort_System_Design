@@ -6,18 +6,20 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import { Navigate, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import CustomerProfileCard from "../components/CustomerProfileCard";
-import PageNotFound from "./PageNotFound"
+import PageNotFound from "./PageNotFound";
 import Footer from "../components/Footer";
+import { ToastContainer, toast } from "react-toastify";
 // const { rooms } = require("../components/RoomData");
 const { isLoggedIn } = require("../components/UserFunctions");
-
+const { displayError, displaySuccess } = require("../components/NotifyToast");
 const { API_availableRooms } = require("../api/index");
 const { fetchAPI } = require("../components/UserFunctions");
-const { API_roomBookProcess } = require("../api/index");
+const { API_roomBookProcess,API_roomNotification } = require("../api/index");
+
 const headerData = {
   title: "Book Now",
   sub_title:
-  "Book your blissful escape now! Discover luxury, reserve memories. Your dream stay awaits at our resort.",
+    "Book your blissful escape now! Discover luxury, reserve memories. Your dream stay awaits at our resort.",
   image: "room_header.jpg",
 };
 export default function Rooms(props) {
@@ -48,6 +50,21 @@ export default function Rooms(props) {
     bookingStatus: "Pending", // Status of the booking (e.g., Pending, Confirmed, Canceled)
     paymentStatus: "Pending", // Status of the payment associated with the booking
   });
+
+  // Insert Notification Entry
+  async function setRoomNotification(roomId) {
+    setLoading(true);
+    const respones = await fetchAPI(roomId, API_roomNotification, "POST");
+    const json = await respones.json();
+    if (respones.status == 200) {
+      displaySuccess(json.message);
+      // setNotificationData(notificationData);
+    } else {
+      displayError(json.message);
+    }
+    // console.log(roomId);
+    setLoading(false);
+  }
 
   async function getAvailableRooms(data) {
     setLoading(true);
@@ -89,6 +106,9 @@ export default function Rooms(props) {
       roomId: data._id,
     });
   }
+  function handleNotifyClick(roomId) {
+    setRoomNotification({roomId});
+  }
   useEffect(() => {
     getAvailableRooms(checkAvailability);
     // console.log(checkAvailability);
@@ -102,13 +122,10 @@ export default function Rooms(props) {
   }, [booking]);
   return (
     <Fragment>
-       <Navbar />
-
-
+      <Navbar />
 
       {loggedIn ? (
         <Fragment>
-         
           {loading ? <LoadingSpinner /> : null}
           <Header data={headerData} />
           <BookWidget handleCheckAvailability={handleCheckAvailability} />
@@ -122,9 +139,11 @@ export default function Rooms(props) {
                 room={room}
                 totalDays={checkAvailability.totalDays}
                 handleBookRoom={handleBookRoom}
+                handleNotifyClick={handleNotifyClick}
               />
             ))
           )}
+          <ToastContainer />
           <Footer></Footer>
         </Fragment>
       ) : (

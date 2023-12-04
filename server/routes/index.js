@@ -455,11 +455,12 @@ router.post('/roomNotification',Authenticate,(req,res)=>{
   req.body.customerId = req.userId;
   console.log(req.body);
   addNotification(req.body).then((result)=>{
-    res.status(200).json({success : true, message:"Inserted  one Successfully"});
+    res.status(200).json({success : true, message:"We will Notify You !"});
   }).catch((e)=>{
     res.status(400).json({success : false, message:e});
     console.log(e);
   })
+  // res.status(200).json({success : false, message:"We will Notify You !"});
 })
 
 

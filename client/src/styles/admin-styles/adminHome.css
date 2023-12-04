@@ -1,0 +1,27 @@
+.admin-home{
+    /* border: 1px solid red; */
+  
+}
+.admin-home-container{
+    /* border: solid blue 1px; */
+    width: 80%;
+    margin: auto;
+    display: flex;
+
+
+}
+.admin-home-container .calender-container{
+    /* border: solid blue 1px; */
+    width: 70%;
+    margin: 1rem;
+
+}
+.admin-home-container .booking-container{
+    /* border: solid blue 1px; */
+    width: 30%;
+    margin: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.admin-home{
+
+}

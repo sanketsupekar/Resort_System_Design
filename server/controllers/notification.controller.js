@@ -18,7 +18,7 @@ const Notification = require("../model/notification.model");
          
 async function getNotificationRoomDetails(userId) {
    const bookedRoomDetails = await Notification.find({ customerId: userId });
-  console.log("notify",bookedRoomDetails);
+  // console.log("notify",bookedRoomDetails);
  return bookedRoomDetails;
 }
   
