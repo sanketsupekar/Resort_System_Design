@@ -2,7 +2,10 @@ import React, { Fragment, useState } from "react";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { displayIcon, fetchAPI, isLoggedIn } from "../components/UserFunctions";
 // AmenitiesCard
+import { useNavigate } from "react-router-dom";
+
 import { useParams } from "react-router-dom";
+
 import "../styles/admin-styles/adminBookingProcess.css";
 import {
   API_ADMIN_getCustomerDetails,
@@ -15,6 +18,10 @@ import { useEffect } from "react";
 import AmenitiesCard from "../components/AmenitiesCard";
 // fetchAPI
 export default function AdminBookingProcess(props) {
+//use Navigate
+const navigate = useNavigate();
+
+
   const { bookingId } = useParams();
   const [loading, setLoading] = useState(false);
   const [loggedIn, setLogin] = useState(isLoggedIn());
@@ -64,10 +71,17 @@ export default function AdminBookingProcess(props) {
     //  console.log(customer);
     // console.log(payment);
   }
+
+  function handleInvoiceDetails(){
+    navigate("/reserved/"+bookingId);
+ }
   useEffect(() => {
     getBookingDetails();
     console.log(bookingId);
   }, []);
+  useEffect(() => {
+    handleInvoiceDetails();
+  },[])
   return (
     <>
       <NavBar></NavBar>
@@ -326,7 +340,7 @@ export default function AdminBookingProcess(props) {
                         </div>
                         <div className="box-conatainer">
                           <div className="button-box">
-                            <button className="btn">Invoice Download</button>
+                            <button className="btn" onClick={handleInvoiceDetails}>Invoice Download</button>
                           </div>
                         </div>
                       </div>

@@ -5,7 +5,7 @@ import Navbar from "../components/NavBar";
 import { useRef } from "react";
 import ReactToPrint, { useReactToPrint } from "react-to-print";
 import { API_getInvoiceDetails } from "../api/index";
-import { fetchAPI,isLoggedIn } from "../components/UserFunctions";
+import { fetchAPI,isLoggedIn,isAdminLoggedIn } from "../components/UserFunctions";
 import LoadingSpinner from "../components/LoadingSpinner";
 import PageNotFound from "./PageNotFound"
 import { useParams } from "react-router-dom";
@@ -15,7 +15,7 @@ export default function PaymentReceipt() {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(false);
   const [invoice, setInvoice] = useState({});
-  const [loggedIn, setLogin] = useState(isLoggedIn());
+  const [loggedIn, setLogin] = useState(isLoggedIn()||isAdminLoggedIn());
   const componentRef = useRef();
 
   async function getInvoiceDetails(data) {
