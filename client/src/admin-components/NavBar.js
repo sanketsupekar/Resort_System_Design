@@ -6,14 +6,14 @@ import { primaryIcon } from "../image/index.js";
 // import CustomerProfileCard from "./CustomerProfileCard";
 import { useNavigate } from "react-router-dom";
 const { isAdminLoggedIn } = require("../components/UserFunctions");
-
+const {admin_profile} = require("../image/index");
 function NavBar() {
   const [loggedIn, setLogin] = useState(isAdminLoggedIn());
   const [searchActive, setSearchActive] = useState(false);
   const [userProfile, setViewProfile] = useState(false);
   const navigate = useNavigate();
   function handleProfileClick() {
-    // navigate("/profile");
+    navigate("/admin/profile");
   }
   return (
     <Fragment>
@@ -67,7 +67,7 @@ function NavBar() {
                 <img
                   className="img-profile"
                   onClick={handleProfileClick}
-                  src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2OTgyNDMzOTN8&ixlib=rb-4.0.3&q=85"
+                  src={admin_profile}
                 ></img>
               </div>
             </div>

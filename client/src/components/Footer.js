@@ -19,7 +19,7 @@ export default function Footer() {
               <div className="contact-box item">
                 <h3 className="address"> Contact</h3>
                 <div className="sub-address">
-                  <p>  <a href="mailto:coconutcounty7681@gmail.com?subject=Regarding%20Coconut%20County%20Resort"><i class="fa-regular fa-envelope"></i> </a>   coconutcounty7681@gmail.com</p>
+                  <p>  <a style={{textDecoration: 'none', color:'white'}} href="mailto:coconutcounty7681@gmail.com?subject=Regarding%20Coconut%20County%20Resort"> <i class="fa-regular fa-envelope"></i> </a>   coconutcounty7681@gmail.com</p>
                   <p>8421034511 / 8668207978</p>
                 </div>
               </div>
@@ -55,7 +55,7 @@ export default function Footer() {
               </li>
               {/* Google map location */}
               <li>
-                <a className="link" href="#">
+                <a className="link" href="https://www.google.com/maps/place/Coconut+County+resort/@19.8404108,73.6387434,829m/data=!3m2!1e3!4b1!4m9!3m8!1s0x3bdd8f44122c59f9:0x8bafbe132a25decc!5m2!4m1!1i2!8m2!3d19.8404108!4d73.6387434!16s%2Fg%2F11sjpzd4vp?entry=ttu">
                   <i class="fa-solid fa-location-dot social-item icon"></i>                </a>
               </li>
             </ul>

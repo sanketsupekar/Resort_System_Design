@@ -29,6 +29,8 @@ import AdminBookings from "./admin-pages/AdminBookings";
 import AdminHome from "./admin-pages/AdminHome";
 import AdminSignIn from "./admin-pages/AdminSignIn";
 import AdminEnquire from "./admin-pages/AdminEnquire";
+import AdminProfile from "./admin-pages/AdminProfile";
+import AdminPaymentReceipt from "./admin-pages/AdminPaymentReceipt";
 function App() {
 
   return (
@@ -64,6 +66,9 @@ function App() {
         <Route path="/admin/bookings/" element={<AdminBookings />}></Route>
         <Route path="/admin/enquire/" element={<AdminEnquire />}></Route>
         <Route path="/admin/bookings/:bookingId" element={<AdminBookingProcess />}></Route>
+        <Route path="/admin/profile" element={<AdminProfile />}></Route>
+        <Route path="/admin/paymentReceipt/:bookingId" element={<AdminPaymentReceipt />}></Route>
+
         </Routes>
       </BrowserRouter>
     </>

@@ -50,6 +50,7 @@ function getDateString(date = new Date())
       setPayment(true);
       // console.log({...props.card.trackingDate});
       // console.log(props.card.trackingDate);
+      // console.log(bookedCard);
     }
   }, []);
   return (

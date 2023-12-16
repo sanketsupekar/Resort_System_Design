@@ -94,6 +94,13 @@ async function updateTrackingDate(data) {
       ? { trackingDate: { ...data.date } }
       : { trackingDate: { ...booking.trackingDate._doc, ...data.date } }
   );
+  if(data.date.completedDate){
+    await Booking.updateOne(
+      { _id: data.bookingId },{
+        bookingStatus:"Completed"
+      }
+    )
+  }
   // console.log(updated);
   return updated;
 }

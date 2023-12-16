@@ -29,6 +29,7 @@ function getOtpformat(verificationOTP) {
 function initializeNodemailer() {
   const resortEmail = process.env.RESORT_EMAIL;
   const resortEmailPass = process.env.RESORT_EMAIL_PASSWORD;
+  // console.log(resortEmail,resortEmailPass);
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {

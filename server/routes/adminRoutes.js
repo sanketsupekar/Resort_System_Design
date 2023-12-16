@@ -9,6 +9,7 @@ const {
   getBookingDetails,
   getMonthlyFun,
   getOnlineBookedStatistics,
+  updateTrackingDate
 } = require("../controllers/booking.controller");
 const { getCustomerDetails,getEnquiryDetails,updateReplyToEnquiry,sendEmail } = require("../controllers/customer.controller");
 const { getRoomDetails } = require("../controllers/rooms.controller");
@@ -49,7 +50,7 @@ adminRouter.post("/getBookingDetails", (req, res) => {
   // console.log(req.body);
   getBookingDetails(req.body._id)
     .then((booking) => {
-      console.log(booking);
+      // console.log(booking);
       res.status(200).json({ success: true, ...booking });
     })
     .catch((e) => {
@@ -84,8 +85,8 @@ adminRouter.post("/getPaymentDetails",(req,res)=>{
 adminRouter.get("/getStatistics", (req, res) => {
   getOnlineBookedStatistics(req)
     .then((bookedCards) => {
-      console.log("BookedCards");
-      console.log(bookedCards);
+      // console.log("BookedCards");
+      // console.log(bookedCards);
       res.status(200).json(bookedCards);
     })
     .catch((e) => {
@@ -98,8 +99,8 @@ adminRouter.get("/getMonthly", (req, res) => {
   console.log(req.body);
   getMonthlyFun(req)
     .then((bookedCards) => {
-      console.log("BookedCards");
-      console.log(bookedCards);
+      // console.log("BookedCards");
+      // console.log(bookedCards);
       res.status(200).json(bookedCards);
     })
     .catch((e) => {
@@ -168,5 +169,17 @@ adminRouter.post("/signin", (req, res) => {
       res.status(400).json(e);
     })
     // res.send("Done");
+  })
+  adminRouter.post("/updateTrackingDate",(req,res)=>{
+
+    console.log(req.body);
+    updateTrackingDate(req.body).then((result)=>{
+      console.log(result);
+      res.status(200).json({success : true});
+    }).catch((e)=>{
+      console.log(e);
+      res.status(400).json({success : false});
+    })
+    // res.status(200).send("Done");
   })
 module.exports = adminRouter;

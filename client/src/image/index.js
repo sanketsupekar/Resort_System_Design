@@ -18,3 +18,5 @@ export const resort_slide = [
     "/img/resort/resort_slide_5.jpg",
     "/img/resort/resort_slide_6.jpg",
 ]
+
+export const admin_profile = "/img/profile/admin-profile.jpg"

@@ -12,7 +12,7 @@ const TrackingSchema = new mongoose.Schema({
     type: Date,
   },
 
-  comppletedDate: {
+  completedDate: {
     type: Date,
   },
 });

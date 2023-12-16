@@ -13,7 +13,7 @@ export default function BookingListCard(props) {
         const respones = await fetchAPI({_id : props.card.customerId}, API_ADMIN_getCustomerDetails, "POST");
         const json = await respones.json();
         setCustomer(json);
-        console.log(json);
+        // console.log(json);
     }
     async function getRoomDetails()
     {
@@ -21,7 +21,7 @@ export default function BookingListCard(props) {
         const respones = await fetchAPI({_id : props.card.roomId}, API_ADMIN_getRoomDetails, "POST");
         const json = await respones.json();
         setRoom(json);
-        console.log(json);
+        // console.log(json);
         
     }
     function handleOnProcessClick()

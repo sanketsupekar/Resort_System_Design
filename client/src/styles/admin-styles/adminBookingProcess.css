@@ -49,7 +49,6 @@
 
 
 
-
 .admin-booking-process .booking-information .infomation-box{
     display: flex;
     
@@ -66,3 +65,181 @@
 .admin-booking-process .payment-information .payment-information-container{
     width: 80%;
 }
+
+.admin-booking-process .update-status{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.admin-booking-process .update-status{
+    /* border: 2px solid red; */
+}
+.admin-booking-process .update-status .update-status-container{
+    width: 70%;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+}
+.admin-booking-process .update-status{
+
+}
+.admin-booking-process .update-status{
+
+}
+
+
+.admin-booking-process .update-status .info-and-date-container {
+    display: flex;
+    /* margin-top: 20px; */
+    /* height: 12rem; */
+    /* margin-bottom: 2rem; */
+  }
+  
+  .admin-booking-process .update-status .box {
+    flex: 1 0;
+    padding: 15px;
+    /* margin-top: 20px; */
+    /* margin-right: 1rem; */
+    margin: 0.5rem;
+    border-radius: 10px;
+    background: white;
+    font-weight: bold;
+    font-size: 0.9em;
+  }
+  
+  .admin-booking-process .update-status .box .icon {
+    margin-bottom: 5px;
+  }
+  
+  .admin-booking-process .update-status .box.info {
+    color: #ec992c;
+    margin-right: 10px;
+  }
+  .admin-booking-process .update-status .track_container {
+    width: 100%;
+  
+  }
+  .admin-booking-process .update-status .track_box {
+    display: flex;
+  
+  }
+  
+  .admin-booking-process .update-status .hh-grayBox {
+    background-color: #f8f8f8;
+    /* width: 100%; */
+    /* margin-bottom: 20px; */
+    padding: 1rem;
+    margin-top: 20px;
+    border-radius: 1rem;
+  }
+  .admin-booking-process .update-status .pt45 {
+    padding-top: 45px;
+  }
+  .admin-booking-process .update-status .order-tracking {
+    text-align: center;
+    width: 25%;
+    position: relative;
+    display: block;
+    font-size: 1rem;
+  }
+  .admin-booking-process .update-status .order-tracking .is-complete {
+    display: block;
+    position: relative;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    border: 0px solid #afafaf;
+    background-color: #f7be16;
+    margin: 0 auto;
+    transition: background 0.25s linear;
+    -webkit-transition: background 0.25s linear;
+    z-index: 2;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+
+    
+  }
+  .admin-booking-process .update-status .order-tracking .is-complete:after {
+    display: block;
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 7px;
+    top: -2px;
+    bottom: 0;
+    left: 5px;
+    margin: auto 0;
+    border: 0px solid #afafaf;
+    border-width: 0px 2px 2px 0;
+    transform: rotate(45deg);
+    opacity: 0;
+  }
+  .admin-booking-process .update-status .order-tracking.completed .is-complete {
+    border-color: #27aa80;
+    border-width: 0px;
+    background-color: #27aa80;
+  }
+  .admin-booking-process .update-status .order-tracking.completed .is-complete:after {
+    border-color: #fff;
+    border-width: 0px 3px 3px 0;
+    width: 7px;
+    left: 11px;
+    opacity: 1;
+  }
+  /* .admin-booking-process .update-status .order-tracking p {
+    color: #a4a4a4;
+    font-size: 16px;
+    margin-top: 8px;
+    margin-bottom: 0;
+    line-height: 20px;
+  }
+  .admin-booking-process .update-status .order-tracking p span {
+    font-size: 14px;
+  } */
+  .admin-booking-process .update-status .order-tracking.completed p {
+    color: #000;
+  }
+  .admin-booking-process .update-status .order-tracking::before {
+    content: "";
+    display: block;
+    height: 3px;
+    width: calc(100% - 40px);
+    background-color: #f7be16;
+    top: 13px;
+    position: absolute;
+    left: calc(-50% + 20px);
+    z-index: 0;
+  }
+  .admin-booking-process .update-status .order-tracking:first-child:before {
+    display: none;
+  }
+  .admin-booking-process .update-status .order-tracking.completed:before {
+    background-color: #27aa80;
+  }
+  
+  .admin-booking-process .update-status .disclaimer {
+    margin-top: 20px;
+    font-size: 0.8em;
+    color: #7d7d7d;
+  }
+  .admin-booking-process .update-status .order-tracking .is-complete:hover{
+    transform: scale(1.3);
+  }
+  @media (max-width: 768px) {
+    ul .admin-booking-process {
+      &::before {
+        background: rgba(10, 72, 112, 0.6);
+      }
+      .book-container .content {
+        opacity: 1;
+        transform: translateY(0px);
+      }
+      .informations-container {
+        transform: translateY(0px);
+        .update-status {
+          opacity: 1;
+        }
+      }
+    }
+  }

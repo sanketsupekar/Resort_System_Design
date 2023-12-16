@@ -11,16 +11,29 @@ import {
   API_ADMIN_getCustomerDetails,
   API_ADMIN_getRoomDetails,
   API_ADMIN_getBookingDetails,
-  API_ADMIN_getPaymentDetails
+  API_ADMIN_getPaymentDetails,
+  API_ADMIN_updateTrackingDate,
 } from "../api";
 import NavBar from "../admin-components/NavBar";
 import { useEffect } from "react";
 import AmenitiesCard from "../components/AmenitiesCard";
+import { ToastContainer, toast } from "react-toastify";
+const { displaySuccess, displayError } = require("../components/NotifyToast");
 // fetchAPI
 export default function AdminBookingProcess(props) {
-//use Navigate
-const navigate = useNavigate();
-
+  //use Navigate
+  const bookedCard = {
+    roomName: "King Bedroom",
+    roomHeader:
+      "Enjoy a spacious and relaxing environment during you stay at Coconut County Resort",
+    roomImage: "king_room.jpg",
+    amount: 2000,
+    checkInDate: "2023-12-16T03:30:00.000Z",
+    checkOutDate: "2023-12-16T02:30:00.000Z",
+    paymentDate: "2023-12-16T09:04:33.350Z",
+    _id: "657d6822cfa4cd416121c697",
+  };
+  const navigate = useNavigate();
 
   const { bookingId } = useParams();
   const [loading, setLoading] = useState(false);
@@ -31,6 +44,24 @@ const navigate = useNavigate();
   const [payment, setPayment] = useState({});
   const [dataFetch, setDataFetch] = useState(false);
 
+  async function updateTrackingDate(dateType) {
+    const data = {
+      date: {
+        [dateType]: new Date(),
+      },
+      bookingId: bookingId,
+    };
+    setLoading(true);
+    //Update Date
+    const respones = await fetchAPI(data, API_ADMIN_updateTrackingDate, "POST");
+    //Get Booking
+    const bookingRes = await fetchAPI({ _id: bookingId },API_ADMIN_getBookingDetails,"POST");
+    const booking = await bookingRes.json();
+    
+    setBooking(booking._doc);
+    setLoading(false);
+    // getBookingDetails();
+  }
   async function getBookingDetails() {
     setLoading(true);
     //Get Booking
@@ -72,23 +103,56 @@ const navigate = useNavigate();
     // console.log(payment);
   }
 
-  function handleInvoiceDetails(){
-    navigate("/reserved/"+bookingId);
- }
+  function getDateString(date = new Date()) {
+    return new Date(date).toDateString();
+  }
+  function updateArrival() {
+    if (booking.trackingDate.paymentDate && !booking.trackingDate.arrivalDate) {
+      updateTrackingDate("arrivalDate");
+    } else {
+      displayError("Upadation Failed");
+    }
+
+    // alert("Arrival");
+  }
+  function updateDeparture() {
+    if (
+      booking.trackingDate.arrivalDate &&
+      !booking.trackingDate.departureDate
+    ) {
+      updateTrackingDate("departureDate");
+    } else {
+      displayError("Upadation Failed");
+    }
+  }
+  function updateCompleted() {
+    if (
+      booking.trackingDate.departureDate &&
+      !booking.trackingDate.completedDate
+    ) {
+      updateTrackingDate("completedDate");
+    } else {
+      displayError("Upadation Failed");
+    }
+  }
+
+  function handleInvoiceDetails() {
+    navigate("/admin/paymentReceipt/" + bookingId);
+  }
   useEffect(() => {
     getBookingDetails();
-    console.log(bookingId);
+    console.log(booking);
   }, []);
   useEffect(() => {
-    handleInvoiceDetails();
-  },[])
+    // handleInvoiceDetails();
+  }, []);
   return (
     <>
-      <NavBar></NavBar>
       <Fragment>
+        <NavBar></NavBar>
+        {!dataFetch && <LoadingSpinner />}
         {dataFetch && (
           <Fragment>
-            <NavBar></NavBar>
             {loading ? (
               <LoadingSpinner />
             ) : (
@@ -150,6 +214,103 @@ const navigate = useNavigate();
                               src={"/img/rooms/" + room.subImage}
                               alt="room_image"
                             ></img>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="update-status">
+                    <div className="update-status-container">
+                      <div className="title-box">
+                        <h2 className="title">Update Status</h2>
+                      </div>
+                      <div className="info-and-date-container">
+                        <div className="track_container">
+                          <div className="row">
+                            <div className="col-12 col-md-10 hh-grayBox pt45 pb20">
+                              <div className="track_box">
+                                <div
+                                  className={`order-tracking ${
+                                    payment ? "completed" : ""
+                                  }`}
+                                >
+                                  <span className="is-complete"></span>
+                                  <p>
+                                    Payment
+                                    <br />
+                                    <span>
+                                      {getDateString(booking.paymentDate)}
+                                    </span>
+                                  </p>
+                                </div>
+                                <div
+                                  className={`order-tracking   ${
+                                    booking.trackingDate.arrivalDate &&
+                                    "completed"
+                                  }`}
+                                >
+                                  <span
+                                    className="is-complete"
+                                    onClick={updateArrival}
+                                  ></span>
+                                  <p>
+                                    Arrival
+                                    <br />
+                                    <span>
+                                      {getDateString(
+                                        booking.trackingDate.arrivalDate
+                                          ? booking.trackingDate.arrivalDate
+                                          : booking.checkInDate
+                                      )}
+                                    </span>
+                                  </p>
+                                </div>
+                                <div
+                                  className={` order-tracking  ${
+                                    booking.trackingDate.departureDate &&
+                                    "completed"
+                                  }`}
+                                >
+                                  <span
+                                    className="is-complete"
+                                    onClick={updateDeparture}
+                                  ></span>
+                                  <p>
+                                    Departure
+                                    <br />
+                                    <span>
+                                      {getDateString(
+                                        booking.trackingDate.departureDate
+                                          ? booking.trackingDate.departureDate
+                                          : booking.checkOutDate
+                                      )}
+                                    </span>
+                                  </p>
+                                </div>
+                                <div
+                                  className={`order-tracking ${
+                                    booking.trackingDate.completedDate &&
+                                    "completed"
+                                  }`}
+                                >
+                                  <span
+                                    className="is-complete"
+                                    onClick={updateCompleted}
+                                  ></span>
+                                  <p>
+                                    Completed
+                                    <br />
+                                    <span>
+                                      {getDateString(
+                                        booking.trackingDate.completedDate
+                                          ? booking.trackingDate.completedDate
+                                          : booking.checkOutDate
+                                      )}
+                                    </span>
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -308,12 +469,12 @@ const navigate = useNavigate();
                             <p>:</p>
                           </div>
                           <div className="right-part part">
-                          <p>
+                            <p>
                               {new Date(payment.paymentDate).toDateString()}
                             </p>
                             <p>{payment.amount}</p>
                             <p>{payment.currency}</p>
-                            
+
                             <p>{payment.paymentMethod}</p>
                           </div>
                         </div>
@@ -334,13 +495,18 @@ const navigate = useNavigate();
                           <div className="right-part part">
                             <p>{payment.razorpay_order_id}</p>
                             <p>{payment.razorpay_payment_id}</p>
-                            <p>{"INR "+payment.transactionFee}</p>
-                            <p>{"INR " +payment.transactionTax}</p>
+                            <p>{"INR " + payment.transactionFee}</p>
+                            <p>{"INR " + payment.transactionTax}</p>
                           </div>
                         </div>
                         <div className="box-conatainer">
                           <div className="button-box">
-                            <button className="btn" onClick={handleInvoiceDetails}>Invoice Download</button>
+                            <button
+                              className="btn"
+                              onClick={handleInvoiceDetails}
+                            >
+                              Invoice Download
+                            </button>
                           </div>
                         </div>
                       </div>
@@ -351,6 +517,7 @@ const navigate = useNavigate();
             )}
           </Fragment>
         )}
+        <ToastContainer />
       </Fragment>
     </>
     // <>

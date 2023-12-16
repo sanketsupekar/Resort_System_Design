@@ -28,9 +28,11 @@ export function isAdminLoggedIn() {
   //console.log(token);
   return token != undefined;
 }
-
-export function loggedOut() {
-  window.localStorage.clear();
+export function adminLoggedOut(){
+  window.localStorage.removeItem("admin_token");
+  }
+  export function loggedOut() {
+  window.localStorage.removeItem("customer_token")
 }
 export const displayIcon = (name) => {
   switch (name) {

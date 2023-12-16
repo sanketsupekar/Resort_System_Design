@@ -50,7 +50,7 @@ export default function AdminHome() {
       <div>AdminHome</div>
       <div className="admin-home">
         <div className="admin-home-container">
-          <div className="calender-container">
+          {/* <div className="calender-container">
             <Calendar
               onSelectEvent={(e) => {
                 console.log(e);
@@ -66,7 +66,7 @@ export default function AdminHome() {
                 return { style: { backgroundColor } };
               }}
             />
-          </div>
+          </div> */}
           <div className="booking-container"></div>
         </div>
       </div>
