@@ -22,7 +22,7 @@ function handleLogOutClick(){
     <Fragment>
       <NavBar></NavBar>
       <AdminHeader data = {data} buttonClick = {handleLogOutClick}></AdminHeader>
-      <div>AdminProfile</div>
+      {/* <div>AdminProfile</div> */}
     </Fragment>
   );
 }

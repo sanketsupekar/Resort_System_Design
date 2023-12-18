@@ -3,13 +3,19 @@ const Booking = require("../model/booking.model");
 const Room = require("../model/room.model");
 const { findOne } = require("../model/customer.model");
 const { getRoomDetails } = require("./rooms.controller");
-
+const { getEmailFormat,getBookingConfirmationFormat,getArrivalConfirmationFormat,getDepartureFormat,getCompletedFormat } = require("../utilities/emailFormat");
+const { sendEmail } = require("./customer.controller");
+const Customer = require("../model/customer.model");
 const dayStartWith = 9;
 const dayEndWith = 8;
-function setInOutTime(date,dayStartWith,dayEndWith) {
+function setInOutTime(date, dayStartWith, dayEndWith) {
   return {
-    checkInDate: new Date(new Date(date.checkInDate).setHours(dayStartWith, 0, 0, 0)),
-    checkOutDate: new Date(new Date(date.checkOutDate).setHours(dayEndWith, 0, 0, 0)),
+    checkInDate: new Date(
+      new Date(date.checkInDate).setHours(dayStartWith, 0, 0, 0)
+    ),
+    checkOutDate: new Date(
+      new Date(date.checkOutDate).setHours(dayEndWith, 0, 0, 0)
+    ),
   };
 }
 async function bookingProcess(booking) {
@@ -86,20 +92,46 @@ async function getBookingDetails(bookingId) {
 
 async function updateTrackingDate(data) {
   const booking = await Booking.findOne({ _id: data.bookingId });
+  const customer = await Customer.findOne({_id : booking.customerId});
   // console.log(data);
   // console.log(booking.trackingDate);
+  console.log(customer);
+  let emailFormat;
+  let emailSubject;
+  if (data.date.paymentDate) {
+    emailSubject = "Resort Booking Confirmation";
+    emailFormat = getBookingConfirmationFormat(customer,booking)
+  } else if (data.date.arrivalDate) {
+    emailSubject = "Arrival Confirmation";
+    emailFormat = getArrivalConfirmationFormat(customer,booking);
+  } else if (data.date.departureDate) {
+    emailSubject = "Departure Confirmation";
+    emailFormat = getDepartureFormat(customer,booking);
+  } else if (data.date.completedDate) {
+    emailSubject = "Thank you for visiting us !";
+    emailFormat = getCompletedFormat(customer,booking);
+  }
+  // const emailFormat = getEmailFormat();
+  // const emailSubject = "Your Arrival"
+  // const customerEmail = "sanketsupekar123@gmail.com"
+  sendEmail(customer.email, emailSubject, emailFormat).then((sent) => {
+    console.log("Email sent update", sent);
+  }).catch((e)=>{
+    console.log("Email sent update fail",e);
+  });
   const updated = await Booking.updateOne(
     { _id: data.bookingId },
     booking.trackingDate === undefined
       ? { trackingDate: { ...data.date } }
       : { trackingDate: { ...booking.trackingDate._doc, ...data.date } }
   );
-  if(data.date.completedDate){
+  if (data.date.completedDate) {
     await Booking.updateOne(
-      { _id: data.bookingId },{
-        bookingStatus:"Completed"
+      { _id: data.bookingId },
+      {
+        bookingStatus: "Completed",
       }
-    )
+    );
   }
   // console.log(updated);
   return updated;
@@ -132,9 +164,8 @@ async function getBookedCardDetails(userId) {
   return bookedCards;
 }
 
-async function getBookingsDateWise(date)
-{
-  target = setInOutTime(date,dayStartWith,dayEndWith);
+async function getBookingsDateWise(date) {
+  target = setInOutTime(date, dayStartWith, dayEndWith);
   // console.log(new Date(target.checkInDate).toDateString());
   // console.log(new Date(target.checkOutDate).toDateString());
   const bookedRoomQuery = {
@@ -212,12 +243,14 @@ async function getBookingsDateWise(date)
 async function getOnlineBookedStatistics(req) {
   const bookings = await Booking.find();
   const rooms = await Room.find();
-  
+
   // Create a map to store the sum of booking amounts for each room
   const roomBookingSums = new Map();
 
   bookings.forEach((booking) => {
-    const room = rooms.find((item) => booking.roomId.toString() === item._id.toString());
+    const room = rooms.find(
+      (item) => booking.roomId.toString() === item._id.toString()
+    );
 
     if (room) {
       const roomId = room._id.toString();
@@ -225,7 +258,10 @@ async function getOnlineBookedStatistics(req) {
 
       // If the room is already in the map, add the booking amount to the sum
       if (roomBookingSums.has(roomId)) {
-        roomBookingSums.set(roomId, roomBookingSums.get(roomId) + bookingAmount);
+        roomBookingSums.set(
+          roomId,
+          roomBookingSums.get(roomId) + bookingAmount
+        );
       } else {
         // If the room is not in the map, initialize the sum with the booking amount
         roomBookingSums.set(roomId, bookingAmount);
@@ -242,7 +278,6 @@ async function getOnlineBookedStatistics(req) {
   return bookedRooms;
 }
 
-
 async function getMonthlyFun(req) {
   const bookings = await Booking.find();
 
@@ -250,7 +285,9 @@ async function getMonthlyFun(req) {
 
   bookings.forEach((booking) => {
     const checkInDate = booking.checkInDate;
-    const monthKey = `${checkInDate.getFullYear()}-${checkInDate.getMonth() + 1}`; // Month is zero-based, so add 1
+    const monthKey = `${checkInDate.getFullYear()}-${
+      checkInDate.getMonth() + 1
+    }`; // Month is zero-based, so add 1
 
     if (!bookingCountsByMonth[monthKey]) {
       bookingCountsByMonth[monthKey] = 0;
@@ -259,13 +296,15 @@ async function getMonthlyFun(req) {
     bookingCountsByMonth[monthKey]++;
   });
 
-  const result = Object.entries(bookingCountsByMonth).map(([monthKey, count]) => {
-    const [year, month] = monthKey.split('-');
-    return {
-      month: parseInt(month),
-      count,
-    };
-  });
+  const result = Object.entries(bookingCountsByMonth).map(
+    ([monthKey, count]) => {
+      const [year, month] = monthKey.split("-");
+      return {
+        month: parseInt(month),
+        count,
+      };
+    }
+  );
 
   return result;
 }

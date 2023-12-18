@@ -25,13 +25,13 @@ function NavBar() {
           <ul className="nav-list">
             {loggedIn ? (
               <Fragment>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <a className="item" href="/admin">
                     Home
                   </a>
-                </li>
+                </li> */}
                 <li className="nav-item">
-                  <a className="item" href="/admin/bookings">
+                  <a className="item" href="/admin">
                     Bookings
                   </a>
                 </li>

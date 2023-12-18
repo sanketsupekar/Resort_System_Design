@@ -16,6 +16,7 @@ const { getRoomDetails } = require("../controllers/rooms.controller");
 const { getPaymentDetails } = require("../controllers/payment.controller");
 const {getAdminDetails,updateAdminAuthToken} = require("../controllers/administrator.controller");
 const {getEnquiryFormat} = require("../utilities/emailFormat");
+const { adminAuthenticate } = require("../middleware/authenticate");
 const tokenExpir = 86400000; //Expair in one day;
 
 adminRouter.post("/getBookings", (req, res) => {
@@ -131,8 +132,8 @@ adminRouter.post("/signin", (req, res) => {
           res
             .status(200)
             .json({ valid: true, message: "Login Successfull", token: token });
-          console.log(result)
-          res.status(200).send("Done");
+          // console.log(result)
+          // res.status(200).send("Done");
         }
       })
       .catch((e) => console.log(e));
@@ -168,9 +169,8 @@ adminRouter.post("/signin", (req, res) => {
     }).catch((e)=>{
       res.status(400).json(e);
     })
-    // res.send("Done");
   })
-  adminRouter.post("/updateTrackingDate",(req,res)=>{
+  adminRouter.post("/updateTrackingDate",adminAuthenticate,(req,res)=>{
 
     console.log(req.body);
     updateTrackingDate(req.body).then((result)=>{

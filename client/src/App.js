@@ -59,11 +59,11 @@ function App() {
 
         {/* Admin Routes */}
 
-        <Route path="/admin/" element={<AdminHome />}></Route>
+        <Route path="/admin/" element={<AdminBookings />}></Route>
         {/* <Route path="/admin/:bookingId" element={<AdminBookingProcess />}></Route> */}
         <Route path="/admin/monthlyBarChart" element={<MonthlyBarChart />}></Route>
         <Route path="/admin/signin" element={<AdminSignIn />}></Route>
-        <Route path="/admin/bookings/" element={<AdminBookings />}></Route>
+        {/* <Route path="/admin/bookings/" element={<AdminBookings />}></Route> */}
         <Route path="/admin/enquire/" element={<AdminEnquire />}></Route>
         <Route path="/admin/bookings/:bookingId" element={<AdminBookingProcess />}></Route>
         <Route path="/admin/profile" element={<AdminProfile />}></Route>

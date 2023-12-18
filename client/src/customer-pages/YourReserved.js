@@ -12,7 +12,7 @@ export default function YourReserved() {
   const headerData = {
     title: "Reservations",
     sub_title:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde quod autem commodi iste eum omnis saepe temporibus? Veniam ipsam, exercitationem laborum quaerat rerum repellendus voluptatibus quod quae impedit officia quas.",
+      "Your Reservations",
     image: "reserved_header.jpg",
   };
   const [bookedCards, setBookedCards] = useState([]);

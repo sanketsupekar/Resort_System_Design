@@ -158,9 +158,7 @@ function getDateString(date = new Date())
               </div>
             </div>
             <p className="disclaimer">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi
-              eveniet perferendis culpa. Expedita architecto nesciunt, rem
-              distinctio
+              Terms And Conditions
             </p>
           </div>
         </div>
