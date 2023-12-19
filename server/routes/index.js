@@ -330,7 +330,7 @@ router.post("/room/bookingProcess/payment", Authenticate, (req, res) => {
     });
 });
 
-router.post("/room/bookingProcess/invoice", Authenticate, (req, res) => {
+router.post("/room/bookingProcess/invoice", (req, res) => {
   // console.log(req.body);
   getBookingDetails(req.body.bookingId)
     .then((booking) => {
